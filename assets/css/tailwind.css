@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@include font-face( ForalPro, '~/static/fonts/ForalPro/ForalPro', 700, normal, otf);
+@include font-face( OpenSans, '~/static/fonts/OpenSans/OpenSans-Regular', 400, normal, ttf);
+@include font-face( RampageMonoline, '~/static/fonts/RampageMonoline/RampageMonoline-Rounded', 400, normal, ttf);

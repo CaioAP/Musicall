@@ -1,0 +1,40 @@
+@font-face {
+  font-family: "ForalPro";
+  src: url("~/static/fonts/ForalPro/ForalPro.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "OpenSans";
+  src: url("~/static/fonts/OpenSans/OpenSans-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "RampageMonoline";
+  src: url("~/static/fonts/RampageMonoline/RampageMonoline-Rounded.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+$font-foral-pro: 'ForalPro', serif;
+$font-open-sans: 'OpenSans', sans-serif;
+$font-rampage-monoline: 'RampageMonoline', sans-serif;
+
+$screen-sm: 640px;
+$screen-md: 768px;
+$screen-lg: 1024px;
+$screen-xl: 1280px;
+$screen-2xl: 1536px;
+
+$primary-clr: #F9A11B;
+$light-txt-clr-1: #FFFFFF;
+$light-txt-clr-2: #ECECEC;
+$light-txt-clr-3: #CCCCCC;
+$btn-txt-clr: #010101;
+
+.container {
+  margin: auto;
+}
