@@ -1,16 +1,16 @@
 <template>
   <div class="container">
-    <div id="header">
+    <header id="header">
       <nuxt-img src="/images/logo.png" />
 
-      <nav>
+      <nav aria-label="primary navigation">
         <ul>
           <li v-for="nav in navigation" :key="nav.name">
             <nuxt-link :to="nav.path">{{ nav.name }}</nuxt-link>
             <nuxt-img 
               v-if="activeNavigation === nav.name" 
               class="nav-active" 
-              src="/svgs/neon-trace.svg" 
+              src="/svg/neon-trace.svg" 
               width="500"
             />
           </li>
@@ -20,7 +20,7 @@
       <BaseButton>
         Inscreva-se
       </BaseButton>
-    </div>
+    </header>
   </div>
 </template>
 
@@ -49,6 +49,8 @@ export default {
   display: flex;
   align-items: center;
   gap: 2.5rem;
+  max-width: 90%;
+  margin: auto;
   padding-block: 2.5rem;
   z-index: 9;
 

@@ -20,16 +20,19 @@ button {
   display: flex;
   align-items: center;
   padding: 20px 40px;
-  background: linear-gradient(266.39deg, #F5691A 19.34%, #FFD643 94.95%);
+  background: $gradient-bg;
   border-radius: 60px;
   color: $btn-txt-clr;
-}
+  font-weight: 700;
+  
+  &.btn-circle {
+    width: fit-content;
+    height: fit-content;
+    padding: 13px;
+  }
 
-.btn-circle {
-  padding: 13px;
-}
-
-.gradient-inverted {
-  background: linear-gradient(86.39deg, #F5691A 19.34%, #FFD643 94.95%);
+  &.gradient-inverted {
+    background: $gradient-inverted-bg;
+  }
 }
 </style>

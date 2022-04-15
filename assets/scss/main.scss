@@ -30,11 +30,15 @@ $screen-xl: 1280px;
 $screen-2xl: 1536px;
 
 $primary-clr: #F9A11B;
-$light-txt-clr-1: #FFFFFF;
-$light-txt-clr-2: #ECECEC;
-$light-txt-clr-3: #CCCCCC;
+$primary-light-clr: #FFD56A;
+$primary-dark-clr: #F9A11B;
+$text-light-clr-1: #FFFFFF;
+$text-light-clr-2: #ECECEC;
+$text-light-clr-3: #CCCCCC;
 $btn-txt-clr: #010101;
+$bg-clr: #000000;
 
-.container {
-  margin: auto;
-}
+$gradient-bg: linear-gradient(266.39deg, #F5691A 19.34%, #FFD643 94.95%);
+$gradient-inverted-bg: linear-gradient(86.39deg, #F5691A 19.34%, #FFD643 94.95%);
+
+$border-divider: 1px solid rgba(204, 204, 204, 0.2);
