@@ -8,7 +8,7 @@
           <li v-for="nav in navigation" :key="nav.name">
             <nuxt-link :to="nav.path">{{ nav.name }}</nuxt-link>
             <nuxt-img 
-              v-if="activeNavigation === nav.name" 
+              v-if="activeNavigation === nav.path" 
               class="nav-active" 
               src="/svg/neon-trace.svg" 
               width="500"
@@ -27,18 +27,17 @@
 <script>
 
 export default {
-  data() {
-    return {
-      activeNavigation: 'Cursos'
-    }
-  },
   computed: {
     navigation() {
       return [
         { name: 'Cursos', path: '/' },
-        { name: 'Estúdios', path: '/' },
-        { name: 'Login', path: '/' },
+        { name: 'Estúdios', path: '/studios' },
+        { name: 'Login', path: '/login' },
       ] 
+    },
+
+    activeNavigation() {
+      return this.$route.path
     }
   },
 }

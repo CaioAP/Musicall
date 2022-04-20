@@ -34,7 +34,7 @@
             </div>
           </nuxt-link>
 
-          <nuxt-link class="link" to="">
+          <nuxt-link class="link-gradient" to="">
             Conheça nossos outros serviços +
           </nuxt-link>
         </div>
@@ -80,21 +80,29 @@ export default {
   margin: auto;
 
   & > img {
-    max-width: 70%;
+    max-width: 85%;
     margin-top: auto;
   }
 
   .services {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
     header {
       align-items: flex-start;
       max-width: 60%;
+
+      h2 {
+        line-height: 1.2;
+      }
     }
 
     .service {
       display: flex;
       align-items: center;
       gap: 2rem;
-      padding: 0.5rem 0;
+      padding-bottom: 2rem;
       border-bottom: 1px solid rgb(250 250 250 / 0.3);
 
       .service-icon {
@@ -126,17 +134,6 @@ export default {
           margin-block: 0.5rem;
         }
       }
-    }
-
-    .link {
-      font-size: 1.5rem;
-      font-weight: 700;
-      font-family: $font-foral-pro;
-      line-height: 4rem;
-      background: $gradient-bg, #FFFFFF;
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
     }
   }
 }

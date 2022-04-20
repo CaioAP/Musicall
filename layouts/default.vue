@@ -19,3 +19,46 @@ export default {
   z-index: 0;
 }
 </style>
+
+<style lang="scss">
+.container {
+  margin: auto;
+}
+
+.musicalll {
+  font-family: $font-foral-pro;
+  font-weight: 700;
+  color: $primary-clr;
+}
+
+.divider {
+  width: 60%;
+  margin: auto;
+  border-top: $border-divider;
+}
+
+.font-foral-pro {
+  font-family: $font-foral-pro;
+}
+
+.font-rampage-monoline {
+  font-family: $font-rampage-monoline;
+}
+
+.link {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: $font-foral-pro;
+  color: $primary-clr;
+}
+
+.link-gradient {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: $font-foral-pro;
+  background: $gradient-bg, #FFFFFF;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+</style>

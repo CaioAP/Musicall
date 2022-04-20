@@ -55,11 +55,12 @@ export default {
   },
 
   styleResources: {
-    scss: ['./assets/scss/*.scss']
+    scss: ['./assets/scss/main.scss']
   },
 
   
   tailwindcss: {
+    cssPath: '@/assets/css/tailwind.css',
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
