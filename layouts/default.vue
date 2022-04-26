@@ -21,6 +21,23 @@ export default {
 </style>
 
 <style lang="scss">
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: $bg-clr;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $primary-clr;
+  border-radius: 4rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: $primary-dark-clr;
+}
+
 .container {
   margin: auto;
 }
@@ -56,7 +73,7 @@ export default {
   font-size: 1.5rem;
   font-weight: 700;
   font-family: $font-foral-pro;
-  background: $gradient-bg, #FFFFFF;
+  background: $gradient-bg;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

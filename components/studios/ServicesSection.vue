@@ -2,12 +2,12 @@
   <BaseSection labelledby="services-title">
     <template #content>
       <div class="content">
-        <nuxt-img src="/images/index-services.png" />
+        <nuxt-img src="/images/studios-services.png" />
 
         <div class="services">
           <header>
             <h2 id="services-title" class="description">
-              Aqui você encontra tudo que precisa na área musical
+              Precisa de um lugar pra ensaiar ou quer fazer uma parceria?
             </h2>
           </header>
 
@@ -51,21 +51,21 @@ export default {
     services() {
       return [
         { 
-          name: 'Masterclass', 
-          description: 'Aulas com profissionais de renome mundial para você entender e aprender com essas feras da música!',
-          icon: '/svg/clef-bass.svg',
+          name: 'Alugue estúdios próximos a você', 
+          description: 'Deixa a gente te mostrar quais são os melhores estúdios mais próximos de onde você está!',
+          icon: '/svg/map-pin.svg',
           path: '',
         },
         { 
-          name: 'Nossos Cursos', 
-          description: 'Aprenda com os melhores professores. Estudo no seu ritmo, sem sair de casa!',
-          icon: '/svg/book-music.svg',
+          name: 'Configurações personalizadas', 
+          description: 'Você pode configurar reservas e pagamentos diretamente na nossa plataforma',
+          icon: '/svg/cogs.svg',
           path: '',
         },
         { 
-          name: 'Musicalll Drops', 
-          description: 'Nós pensamos em tudo e oferecemos gravações de aulas específicas por assuntos do seu interesse a preço acessíveis.',
-          icon: '/svg/music-circle.svg',
+          name: 'Não perca mais agendamentos', 
+          description: 'Sua política de cancelamento e remarcação de reservar de forma fácil e intuititva',
+          icon: '/svg/book.svg',
           path: '',
         },
       ] 

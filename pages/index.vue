@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <BaseHero image="/images/hero-background.png"/>
+    <BaseHero image="/images/index-hero-background.png"/>
 
     <MasterclassSection />
 

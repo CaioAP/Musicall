@@ -42,6 +42,7 @@ export default {
 
     img {
       margin: auto;
+      max-width: 90%;
     }
   }
 }
