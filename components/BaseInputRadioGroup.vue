@@ -5,7 +5,6 @@
       :key="option.name"
       v-bind="option"
       v-model="selected"
-      @input="$emit('input', selected)"
     >
       {{ option.text }}
     </BaseInputRadio>
@@ -15,6 +14,10 @@
 <script>
 export default {
   props: {
+    value: {
+      type: [String, Number],
+      required: true
+    },
     options: {
       type: Array,
       default: () => [
@@ -25,7 +28,15 @@ export default {
   },
   data() {
     return {
-      selected: 1
+      selected: this.value
+    }
+  },
+  watch: {
+    value(newValue) {
+      this.selected = newValue
+    },
+    selected(newValue) {
+      this.$emit('input', newValue)
     }
   },
 }

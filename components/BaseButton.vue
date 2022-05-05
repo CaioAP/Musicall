@@ -19,11 +19,18 @@ export default {
 button {
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 20px 40px;
   background: $gradient-bg;
   border-radius: 60px;
   color: $btn-txt-clr;
   font-weight: 700;
+
+  &.btn-plain {
+    padding: 0;
+    background: transparent;
+    color: $text-light-clr-1;
+  }
   
   &.btn-circle {
     width: fit-content;
@@ -33,6 +40,12 @@ button {
 
   &.gradient-inverted {
     background: $gradient-inverted-bg;
+  }
+
+  &.btn-outline {
+    background: $bg-clr;
+    border: 1px solid $primary-clr;
+    color: $text-light-clr-1;
   }
 }
 </style>

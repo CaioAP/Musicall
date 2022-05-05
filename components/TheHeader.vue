@@ -8,7 +8,7 @@
           <li v-for="nav in navigation" :key="nav.name">
             <nuxt-link :to="nav.path">{{ nav.name }}</nuxt-link>
             <nuxt-img 
-              v-if="activeNavigation === nav.path" 
+              v-if="isNavActive(nav.path)" 
               class="nav-active" 
               src="/svg/neon-trace.svg" 
               width="500"
@@ -38,6 +38,15 @@ export default {
 
     activeNavigation() {
       return this.$route.path
+    }
+  },
+  methods: {
+    isNavActive(path) {
+      return this.activeNavigation === path 
+        || (
+          path.length > 1 &&
+          this.activeNavigation.includes(path)
+        )
     }
   },
 }

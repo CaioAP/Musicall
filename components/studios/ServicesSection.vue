@@ -53,7 +53,7 @@ export default {
         { 
           name: 'Alugue estúdios próximos a você', 
           description: 'Deixa a gente te mostrar quais são os melhores estúdios mais próximos de onde você está!',
-          icon: '/svg/map-pin.svg',
+          icon: '/svg/map-pin-white.svg',
           path: '',
         },
         { 

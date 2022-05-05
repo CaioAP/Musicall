@@ -78,4 +78,28 @@ export default {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+.btn-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 40px;
+  background: $gradient-bg;
+  border-radius: 60px;
+  color: $btn-txt-clr;
+  font-weight: 700;
+}
+
+.btn-outline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: 1px solid $primary-clr;
+  border-radius: 60px;
+  color: $text-light-clr-1;
+  font-weight: 400;
+}
 </style>

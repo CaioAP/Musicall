@@ -8,35 +8,13 @@
       <p class="description text-lg">Encontre um estúdio para seus ensaios e gravações!</p>
     </header>
 
-    <div class="search">
-      <div class="fields">
-        <form @submit.prevent="searchStudios">
-          <div class="search-field">
-            <div class="input-field">
-              Data
-            </div>
-            <div class="input-field">
-              Horário
-            </div>
-            <div class="input-field">
-              Cidade
-            </div>
-            <div class="input-field">
-              Tipo de evento
-            </div>
-            <BaseButton class="btn-circle">
-              <nuxt-img src="/svg/search.svg" />
-            </BaseButton>
-          </div>
-        </form>
-      </div>
+    <SearchForm 
+      :is-searched="isSearched"
+      :form-data="formData"
+      @form="(formData) => $emit('form', formData)"
+    />
 
-      <nuxt-img src="/svg/tablature-note.svg" />
-
-      <nuxt-link class="link" to="">Quero cadastrar meu estúdio</nuxt-link>
-    </div>
-
-    <footer>
+    <footer v-if="!isSearched">
       <div class="search-available">
         <div class="search-available-icon">
           <nuxt-img src="/svg/music-box.svg" />
@@ -86,10 +64,25 @@
 </template>
 
 <script>
+import SearchForm from '@/components/studios/SearchForm.vue';
+
 export default {
-  methods: {
-    searchStudios() {
-      
+  components: {
+    SearchForm,
+  },
+  props: {
+    isSearched: {
+      type: Boolean,
+      default: false
+    },
+    formData: {
+      type: Object,
+      default: () => ({
+        date: null,
+        time: null,
+        city: null,
+        event: null,
+      })
     }
   },
 }
@@ -115,35 +108,6 @@ export default {
 
     .description {
       color: $text-light-clr-3;
-    }
-  }
-
-  .search {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    margin-top: 2.5rem;
-
-    .fields {
-      .search-field {
-        display: flex;
-        padding: 1.5rem;
-        border: 2px solid $primary-clr;
-        border-radius: 4rem;
-
-        .input-field {
-          padding: 0.5rem 1rem;
-
-          &:not(:first-of-type) {
-            border-left: 1px solid $primary-dark-clr;
-          }
-        }
-      }
-    }
-
-    .link {
-      text-decoration: underline;
     }
   }
 

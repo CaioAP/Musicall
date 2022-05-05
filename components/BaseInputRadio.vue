@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import InputRadioMixin from '@/mixins/inputRadio.js'
+import InputRadioMixin from '~/mixins/input-radio.js'
 
 export default {
   mixins: [InputRadioMixin],
