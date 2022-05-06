@@ -43,6 +43,8 @@ export default {
     }
 
     .vs__selected-options {
+      min-width: max-content;
+
       .vs__search {
         cursor: pointer;
       }
@@ -80,7 +82,7 @@ export default {
   &.w-auto {
     .vs__selected-options {
       .vs__search {
-        width: auto;
+        width: min-content;
       }
     }
   }

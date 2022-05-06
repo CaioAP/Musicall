@@ -31,13 +31,29 @@
       <section class="studio-info" aria-label="Informações do estúdio">
         <header>
           <h2 class="studio-info-name">
-            {{ name }} - Unidade {{ address }}
+            {{ name }}
+            {{ room 
+              ? ` - Sala ${roomSelected.label}`
+              : ` - Unidade ${address}` 
+            }}
           </h2>
+
+          <div v-if="room" class="studio-info-legend">
+            <div class="studio-info-legend-size">
+              <NuxtImg src="/svg/room-size.svg" />
+              {{ roomContent.size }} m²
+            </div>
+            <div class="studio-info-legend-capacity">
+              <NuxtImg src="/svg/user.svg" />
+              {{ roomContent.capacity }} pessoas
+            </div>
+          </div>
 
           <div class="studio-info-actions">
             <BaseSelect 
               v-model="room"
-              class="outline w-auto"
+              class="outline"
+              :class="!room ? 'w-auto' : ''"
               placeholder="Selecione sua sala"
               :options="rooms"
               :reduce="room => room.value"
@@ -97,14 +113,14 @@
 
             <div v-else-if="contentSelected === 'equipments' && room" class="studio-content-body">
               <ul class="studio-content-body-equipments">
-                <li v-for="(equip, i) in studioContent.rooms[room].equipments" :key="i">
+                <li v-for="(equip, i) in roomContent.equipments" :key="i">
                   {{ equip }}
                 </li>
               </ul>
             </div>
 
             <div v-else-if="contentSelected === 'info' && room" class="studio-content-body">
-              <template v-for="(paragraph, i) in studioContent.rooms[room].info.split('\n')" >
+              <template v-for="(paragraph, i) in roomContent.info.split('\n')" >
                 <p :key="i" class="studio-content-boyd-info">
                   {{ paragraph.trim() }}
                 </p>
@@ -201,7 +217,7 @@ export default {
   data() {
     return {
       room: null,
-      contentSelected: 'about'
+      contentSelected: 'about',
     }
   },
   computed: {
@@ -220,13 +236,6 @@ export default {
       ]
     },
 
-    roomContentOptions() {
-      return [
-        { name: 'equipments', text: 'Equipamentos', radioValue: 'equipments'  },
-        { name: 'info', text: 'Informações Adicionais', radioValue: 'info'  },
-      ]
-    },
-
     contentTitle() {
       const titles = {
         about: 'Sobre o estúdio',
@@ -236,6 +245,27 @@ export default {
       }
 
       return titles[this.contentSelected]
+    },
+
+    roomContentOptions() {
+      return [
+        { name: 'equipments', text: 'Equipamentos', radioValue: 'equipments'  },
+        { name: 'info', text: 'Informações Adicionais', radioValue: 'info'  },
+      ]
+    },
+
+    roomContent() {
+      const roomData = this.studioContent.rooms[this.room]
+
+      if (this.room) return roomData
+      return null
+    },
+
+    roomSelected() {
+      const room = this.rooms.find(room => room.value === this.room)
+
+      if (room) return room
+      return null
     }
   },
   watch: {
@@ -246,7 +276,10 @@ export default {
   },
   methods: {
     changeStudioFilter() {
-      this.$router.go(-1)
+      this.$router.push({
+        path: '/studios/search',
+        query: this.$route.query
+      })
     }
   },
 }
@@ -315,12 +348,25 @@ export default {
         display: flex;
         align-items: center;
         justify-content: space-between;
+        gap: 1.5rem;
         margin-bottom: 1.5rem;
         padding-block: 2.5rem;
         border-bottom: $border-divider;
 
         .studio-info-name {
           font-size: 2.25rem;
+        }
+
+        .studio-info-legend {
+          display: flex;
+          gap: 1rem;
+
+          & > div {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            min-width: max-content;
+          }
         }
 
         .studio-info-actions {

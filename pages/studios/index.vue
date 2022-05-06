@@ -2,7 +2,7 @@
   <div class="container">
     <BaseHero image="/images/studios-hero-background.png"/>
 
-    <StudiosSection />
+    <SearchSection />
 
     <AdvantagesSection />
 
@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import StudiosSection from '~/components/studios/StudiosSection.vue'
+import SearchSection from '~/components/studios/SearchSection.vue'
 import AdvantagesSection from '~/components/studios/AdvantagesSection.vue'
 import FaqSection from '~/components/studios/FaqSection.vue'
 import ServicesSection from '~/components/studios/ServicesSection.vue'
@@ -44,7 +44,7 @@ import ServicesSection from '~/components/studios/ServicesSection.vue'
 export default {
   name: 'StudiosPage',
   components: { 
-    StudiosSection,
+    SearchSection,
     AdvantagesSection,
     FaqSection,
     ServicesSection,

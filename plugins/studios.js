@@ -10,7 +10,7 @@ export default {
       price: 49.90,
       mapsLink: 'https://goo.gl/maps/Er33iB5AMWFHrcKe8',
       rooms: [
-        { value: 1, label: 'Sala 01' },
+        { value: 1, label: 'Live youtube studio' },
         { value: 2, label: 'Sala 02' },
         { value: 3, label: 'Sala 03' },
         { value: 4, label: 'Sala 04' },
@@ -34,7 +34,7 @@ export default {
       price: 49.90,
       mapsLink: 'https://goo.gl/maps/Er33iB5AMWFHrcKe8',
       rooms: [
-        { value: 1, label: 'Sala 01' },
+        { value: 1, label: 'Live youtube studio' },
         { value: 2, label: 'Sala 02' },
         { value: 3, label: 'Sala 03' },
         { value: 4, label: 'Sala 04' },

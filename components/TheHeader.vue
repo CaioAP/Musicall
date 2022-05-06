@@ -1,13 +1,15 @@
 <template>
   <div class="container">
     <header id="header">
-      <nuxt-img src="/images/logo.png" />
+      <NuxtLink to="/">
+        <NuxtImg src="/images/logo.png" />
+      </NuxtLink>
 
       <nav aria-label="primary navigation">
         <ul>
           <li v-for="nav in navigation" :key="nav.name">
-            <nuxt-link :to="nav.path">{{ nav.name }}</nuxt-link>
-            <nuxt-img 
+            <NuxtLink :to="nav.path">{{ nav.name }}</NuxtLink>
+            <NuxtImg 
               v-if="isNavActive(nav.path)" 
               class="nav-active" 
               src="/svg/neon-trace.svg" 
@@ -30,7 +32,7 @@ export default {
   computed: {
     navigation() {
       return [
-        { name: 'Cursos', path: '/' },
+        { name: 'Cursos', path: '/courses' },
         { name: 'Estúdios', path: '/studios' },
         { name: 'Login', path: '/login' },
       ] 
@@ -42,11 +44,7 @@ export default {
   },
   methods: {
     isNavActive(path) {
-      return this.activeNavigation === path 
-        || (
-          path.length > 1 &&
-          this.activeNavigation.includes(path)
-        )
+      return this.activeNavigation.includes(path)
     }
   },
 }

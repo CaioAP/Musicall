@@ -21,6 +21,8 @@ export default {
     ],
     rooms: {
       1: {
+        size: 65,
+        capacity: 7,
         equipments: [
           'Microfone',
           'Computador',
@@ -40,6 +42,8 @@ export default {
         `,
       },
       2: {
+        size: 65,
+        capacity: 7,
         equipments: [
           'Microfone',
           'Computador',
@@ -59,6 +63,8 @@ export default {
         `,
       },
       3: {
+        size: 65,
+        capacity: 7,
         equipments: [
           'Microfone',
           'Computador',
@@ -78,6 +84,8 @@ export default {
         `,
       },
       4: {
+        size: 65,
+        capacity: 7,
         equipments: [
           'Microfone',
           'Computador',

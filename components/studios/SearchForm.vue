@@ -131,7 +131,7 @@ export default {
       this.$router.push({
         path: '/studios/search',
         query: {
-          data: moment(this.form.date).format('YYYY-MM-DD'),
+          data: this.form.date ? moment(this.form.date).format('YYYY-MM-DD') : null,
           horario: this.form.time,
           cidade: this.form.city,
           evento: this.form.event

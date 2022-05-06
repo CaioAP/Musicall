@@ -25,6 +25,7 @@ button {
   border-radius: 60px;
   color: $btn-txt-clr;
   font-weight: 700;
+  white-space: nowrap;
 
   &.btn-plain {
     padding: 0;
