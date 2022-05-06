@@ -62,6 +62,18 @@ export default {
   font-family: $font-rampage-monoline;
 }
 
+.text-lower {
+  text-transform: lowercase;
+}
+
+.badge {
+  padding: 0.5rem 1rem;
+  background: $gradient-bg;
+  border-radius: 60px;
+  color: $btn-txt-clr;
+  font-weight: 700;
+}
+
 .link {
   font-size: 1.5rem;
   font-weight: 700;

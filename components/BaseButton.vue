@@ -27,6 +27,11 @@ button {
   font-weight: 700;
   white-space: nowrap;
 
+  &:focus,
+  &:active {
+    outline: none;
+  }
+
   &.btn-plain {
     padding: 0;
     background: transparent;

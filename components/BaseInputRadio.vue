@@ -34,6 +34,14 @@ export default {
     appearance: none;
   }
 
+  label {
+    color: $text-light-clr-1;
+  }
+
+  label:hover {
+    cursor: pointer;
+  }
+
   &.checked {
     background: $gradient-bg;
     border: none;
@@ -42,10 +50,6 @@ export default {
       font-weight: 700;
       color: $btn-txt-clr;
     }
-  }
-
-  label:hover {
-    cursor: pointer;
   }
 }
 </style>

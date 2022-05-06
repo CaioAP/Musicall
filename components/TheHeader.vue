@@ -8,21 +8,28 @@
       <nav aria-label="primary navigation">
         <ul>
           <li v-for="nav in navigation" :key="nav.name">
-            <NuxtLink :to="nav.path">{{ nav.name }}</NuxtLink>
+            <NuxtLink v-if="!nav.btn" :to="nav.path">{{ nav.name }}</NuxtLink>
             <NuxtImg 
-              v-if="isNavActive(nav.path)" 
+              v-if="!nav.btn && isNavActive(nav.path)" 
               class="nav-active" 
               src="/svg/neon-trace.svg" 
               width="500"
             />
+            
+            <BaseButton v-if="nav.btn" class="btn-plain" @click="openDialogLogIn">
+              {{ nav.name }}
+            </BaseButton>
           </li>
         </ul>
       </nav>
 
-      <BaseButton>
+      <BaseButton @click="openDialogSignUp">
         Inscreva-se
       </BaseButton>
     </header>
+
+    <BaseDialogLogin ref="dialogLogin"/>
+    <BaseDialogSignup ref="dialogSignup"/>
   </div>
 </template>
 
@@ -34,7 +41,7 @@ export default {
       return [
         { name: 'Cursos', path: '/courses' },
         { name: 'Estúdios', path: '/studios' },
-        { name: 'Login', path: '/login' },
+        { name: 'Login', path: '/login', btn: true },
       ] 
     },
 
@@ -45,6 +52,14 @@ export default {
   methods: {
     isNavActive(path) {
       return this.activeNavigation.includes(path)
+    },
+
+    openDialogLogIn() {
+      this.$refs.dialogLogin.openDialog()
+    },
+
+    openDialogSignUp() {
+      this.$refs.dialogSignup.openDialog()
     }
   },
 }
@@ -89,6 +104,21 @@ export default {
           top: 0.4rem;
           left: -25%;
           max-width: 150%;
+        }
+
+        .btn-plain {
+          color: #FFD56A;
+          -webkit-text-stroke-width: 0.3px;
+          -webkit-text-stroke-color: #fff;
+          text-shadow: 
+            0 0 7px #FFAB2D,
+            0 0 10px #FFAB2D,
+            0 0 21px #FFAB2D,
+            0 0 42px #FFAB2D,
+            0 0 82px #FFAB2D,
+            0 0 92px #FFAB2D,
+            0 0 102px #FFAB2D,
+            0 0 151px #FFAB2D;
         }
       }
     }

@@ -39,7 +39,7 @@
       </div>
     </div>
 
-    <NuxtLink class="course-action" :to="linkCourseDetails">
+    <NuxtLink class="btn-link course-action" :to="linkCourseDetails">
       Detalhes
     </NuxtLink>
   </div>
@@ -91,7 +91,7 @@ export default {
   },
   computed: {
     linkCourseDetails() {
-      return `/courses/${id}`
+      return `/courses/${this.id}`
     }
   },
 }

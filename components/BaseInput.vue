@@ -1,23 +1,43 @@
 <template>
-  <input 
-    v-model="innerValue"
-    v-bind="$attrs"
-    class="field-input"
-    v-on="$listeners"
-  />
+  <div class="field-input">
+    <label>{{ label }}</label>
+    <input 
+      v-model="innerValue"
+      :type="type"
+      :required="required"
+      :placeholder="placeholder"
+      v-on="$listeners"
+    />
+  </div>
 </template>
 
 <script>
 export default {
   props: {
+    label: {
+      type: String,
+      default: ''
+    },
     value: {
       type: String,
-      default: null
+      default: ''
+    },
+    type: {
+      type: String,
+      default: 'text'
+    },
+    required: {
+      type: Boolean,
+      default: false
+    },
+    placeholder: {
+      type: String,
+      default: ''
     },
   },
   data() {
     return {
-      innerValue: null
+      innerValue: ''
     }
   },
   watch: {
@@ -36,15 +56,27 @@ export default {
 
 <style lang="scss" scoped>
 .field-input {
-  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   background-color: transparent;
 
-  &::placeholder {
-    color: $text-light-clr-1;
+  label {
+    text-align: left;
   }
 
-  &:focus {
-    outline: none;
+  input {
+    padding: 0.5rem 1rem;
+    border: 1px solid $primary-clr;
+    border-radius: 4rem;
+
+    &::placeholder {
+      color: $text-dark-clr-2;
+    }
+
+    &:focus {
+      outline: none;
+    }
   }
 }
 </style>
