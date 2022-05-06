@@ -455,6 +455,46 @@ export default {
         }
       }
     }
+
+    @media only screen and (max-width: 600px) {
+      .studio-subtitle {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .studio-images {
+        grid-template-areas: 
+          "primary primary"
+          "second third"
+          "fourth fifth";
+      }
+
+      .studio-info {
+        header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .studio-info-content {
+          display: flex;
+          flex-direction: column;
+          gap: 2rem;
+
+          .studio-content-body {
+            .studio-content-body-equipments {
+              padding-left: 1.5rem;
+              column-count: 1;
+
+              li {
+                padding-block: 0.5rem;
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
 </style>

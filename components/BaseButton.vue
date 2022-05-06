@@ -20,7 +20,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px 40px;
+  padding: 1.25rem 2.5rem;
   background: $gradient-bg;
   border-radius: 60px;
   color: $btn-txt-clr;

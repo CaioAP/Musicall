@@ -59,5 +59,12 @@ export default {
     grid-template-columns: repeat(3, 1fr);
     gap: 1.75rem;
   }
+
+  @media only screen and (max-width: 600px) {
+    .course-section-cards {
+      display: flex;
+      flex-direction: column;
+    }
+  }
 }
 </style>

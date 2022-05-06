@@ -75,6 +75,7 @@ export default {
     .question-link {
       display: flex;
       align-items: center;
+      justify-content: center;
       margin-top: 1rem;
       margin-inline: auto;
       font-size: 1.25rem;

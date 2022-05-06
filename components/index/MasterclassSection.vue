@@ -64,22 +64,12 @@ export default {
 .masterclass {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  height: calc(100vh - 144px);
+  min-height: calc(100vh - 144px);
 
   @media only screen and (max-width: 600px) {
     & {
       display: flex;
       flex-direction: column;
-      
-      header {
-        .headline {
-          font-size: 2.5rem;
-  
-          span {
-            font-size: 5rem;
-          }
-        }
-      }
     }
 
     & > .masterclass-action {

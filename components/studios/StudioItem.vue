@@ -136,5 +136,20 @@ export default {
     flex-direction: column;
     justify-content: space-around;
   }
+
+  @media only screen and (max-width: 600px) {
+    & {
+      display: flex;
+      flex-direction: column;
+
+      .studio-data {
+        gap: 1rem;
+      }
+
+      .studio-actions {
+        gap: 1rem;
+      }
+    }
+  }
 }
 </style>

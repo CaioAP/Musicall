@@ -36,7 +36,7 @@
             </div>
           </nuxt-link>
 
-          <nuxt-link class="link-gradient" to="">
+          <nuxt-link class="link-services link-gradient" to="">
             Conheça nossos outros serviços +
           </nuxt-link>
         </div>
@@ -134,6 +134,37 @@ export default {
 
         .service-description {
           margin-block: 0.5rem;
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    & {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+
+      & > img {
+        max-width: 100%;
+        margin-top: auto;
+      }
+
+      .services {
+        header {
+          max-width: 100%;
+        }
+
+        .service {
+          .service-icon {
+            img {
+              max-width: 50%;
+            }
+          }
+        }
+
+        .link-services {
+          text-align: center;
         }
       }
     }

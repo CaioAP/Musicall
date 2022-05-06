@@ -86,5 +86,11 @@ export default {
       }
     }
   }
+
+  @media only screen and (max-width: 600px) {
+    & {
+      min-width: 100px !important;
+    }
+  }
 }
 </style>

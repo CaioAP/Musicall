@@ -136,6 +136,19 @@ export default {
         }
       }
     }
+
+    @media only screen and (max-width: 600px) {
+      & {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 3rem;
+
+        .search-available {
+          margin-top: unset;
+        }
+      }
+    }
   }
 }
 </style>

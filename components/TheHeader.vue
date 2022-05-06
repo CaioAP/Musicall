@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <header id="header">
-      <NuxtLink to="/">
+      <NuxtLink class="logo-link" to="/">
         <NuxtImg src="/images/logo.png" />
       </NuxtLink>
 
@@ -121,6 +121,17 @@ export default {
             0 0 151px #FFAB2D;
         }
       }
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    .logo-link {
+      display: none;
+    }
+
+    nav {
+      margin-left: unset;
+      margin-right: auto;
     }
   }
 }

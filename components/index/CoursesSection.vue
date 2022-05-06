@@ -56,4 +56,18 @@ export default {
   gap: 2.5rem;
   margin-top: 5rem;
 }
+
+@media only screen and (max-width: 600px) {
+  .filter {
+    max-width: 70%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .content {
+    max-width: 90%;
+    margin-inline: auto;
+  }
+}
 </style>

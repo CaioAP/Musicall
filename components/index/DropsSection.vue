@@ -20,7 +20,7 @@
 
         <div class="drops-list">
           <article 
-            v-for="drop in drops" 
+            v-for="drop in drops"
             :key="drop.id"
             class="drop-card"
           >
@@ -87,6 +87,30 @@ export default {
     gap: 1rem;
     margin-top: 4rem;
   }
+}
 
+@media only screen and (max-width: 600px) {
+  .filter {
+    max-width: 70%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .content {
+    max-width: 90%;
+    margin-inline: auto;
+    overflow-x: hidden;
+
+    .btn-circle {
+      width: 6rem;
+    }
+
+    .drops-list {
+      .drop-card {
+        min-width: 50%;
+      }
+    }
+  }
 }
 </style>

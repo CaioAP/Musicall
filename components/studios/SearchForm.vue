@@ -5,6 +5,7 @@
         <div class="input-field">
           <BaseCalendar 
             v-model="form.date" 
+            class="form-input"
             placeholder="Data"
             max-width="144px"
             @change="emitForm"
@@ -13,6 +14,7 @@
         <div class="input-field">
           <BaseSelect
             v-model="form.time" 
+            class="form-input"
             placeholder="Horário" 
             :options="timeOptions"
             :reduce="time => time.value"
@@ -22,6 +24,7 @@
         <div class="input-field">
           <BaseSelect 
             v-model="form.city"
+            class="form-input"
             placeholder="Cidade"
             :options="cityOptions"
             :reduce="city => city.value"
@@ -31,6 +34,7 @@
         <div class="input-field">
           <BaseSelect 
             v-model="form.event"
+            class="form-input"
             placeholder="Tipo de evento"
             :options="eventOptions"
             :reduce="event => event.value"
@@ -182,6 +186,35 @@ export default {
 
   .link {
     text-decoration: underline;
+  }
+
+  @media only screen and (max-width: 600px) {
+    form {
+      width: 90%;
+    }
+
+    .search-field {
+      flex-direction: column;
+      gap: 0.5rem;
+
+      .input-field {
+        width: 100%;
+        padding: 1rem 0;
+
+        &:not(:first-of-type) {
+          border-left: none;
+          border-top: 1px solid $primary-dark-clr;
+        }
+
+        .form-input {
+          width: 100%;
+        }
+      }
+
+      button {
+        margin: auto;
+      }
+    }
   }
 }
 </style>

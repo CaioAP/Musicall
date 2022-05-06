@@ -68,7 +68,7 @@ export default {
         { 
           title: 'Cursos', 
           links: [
-            { name: 'Msaterclass', path: '' },
+            { name: 'Masterclass', path: '' },
             { name: 'Cursos na Musicalll', path: '' },
             { name: 'Musicalll Drops', path: '' },
           ]
@@ -151,6 +151,20 @@ footer {
         font-family: $font-foral-pro;
         font-size: 2rem;
         color: $primary-clr;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    nav {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+
+      .footer-section {
+        ul > li {
+          padding-block: 0.75rem;
+        }
       }
     }
   }

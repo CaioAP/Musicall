@@ -114,4 +114,10 @@ export default {
   color: $text-light-clr-1;
   font-weight: 400;
 }
+
+@media only screen and (max-width: 600px) {
+  body, html {
+    font-size: 10px;
+  }
+}
 </style>

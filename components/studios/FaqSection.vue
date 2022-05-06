@@ -72,5 +72,11 @@ export default {
       }
     }
   }
+
+  @media only screen and (max-width: 600px) {
+    .faq {
+      max-width: 90%;
+    }
+  }
 }
 </style>

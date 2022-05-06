@@ -253,6 +253,16 @@ export default {
     margin-top: 1.5rem;
     font-size: 1.25rem;
   }
+
+  @media only screen and (max-width: 600px) {
+    .course-content-columns {
+      column-count: 1;
+
+      li {
+        padding-block: 0.5rem;
+      }
+    }
+  }
 }
 
 .course-classes {
@@ -295,6 +305,14 @@ export default {
         width: 100%;
         margin: auto;
       }
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    .course-classes-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
     }
   }
 }

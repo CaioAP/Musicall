@@ -139,5 +139,11 @@ export default {
   .link {
     text-decoration: underline;
   }
+
+  @media only screen and (max-width: 600px) {
+    form {
+      max-width: 100%;
+    }
+  }
 }
 </style>
