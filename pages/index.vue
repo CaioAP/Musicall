@@ -51,6 +51,10 @@ export default {
         { id: 2, name: 'Keu Aragão', description: 'Drops de Percussão', image: '/temp/drops-2.png' },
         { id: 3, name: 'Rafael Alabarcce', description: 'Drops de Gaita Básica', image: '/temp/drops-3.png' },
         { id: 4, name: 'Rafael Alabarcce', description: 'Drops de Finale', image: '/temp/drops-4.png' },
+        { id: 5, name: 'Ana Iaci', description: 'Drops de canto', image: '/temp/drops-1.png' },
+        { id: 6, name: 'Keu Aragão', description: 'Drops de Percussão', image: '/temp/drops-2.png' },
+        { id: 7, name: 'Rafael Alabarcce', description: 'Drops de Gaita Básica', image: '/temp/drops-3.png' },
+        { id: 8, name: 'Rafael Alabarcce', description: 'Drops de Finale', image: '/temp/drops-4.png' },
       ],
     }
   },

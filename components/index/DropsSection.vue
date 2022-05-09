@@ -14,17 +14,17 @@
 
     <template #content>
       <div class="content">
-        <BaseButton class="btn-circle gradient-inverted">
-          <nuxt-img src="/svg/arrow-left.svg" />
+        <BaseButton class="btn-circle gradient-inverted" @click="previousSlideCard">
+          <NuxtImg src="/svg/arrow-left.svg" />
         </BaseButton>
 
-        <div class="drops-list">
+        <div class="drops-list" ref="slide">
           <article 
             v-for="drop in drops"
             :key="drop.id"
             class="drop-card"
           >
-            <nuxt-img :src="drop.image" />
+            <NuxtImg :src="drop.image" />
             <div class="drop-card-text">
               <p>{{ drop.name }}</p>
               <p>{{ drop.description }}</p>
@@ -32,8 +32,8 @@
           </article>
         </div>
 
-        <BaseButton class="btn-circle">
-          <nuxt-img src="/svg/arrow-right.svg" />
+        <BaseButton class="btn-circle" @click="nextSlideCard">
+          <NuxtImg src="/svg/arrow-right.svg" />
         </BaseButton>
       </div>
     </template>
@@ -65,6 +65,14 @@ export default {
       filterSelected: 2
     }
   },
+  methods: {
+    previousSlideCard() {
+      this.$refs.slide.scrollBy(-200, 0)
+    },
+    nextSlideCard() {
+      this.$refs.slide.scrollBy(200, 0)
+    }
+  },
 }
 </script>
 
@@ -73,6 +81,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 4rem;
 
   .btn-circle:first-of-type {
     transform: translateX(50%);
@@ -83,9 +92,31 @@ export default {
   }
 
   .drops-list {
-    display: flex;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc(25% - 0.75rem);
     gap: 1rem;
-    margin-top: 4rem;
+    @include carousel;
+
+    .drop-card {
+      scroll-snap-align: start;
+
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
+
+      .drop-card-text {
+        text-align: center;
+
+        p:first-of-type {
+          font-family: $font-foral-pro;
+          font-weight: 700;
+          font-size: 1.5rem;
+          color: $text-light-clr-2;
+        }
+      }
+    }
   }
 }
 
@@ -107,6 +138,8 @@ export default {
     }
 
     .drops-list {
+      grid-auto-columns: 100%;
+
       .drop-card {
         min-width: 50%;
       }

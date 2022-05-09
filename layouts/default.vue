@@ -38,6 +38,10 @@ export default {
   background: $primary-dark-clr;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 .container {
   margin: auto;
 }

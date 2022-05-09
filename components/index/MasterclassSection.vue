@@ -3,21 +3,21 @@
     <header>
       <h1 id="headline" class="headline">Apresentamos a <span>Masterclass</span></h1>
       <p class="description">As melhores aulas, feitas pelos melhores profissionais do ramo musical</p>
-      <nuxt-img src="/svg/music-note.svg" />
+      <NuxtImg src="/svg/music-note.svg" />
     </header>
 
     <div class="masterclass-slide">
-      <BaseButton class="btn-circle gradient-inverted">
-        <nuxt-img src="/svg/arrow-left.svg" />
+      <BaseButton class="btn-circle gradient-inverted" @click="previousSlideCard">
+        <NuxtImg src="/svg/arrow-left.svg" />
       </BaseButton>
 
-      <div>
+      <div ref="slide">
         <article 
-          v-for="masterclass in masterClassesShown" 
+          v-for="masterclass in masterClasses" 
           :key="masterclass.id"
           class="masterclass-card"
         >
-          <nuxt-img :src="masterclass.image" />
+          <NuxtImg :src="masterclass.image" />
           <div class="masterclass-card-text">
             <p>{{ masterclass.name }}</p>
 
@@ -28,8 +28,8 @@
         </article>
       </div>
 
-      <BaseButton class="btn-circle">
-        <nuxt-img src="/svg/arrow-right.svg" />
+      <BaseButton class="btn-circle" @click="nextSlideCard">
+        <NuxtImg src="/svg/arrow-right.svg" />
       </BaseButton>
     </div>
 
@@ -45,16 +45,21 @@
 export default {
   data() {
     return {
-      masterClassesShown: [
-        { id: 1, name: 'Ana Valéria', description: 'Primeira Contrabaixista OSESP', image: '/temp/masterclass-1.png' },
-        { id: 2, name: 'Darring C. Milling', description: 'Trombone Baixo Solista OSESP', image: '/temp/masterclass-2.png' },
-      ],
       masterClasses: [
         { id: 1, name: 'Ana Valéria', description: 'Primeira Contrabaixista OSESP', image: '/temp/masterclass-1.png' },
         { id: 2, name: 'Darring C. Milling', description: 'Trombone Baixo Solista OSESP', image: '/temp/masterclass-2.png' },
         { id: 3, name: 'Maria Joana', description: 'Segunda Contrabaixista OSMSP', image: '/temp/masterclass-1.png' },
         { id: 4, name: 'José Smith', description: 'Trombone Alto Acorde OSMSP', image: '/temp/masterclass-2.png' },
       ],
+    }
+  },
+  methods: {
+    previousSlideCard() {
+      this.$refs.slide.scrollBy(-200, 0)
+    },
+
+    nextSlideCard() {
+      this.$refs.slide.scrollBy(200, 0)
     }
   },
 }
@@ -64,7 +69,9 @@ export default {
 .masterclass {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  max-width: 90%;
   min-height: calc(100vh - 144px);
+  margin: auto;
 
   @media only screen and (max-width: 600px) {
     & {
@@ -74,6 +81,14 @@ export default {
 
     & > .masterclass-action {
       grid-column: 1;
+    }
+
+    & > .masterclass-slide {
+      .btn-circle {
+        img {
+          width: 5rem;
+        }
+      }
     }
   }
 
@@ -121,17 +136,27 @@ export default {
     }
 
     & > div {
-      display: flex;
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: calc(50% - 1rem);
       gap: 2rem;
+      @include carousel;
 
       .masterclass-card {
+        width: 100%;
         position: relative;
         border-radius: 16px;
+        scroll-snap-align: start;
+
+        img {
+          width: 100%;
+          object-fit: cover;
+        }
 
         .masterclass-card-text {
           position: absolute;
           bottom: 0;
-          width: 100%;
+          width: 90%;
           margin-block: 1.5rem;
           text-align: center;
           color: $text-light-clr-2;
