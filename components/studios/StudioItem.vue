@@ -33,21 +33,31 @@
       <BaseButton v-if="video" class="btn-outline" @click="$refs.dialogVideo.openDialog()">
         Vídeos
       </BaseButton>
-      <BaseButton class="btn-outline">
+      <BaseButton v-if="location.lat && location.lng" class="btn-outline" @click="$refs.dialogMaps.openDialog()">
         Ver no Mapa
       </BaseButton>
     </div>
 
     <DialogVideo ref="dialogVideo" :video="video" />
+    <DialogMaps 
+      ref="dialogMaps" 
+      :locations="[{
+        id: id,
+        name: name,
+        ...location
+      }]" 
+    />
   </div>
 </template>
 
 <script>
 import DialogVideo from '@/components/studios/DialogVideo.vue'
+import DialogMaps from '@/components/studios/DialogMaps.vue'
 
 export default {
   components: {
     DialogVideo,
+    DialogMaps
   },
   props: {
     id: {
@@ -85,6 +95,10 @@ export default {
     video: {
       type: String,
       default: null
+    },
+    location: {
+      type: Object,
+      default: () => ({})
     }
   },
   computed: {

@@ -23,7 +23,11 @@ export default {
         '/temp/studio-4.png',
         '/temp/studio-5.png',
       ],
-      video: 'https://www.youtube.com/embed/tgbNymZ7vqY'
+      video: 'https://www.youtube.com/embed/tgbNymZ7vqY',
+      location: {
+        lat: -16.686264,
+        lng: -49.2635789
+      }
     },
     {
       id: 'studio2',
@@ -48,7 +52,11 @@ export default {
         '/temp/studio-4.png',
         '/temp/studio-5.png',
       ],
-      video: 'https://www.youtube.com/embed/tgbNymZ7vqY'
+      video: 'https://www.youtube.com/embed/tgbNymZ7vqY',
+      location: {
+        lat: -16.6932112,
+        lng: -49.2628065
+      }
     },
     {
       id: 'studio3',
@@ -73,7 +81,11 @@ export default {
         '/temp/studio-4.png',
         '/temp/studio-5.png',
       ],
-      video: 'https://www.youtube.com/embed/tgbNymZ7vqY'
+      video: 'https://www.youtube.com/embed/tgbNymZ7vqY',
+      location: {
+        lat: -16.7118316,
+        lng: -49.2646518
+      }
     },
     {
       id: 'studio4',
@@ -98,7 +110,11 @@ export default {
         '/temp/studio-4.png',
         '/temp/studio-5.png',
       ],
-      video: 'https://www.youtube.com/embed/tgbNymZ7vqY'
+      video: 'https://www.youtube.com/embed/tgbNymZ7vqY',
+      location: {
+        lat: -16.6865107,
+        lng: -49.2445245,
+      }
     },
     {
       id: 'studio5',
@@ -123,7 +139,11 @@ export default {
         '/temp/studio-4.png',
         '/temp/studio-5.png',
       ],
-      video: 'https://www.youtube.com/embed/tgbNymZ7vqY'
+      video: 'https://www.youtube.com/embed/tgbNymZ7vqY',
+      location: {
+        lat: -16.6990482,
+        lng: -49.2394605
+      }
     },
   ]
 }

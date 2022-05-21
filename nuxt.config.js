@@ -59,6 +59,10 @@ export default {
     '@nuxtjs/tailwindcss',
     '@nuxt/image',
     '@nuxtjs/style-resources',
+    ['nuxt-gmaps', {
+      key: process.env.MAPS_KEY,
+      //you can use libraries: ['places']
+    }]
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
