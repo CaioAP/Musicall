@@ -30,18 +30,25 @@
       <NuxtLink class="btn-link" :to="linkDetails">
         Detalhes
       </NuxtLink>
-      <BaseButton class="btn-outline">
+      <BaseButton v-if="video" class="btn-outline" @click="$refs.dialogVideo.openDialog()">
         Vídeos
       </BaseButton>
       <BaseButton class="btn-outline">
         Ver no Mapa
       </BaseButton>
     </div>
+
+    <DialogVideo ref="dialogVideo" :video="video" />
   </div>
 </template>
 
 <script>
+import DialogVideo from '@/components/studios/DialogVideo.vue'
+
 export default {
+  components: {
+    DialogVideo,
+  },
   props: {
     id: {
       type: [String, Number],
@@ -75,6 +82,10 @@ export default {
       type: Number,
       default: 0
     },
+    video: {
+      type: String,
+      default: null
+    }
   },
   computed: {
     linkDetails() {

@@ -3,7 +3,7 @@
     <header>
       <h1 id="headline" class="headline">Apresentamos a <span>Masterclass</span></h1>
       <p class="description">As melhores aulas, feitas pelos melhores profissionais do ramo musical</p>
-      <NuxtImg src="/svg/music-note.svg" />
+      <NuxtImg class="icon" src="/svg/music-note.svg" />
     </header>
 
     <div class="masterclass-slide">
@@ -12,20 +12,22 @@
       </BaseButton>
 
       <div ref="slide">
-        <article 
+        <NuxtLink
           v-for="masterclass in masterClasses" 
           :key="masterclass.id"
-          class="masterclass-card"
+          :to="`/masterclass/${masterclass.id}`"
         >
-          <NuxtImg :src="masterclass.image" />
-          <div class="masterclass-card-text">
-            <p>{{ masterclass.name }}</p>
+          <article class="masterclass-card" >
+            <NuxtImg :src="masterclass.image" />
+            <div class="masterclass-card-text">
+              <p>{{ masterclass.instructor }}</p>
 
-            <div class="masterclass-card-separator"></div>
+              <div class="masterclass-card-separator"></div>
 
-            <p>{{ masterclass.description }}</p>
-          </div>
-        </article>
+              <p>{{ masterclass.description }}</p>
+            </div>
+          </article>
+        </NuxtLink>
       </div>
 
       <BaseButton class="btn-circle" @click="nextSlideCard">
@@ -34,9 +36,9 @@
     </div>
 
     <div class="masterclass-action">
-      <BaseButton>
+      <NuxtLink class="btn-link" to="/masterclass">
         Explorar Masterclass
-      </BaseButton>
+      </NuxtLink>
     </div>
   </section>
 </template>
@@ -46,10 +48,10 @@ export default {
   data() {
     return {
       masterClasses: [
-        { id: 1, name: 'Ana Valéria', description: 'Primeira Contrabaixista OSESP', image: '/temp/masterclass-1.png' },
-        { id: 2, name: 'Darring C. Milling', description: 'Trombone Baixo Solista OSESP', image: '/temp/masterclass-2.png' },
-        { id: 3, name: 'Maria Joana', description: 'Segunda Contrabaixista OSMSP', image: '/temp/masterclass-1.png' },
-        { id: 4, name: 'José Smith', description: 'Trombone Alto Acorde OSMSP', image: '/temp/masterclass-2.png' },
+        { id: 1, instructor: 'Ana Valéria', description: 'Primeira Contrabaixista OSESP', image: '/temp/masterclass-1.png' },
+        { id: 2, instructor: 'Darring C. Milling', description: 'Trombone Baixo Solista OSESP', image: '/temp/masterclass-2.png' },
+        { id: 3, instructor: 'Maria Joana', description: 'Segunda Contrabaixista OSMSP', image: '/temp/masterclass-1.png' },
+        { id: 4, instructor: 'José Smith', description: 'Trombone Alto Acorde OSMSP', image: '/temp/masterclass-2.png' },
       ],
     }
   },
@@ -72,25 +74,6 @@ export default {
   max-width: 90%;
   min-height: calc(100vh - 144px);
   margin: auto;
-
-  @media only screen and (max-width: 600px) {
-    & {
-      display: flex;
-      flex-direction: column;
-    }
-
-    & > .masterclass-action {
-      grid-column: 1;
-    }
-
-    & > .masterclass-slide {
-      .btn-circle {
-        img {
-          width: 5rem;
-        }
-      }
-    }
-  }
 
   & > header {
     display: flex;
@@ -156,8 +139,9 @@ export default {
         .masterclass-card-text {
           position: absolute;
           bottom: 0;
-          width: 90%;
+          width: 100%;
           margin-block: 1.5rem;
+          padding-inline: 1rem;
           text-align: center;
           color: $text-light-clr-2;
 
@@ -190,6 +174,49 @@ export default {
     align-items: center;
     justify-content: center;
     margin-block: 4rem;
+  }
+
+  @media only screen and (max-width: 600px) {
+    & {
+      display: flex;
+      flex-direction: column;
+    }
+
+    & > header {
+      margin-bottom: 2rem;
+
+      .icon {
+        width: 8rem;
+      }
+    }
+
+    & > .masterclass-action {
+      grid-column: 1;
+    }
+
+    & > .masterclass-slide {
+      .btn-circle {
+        img {
+          width: 5rem;
+        }
+      }
+
+      & > div {
+        .masterclass-card {
+          .masterclass-card-text {
+            margin-inline: auto;
+
+            p:first-of-type {
+              font-size: 2rem;
+            }
+
+            p:last-of-type {
+              font-size: 1rem;
+            }
+          }
+        }
+      }
+    }
   }
 }
 </style>

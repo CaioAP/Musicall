@@ -22,7 +22,8 @@ export default {
         '/temp/studio-3.png',
         '/temp/studio-4.png',
         '/temp/studio-5.png',
-      ]
+      ],
+      video: 'https://www.youtube.com/embed/tgbNymZ7vqY'
     },
     {
       id: 'studio2',
@@ -46,7 +47,8 @@ export default {
         '/temp/studio-3.png',
         '/temp/studio-4.png',
         '/temp/studio-5.png',
-      ]
+      ],
+      video: 'https://www.youtube.com/embed/tgbNymZ7vqY'
     },
     {
       id: 'studio3',
@@ -70,7 +72,8 @@ export default {
         '/temp/studio-3.png',
         '/temp/studio-4.png',
         '/temp/studio-5.png',
-      ]
+      ],
+      video: 'https://www.youtube.com/embed/tgbNymZ7vqY'
     },
     {
       id: 'studio4',
@@ -94,7 +97,8 @@ export default {
         '/temp/studio-3.png',
         '/temp/studio-4.png',
         '/temp/studio-5.png',
-      ]
+      ],
+      video: 'https://www.youtube.com/embed/tgbNymZ7vqY'
     },
     {
       id: 'studio5',
@@ -118,7 +122,8 @@ export default {
         '/temp/studio-3.png',
         '/temp/studio-4.png',
         '/temp/studio-5.png',
-      ]
+      ],
+      video: 'https://www.youtube.com/embed/tgbNymZ7vqY'
     },
   ]
 }

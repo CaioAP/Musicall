@@ -17,7 +17,7 @@ export default {
   },
   asyncData({ env, params }) {
     const baseUrl = env.baseUrl
-    const courseId = params.course
+    const courseId = params.masterclass
 
     const course = courseData[courseId]
     const content = coursesContent[courseId]

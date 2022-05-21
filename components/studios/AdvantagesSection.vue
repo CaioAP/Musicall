@@ -8,7 +8,7 @@
     </header>
 
     <div class="body">
-      <nuxt-img src="/images/studios-advantages.png" />
+      <NuxtImg src="/images/studios-advantages.png" />
     </div>
   </section>
 </template>

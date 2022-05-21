@@ -5,21 +5,21 @@
         <p>Acompanhe nas redes</p>
 
         <div>
-          <nuxt-link to="">
-            <nuxt-img src="/svg/youtube.svg"/>
-          </nuxt-link>
-          <nuxt-link to="">
-            <nuxt-img src="/svg/linkedin.svg"/>
-          </nuxt-link>
-          <nuxt-link to="">
-            <nuxt-img src="/svg/facebook.svg"/>
-          </nuxt-link>
-          <nuxt-link to="">
-            <nuxt-img src="/svg/instagram.svg"/>
-          </nuxt-link>
-          <nuxt-link to="">
-            <nuxt-img src="/svg/twitter.svg"/>
-          </nuxt-link>
+          <NuxtLink to="">
+            <NuxtImg src="/svg/youtube.svg"/>
+          </NuxtLink>
+          <NuxtLink to="">
+            <NuxtImg src="/svg/linkedin.svg"/>
+          </NuxtLink>
+          <NuxtLink to="">
+            <NuxtImg src="/svg/facebook.svg"/>
+          </NuxtLink>
+          <NuxtLink to="">
+            <NuxtImg src="/svg/instagram.svg"/>
+          </NuxtLink>
+          <NuxtLink to="">
+            <NuxtImg src="/svg/twitter.svg"/>
+          </NuxtLink>
         </div>
       </div>
 
@@ -27,9 +27,9 @@
         <div class="footer-section logo">
           <ul>
             <li>
-              <nuxt-link class="logo-vertical" to="">
-                <nuxt-img src="/images/logo-vertical.png" />
-              </nuxt-link>
+              <NuxtLink class="logo-vertical" to="">
+                <NuxtImg src="/images/logo-vertical.png" />
+              </NuxtLink>
             </li>
           </ul>
         </div>
@@ -42,7 +42,7 @@
           <h2 class="title">{{ nav.title }}</h2>
           <ul>
             <li v-for="(link, i) in nav.links" :key="i">
-              <nuxt-link :to="link.path">{{ link.name }}</nuxt-link>
+              <NuxtLink :to="link.path">{{ link.name }}</NuxtLink>
             </li>
           </ul>
         </div>
@@ -62,21 +62,20 @@ export default {
             { name: 'Quem somos', path: '' },
             { name: 'Políticas de uso', path: '' },
             { name: 'Fale conosco', path: '' },
-            { name: 'Confiança e Segurança', path: '' },
           ]
         },
         { 
           title: 'Cursos', 
           links: [
-            { name: 'Masterclass', path: '' },
-            { name: 'Cursos na Musicalll', path: '' },
-            { name: 'Musicalll Drops', path: '' },
+            { name: 'Masterclass', path: '/masterclass' },
+            { name: 'Cursos na Musicalll', path: '/courses' },
+            { name: 'Musicalll Drops', path: '/drops' },
           ]
         },
         { 
           title: 'Estúdios', 
           links: [
-            { name: 'Alugar estúdios', path: '' },
+            { name: 'Alugar estúdios', path: '/studios' },
             { name: 'Cadastrar meu estúdio', path: '' },
           ]
         },

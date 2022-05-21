@@ -17,7 +17,7 @@
     <footer v-if="!isSearched">
       <div class="search-available">
         <div class="search-available-icon">
-          <nuxt-img src="/svg/music-box.svg" />
+          <NuxtImg src="/svg/music-box.svg" />
         </div>
 
         <div class="search-available-text">
@@ -32,7 +32,7 @@
       
       <div class="search-available">
         <div class="search-available-icon">
-          <nuxt-img src="/svg/music-box.svg" />
+          <NuxtImg src="/svg/music-box.svg" />
         </div>
 
         <div class="search-available-text">
@@ -47,7 +47,7 @@
       
       <div class="search-available">
         <div class="search-available-icon">
-          <nuxt-img src="/svg/music-box.svg" />
+          <NuxtImg src="/svg/music-box.svg" />
         </div>
 
         <div class="search-available-text">
@@ -136,17 +136,24 @@ export default {
         }
       }
     }
+  }
 
-    @media only screen and (max-width: 600px) {
-      & {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-        margin-top: 3rem;
+  @media only screen and (max-width: 600px) {
+    header {
+      .description {
+        max-width: 80%;
+        margin: auto;
+      }
+    }
 
-        .search-available {
-          margin-top: unset;
-        }
+    footer {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 3rem;
+
+      .search-available {
+        margin-top: unset;
       }
     }
   }

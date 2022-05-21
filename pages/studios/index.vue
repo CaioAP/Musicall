@@ -19,16 +19,16 @@
 
       <div class="question-links">
         <div class="question-link">
-          <nuxt-link to="/" >
+          <NuxtLink to="/" >
             Acesse nosso <span class="musicalll">&nbsp;FAQ</span>
-          </nuxt-link>
+          </NuxtLink>
         </div>
 
         <div class="question-link">
-          <nuxt-link class="link-wpp" to="/" >
+          <NuxtLink class="link-wpp" to="/" >
             Mande uma mensagem para a gente
-            <nuxt-img src="/svg/whatsapp.svg" />
-          </nuxt-link>
+            <NuxtImg src="/svg/whatsapp.svg" />
+          </NuxtLink>
         </div>
       </div>
     </section>

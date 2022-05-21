@@ -2,7 +2,7 @@
   <BaseSection labelledby="services-title">
     <template #content>
       <div class="content">
-        <nuxt-img src="/images/studios-services.png" />
+        <NuxtImg src="/images/studios-services.png" />
 
         <div class="services">
           <header>
@@ -11,14 +11,13 @@
             </h2>
           </header>
 
-          <nuxt-link 
+          <div 
             v-for="service in services" 
             :key="service.name" 
             class="service"
-            :to="service.path"
           >
             <div class="service-icon">
-              <nuxt-img :src="service.icon" />
+              <NuxtImg :src="service.icon" />
             </div>
 
             <div class="service-content">
@@ -30,15 +29,11 @@
 
               <p class="service-description">{{ service.description }}</p>
             </div>
+          </div>
 
-            <div class="service-angle">
-              <nuxt-img src="/svg/angle-right.svg" />
-            </div>
-          </nuxt-link>
-
-          <nuxt-link class="link-services link-gradient" to="">
-            Conheça nossos outros serviços +
-          </nuxt-link>
+          <NuxtLink class="link-services link-gradient" to="/courses">
+            Conheça nossos cursos +
+          </NuxtLink>
         </div>
       </div>
     </template>
@@ -136,6 +131,10 @@ export default {
           margin-block: 0.5rem;
         }
       }
+    }
+
+    .link-services {
+      max-width: fit-content;
     }
   }
 

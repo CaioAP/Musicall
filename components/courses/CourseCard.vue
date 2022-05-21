@@ -7,7 +7,7 @@
       </span>
       com
       <span class="musicalll">
-        {{ name }}
+        {{ instructor }}
       </span>
     </h3>
 
@@ -64,6 +64,10 @@ export default {
       type: String,
       required: true
     },
+    instructor: {
+      type: String,
+      required: true
+    },
     description: {
       type: String,
       default: ''
@@ -91,7 +95,7 @@ export default {
   },
   computed: {
     linkCourseDetails() {
-      return `/courses/${this.id}`
+      return `/${this.name}/${this.id}`
     }
   },
 }

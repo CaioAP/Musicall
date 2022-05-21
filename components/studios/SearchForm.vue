@@ -3,26 +3,51 @@
     <form @submit.prevent="searchStudios">
       <div class="search-field">
         <div class="input-field">
+          <label for="input-date">
+            Data
+          </label>
           <BaseCalendar 
+            id="input-date"
             v-model="form.date" 
             class="form-input"
             placeholder="Data"
-            max-width="144px"
             @change="emitForm"
           />
         </div>
         <div class="input-field">
+          <label for="input-time-init">
+            Horário inicial
+          </label>
           <BaseSelect
-            v-model="form.time" 
+            id="input-time-init"
+            v-model="form.timeInit" 
             class="form-input"
-            placeholder="Horário" 
-            :options="timeOptions"
+            placeholder="Horário inicial" 
+            :options="timeInitOptions"
             :reduce="time => time.value"
             @option:selected="emitForm"
           />
         </div>
         <div class="input-field">
+          <label for="input-time-final">
+            Horário final
+          </label>
+          <BaseSelect
+            id="input-time-final"
+            v-model="form.timeFinal" 
+            class="form-input"
+            placeholder="Horário inicial" 
+            :options="timeFinalOptions"
+            :reduce="time => time.value"
+            @option:selected="emitForm"
+          />
+        </div>
+        <div class="input-field">
+          <label for="input-city">
+            Localidade
+          </label>
           <BaseSelect 
+            id="input-city"
             v-model="form.city"
             class="form-input"
             placeholder="Cidade"
@@ -32,7 +57,11 @@
           />
         </div>
         <div class="input-field">
+          <label for="input-event">
+            Evento
+          </label>
           <BaseSelect 
+            id="input-event"
             v-model="form.event"
             class="form-input"
             placeholder="Tipo de evento"
@@ -42,15 +71,18 @@
           />
         </div>
         <BaseButton class="btn-circle" @click="searchStudios">
-          <nuxt-img src="/svg/search.svg" />
+          <NuxtImg src="/svg/search.svg" />
+        </BaseButton>
+        <BaseButton class="btn-gradient" @click="searchStudios">
+          Pesquisar
         </BaseButton>
       </div>
     </form>
 
     <template v-if="!isSearched">
-      <nuxt-img src="/svg/tablature-note.svg" />
+      <NuxtImg src="/svg/tablature-note.svg" />
 
-      <nuxt-link class="link" to="">Quero cadastrar meu estúdio</nuxt-link>
+      <NuxtLink class="link" to="">Quero cadastrar meu estúdio</NuxtLink>
     </template>
     <div v-else class="search-prices">
       <span class="musicalll">Preços:&nbsp;</span>
@@ -73,7 +105,8 @@ export default {
       type: Object,
       default: () => ({
         date: null,
-        time: null,
+        timeInit: null,
+        timeFinal: null,
         city: null,
         event: null,
       })
@@ -82,7 +115,8 @@ export default {
   data() {
     return {
       form: this.formData,
-      timeOptions: [],
+      timeInitOptions: [],
+      timeFinalOptions: [],
       cityOptions: [],
       eventOptions: [],
       startPrice: 49.90,
@@ -90,19 +124,33 @@ export default {
     }
   },
   fetch () {
-    this.timeOptions = [
-      { value: 1, label: '06 às 07 horas' },
-      { value: 2, label: '07 às 08 horas' },
-      { value: 3, label: '08 às 09 horas' },
-      { value: 4, label: '09 às 10 horas' },
-      { value: 5, label: '10 às 11 horas' },
-      { value: 6, label: '11 às 12 horas' },
-      { value: 7, label: '12 às 13 horas' },
-      { value: 8, label: '13 às 14 horas' },
-      { value: 9, label: '14 às 15 horas' },
-      { value: 10, label: '15 às 16 horas' },
-      { value: 11, label: '16 às 17 horas' },
-      { value: 12, label: '17 às 18 horas' },
+    this.timeInitOptions = [
+      { value: 1, label: '06 horas' },
+      { value: 2, label: '07 horas' },
+      { value: 3, label: '08 horas' },
+      { value: 4, label: '09 horas' },
+      { value: 5, label: '10 horas' },
+      { value: 6, label: '11 horas' },
+      { value: 7, label: '12 horas' },
+      { value: 8, label: '13 horas' },
+      { value: 9, label: '14 horas' },
+      { value: 10, label: '15 horas' },
+      { value: 11, label: '16 horas' },
+      { value: 12, label: '17 horas' },
+    ]
+    this.timeFinalOptions = [
+      { value: 2, label: '07 horas' },
+      { value: 3, label: '08 horas' },
+      { value: 4, label: '09 horas' },
+      { value: 5, label: '10 horas' },
+      { value: 6, label: '11 horas' },
+      { value: 7, label: '12 horas' },
+      { value: 8, label: '13 horas' },
+      { value: 9, label: '14 horas' },
+      { value: 10, label: '15 horas' },
+      { value: 11, label: '16 horas' },
+      { value: 12, label: '17 horas' },
+      { value: 13, label: '18 horas' },
     ]
 
     this.cityOptions = [
@@ -136,7 +184,8 @@ export default {
         path: '/studios/search',
         query: {
           data: this.form.date ? moment(this.form.date).format('YYYY-MM-DD') : null,
-          horario: this.form.time,
+          horarioInicial: this.form.timeInit,
+          horarioFinal: this.form.timeFinal,
           cidade: this.form.city,
           evento: this.form.event
         }
@@ -168,6 +217,14 @@ export default {
       &:not(:first-of-type) {
         border-left: 1px solid $primary-dark-clr;
       }
+
+      label {
+        display: none;
+      }
+    }
+
+    .btn-gradient {
+      display: none;
     }
   }
 
@@ -188,32 +245,57 @@ export default {
     text-decoration: underline;
   }
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 1279px) {
     form {
-      width: 90%;
+      max-width: 75%;
+      min-width: 45%;
     }
 
     .search-field {
       flex-direction: column;
-      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      row-gap: 1rem;
+      width: 100%;
+      border: none;
 
       .input-field {
-        width: 100%;
-        padding: 1rem 0;
-
         &:not(:first-of-type) {
-          border-left: none;
-          border-top: 1px solid $primary-dark-clr;
+          border-left: unset;
         }
 
         .form-input {
           width: 100%;
+          min-height: 2.5rem;
+          padding-inline: 1rem;
+          padding-block: 0.5rem;
+          border: 1px solid $primary-clr;
+          border-radius: 4rem;
         }
       }
 
-      button {
-        margin: auto;
+      .btn-circle {
+        display: none;
       }
+
+      .btn-gradient {
+        display: flex;
+        align-self: center;
+        height: fit-content;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 1023px) {
+    form {
+      min-width: 60%;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    form {
+      max-width: 90%;
+      min-width: 80%;
     }
   }
 }

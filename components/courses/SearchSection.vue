@@ -2,12 +2,13 @@
   <section class="courses" aria-labelledby="headline">
     <header>
       <h1 id="headline" class="headline">
-        <span>Cursos</span><br />
+        <span>{{ title }}</span><br />
         Na <span class="musicalll">Musicalll</span>
       </h1>
     </header>
 
     <SearchForm 
+      :name="name"
       :form-data="formData"
       @form="(formData) => $emit('form', formData)"
       @fetch="$emit('fetch')"
@@ -23,6 +24,14 @@ export default {
     SearchForm,
   },
   props: {
+    name: {
+      type: String,
+      required: true,
+    },
+    title: {
+      type: String,
+      default: 'Cursos'
+    },
     formData: {
       type: Object,
       default: () => ({

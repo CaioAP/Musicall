@@ -1,6 +1,6 @@
 <template>
   <div class="hero-bg">
-    <nuxt-img :src="image" />
+    <NuxtImg :src="image" />
   </div>
 </template>
 

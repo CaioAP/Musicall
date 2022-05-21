@@ -18,18 +18,20 @@
           <NuxtImg src="/svg/arrow-left.svg" />
         </BaseButton>
 
-        <div class="drops-list" ref="slide">
-          <article 
+        <div ref="slide" class="drops-list">
+          <NuxtLink
             v-for="drop in drops"
             :key="drop.id"
-            class="drop-card"
+            :to="`/drops/${drop.id}`"
           >
-            <NuxtImg :src="drop.image" />
-            <div class="drop-card-text">
-              <p>{{ drop.name }}</p>
-              <p>{{ drop.description }}</p>
-            </div>
-          </article>
+            <article class="drop-card">
+              <NuxtImg :src="drop.image" />
+              <div class="drop-card-text">
+                <p>{{ drop.instructor }}</p>
+                <p>{{ drop.description }}</p>
+              </div>
+            </article>
+          </NuxtLink>
         </div>
 
         <BaseButton class="btn-circle" @click="nextSlideCard">
@@ -40,9 +42,9 @@
     
     <template #footer>
       <footer>
-        <BaseButton>
+        <NuxtLink class="btn-link" to="/drops">
           Explorar Drops
-        </BaseButton>
+        </NuxtLink>
       </footer>
     </template>
   </BaseSection>

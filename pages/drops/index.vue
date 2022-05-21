@@ -1,8 +1,8 @@
 <template>
   <CoursesLayout 
-    name="courses"
-    title="Cursos"
-    aria-label="Lista de cursos filtrados"
+    name="drops"
+    title="Drops"
+    aria-label="Lista de todos os drops"
     :courses="courses"
   />
 </template>
@@ -12,9 +12,9 @@ import coursesData from '@/plugins/courses.js'
 import CoursesLayout from '@/components/courses/CoursesLayout.vue'
 
 export default {
-  name: 'SearchCourses',
+  name: 'CoursesPage',
   components: {
-    CoursesLayout
+    CoursesLayout,
   },
   asyncData() {
     const courses = coursesData.data

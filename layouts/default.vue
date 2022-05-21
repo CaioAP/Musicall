@@ -119,6 +119,18 @@ body {
   font-weight: 400;
 }
 
+@media only screen and (max-width: 1280px) {
+  body, html {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 920px) {
+  body, html {
+    font-size: 12px;
+  }
+}
+
 @media only screen and (max-width: 600px) {
   body, html {
     font-size: 10px;

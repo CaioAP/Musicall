@@ -1,8 +1,8 @@
 <template>
   <CoursesLayout 
-    name="courses"
-    title="Cursos"
-    aria-label="Lista de cursos filtrados"
+    name="drops"
+    title="Drops"
+    aria-label="Lista de Drops filtrados"
     :courses="courses"
   />
 </template>

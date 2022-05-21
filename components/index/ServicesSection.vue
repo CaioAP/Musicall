@@ -2,7 +2,7 @@
   <BaseSection labelledby="services-title">
     <template #content>
       <div class="content">
-        <nuxt-img src="/images/index-services.png" />
+        <NuxtImg class="service-image" src="/images/index-services.png" />
 
         <div class="services">
           <header>
@@ -11,14 +11,14 @@
             </h2>
           </header>
 
-          <nuxt-link 
+          <NuxtLink 
             v-for="service in services" 
             :key="service.name" 
             class="service"
             :to="service.path"
           >
             <div class="service-icon">
-              <nuxt-img :src="service.icon" />
+              <NuxtImg :src="service.icon" />
             </div>
 
             <div class="service-content">
@@ -32,13 +32,13 @@
             </div>
 
             <div class="service-angle">
-              <nuxt-img src="/svg/angle-right.svg" />
+              <NuxtImg src="/svg/angle-right.svg" />
             </div>
-          </nuxt-link>
+          </NuxtLink>
 
-          <nuxt-link class="link-services link-gradient" to="">
-            Conheça nossos outros serviços +
-          </nuxt-link>
+          <NuxtLink class="link-services link-gradient" to="/studios">
+            Conheça nossos estúdios +
+          </NuxtLink>
         </div>
       </div>
     </template>
@@ -54,19 +54,19 @@ export default {
           name: 'Masterclass', 
           description: 'Aulas com profissionais de renome mundial para você entender e aprender com essas feras da música!',
           icon: '/svg/clef-bass.svg',
-          path: '',
+          path: '/masterclass',
         },
         { 
           name: 'Nossos Cursos', 
           description: 'Aprenda com os melhores professores. Estudo no seu ritmo, sem sair de casa!',
           icon: '/svg/book-music.svg',
-          path: '',
+          path: '/courses',
         },
         { 
           name: 'Musicalll Drops', 
           description: 'Nós pensamos em tudo e oferecemos gravações de aulas específicas por assuntos do seu interesse a preço acessíveis.',
           icon: '/svg/music-circle.svg',
-          path: '',
+          path: '/drops',
         },
       ] 
     }
@@ -81,7 +81,7 @@ export default {
   max-width: 90%;
   margin: auto;
 
-  & > img {
+  .service-image {
     max-width: 85%;
     margin-top: auto;
   }
@@ -137,6 +137,10 @@ export default {
         }
       }
     }
+
+    .link-services {
+      max-width: fit-content;
+    }
   }
 
   @media only screen and (max-width: 600px) {
@@ -145,14 +149,17 @@ export default {
       flex-direction: column;
       gap: 2rem;
 
-      & > img {
-        max-width: 100%;
-        margin-top: auto;
+      .service-image {
+        display: none;
       }
 
       .services {
         header {
           max-width: 100%;
+
+          #services-title {
+            text-align: center;
+          }
         }
 
         .service {

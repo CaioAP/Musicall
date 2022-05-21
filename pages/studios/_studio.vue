@@ -133,14 +133,14 @@
             <div class="studio-checkout-info">
               Hora de início: 
               <span class="musicalll">
-                {{ String(timeSelected.start).padStart(2, '0') }} horas
+                {{ String(timeInitSelected.time).padStart(2, '0') }} horas
               </span>
             </div>
 
             <div class="studio-checkout-info">
               Hora de término: 
               <span class="musicalll">
-                {{ String(timeSelected.end).padStart(2, '0') }} horas
+                {{ String(timeFinalSelected.time).padStart(2, '0') }} horas
               </span>
             </div>
 
@@ -185,22 +185,27 @@ export default {
     const studioContent = studiosContent[studioId]
 
     const timeOptions = [
-      { value: 1, label: '06 às 07 horas', start: 6, end: 7 },
-      { value: 2, label: '07 às 08 horas', start: 7, end: 8 },
-      { value: 3, label: '08 às 09 horas', start: 8, end: 9 },
-      { value: 4, label: '09 às 10 horas', start: 9, end: 10 },
-      { value: 5, label: '10 às 11 horas', start: 10, end: 11 },
-      { value: 6, label: '11 às 12 horas', start: 11, end: 12 },
-      { value: 7, label: '12 às 13 horas', start: 12, end: 13 },
-      { value: 8, label: '13 às 14 horas', start: 13, end: 14 },
-      { value: 9, label: '14 às 15 horas', start: 14, end: 15 },
-      { value: 10, label: '15 às 16 horas', start: 15, end: 16 },
-      { value: 11, label: '16 às 17 horas', start: 16, end: 17 },
-      { value: 12, label: '17 às 18 horas', start: 17, end: 18 },
+      { value: 1, label: '06 horas', time: 6 },
+      { value: 2, label: '07 horas', time: 7 },
+      { value: 3, label: '08 horas', time: 8 },
+      { value: 4, label: '09 horas', time: 9 },
+      { value: 5, label: '10 horas', time: 10 },
+      { value: 6, label: '11 horas', time: 11 },
+      { value: 7, label: '12 horas', time: 12 },
+      { value: 8, label: '13 horas', time: 13 },
+      { value: 9, label: '14 horas', time: 14 },
+      { value: 10, label: '15 horas', time: 15 },
+      { value: 11, label: '16 horas', time: 16 },
+      { value: 12, label: '17 horas', time: 17 },
+      { value: 13, label: '18 horas', time: 18 },
     ]
 
-    const timeSelected = timeOptions.find(
-      time => time.value === parseInt(route.query.horario)
+    const timeInitSelected = timeOptions.find(
+      time => time.value === Number(route.query.horarioInicial)
+    )
+
+    const timeFinalSelected = timeOptions.find(
+      time => time.value === Number(route.query.horarioFinal)
     )
 
     const dateSelected = new Date(`${route.query.data}T00:00:00`)
@@ -209,7 +214,8 @@ export default {
       baseUrl,
       studioId,
       studioContent,
-      timeSelected,
+      timeInitSelected,
+      timeFinalSelected,
       dateSelected,
       ...studio 
     }

@@ -9,6 +9,7 @@
         v-for="(course, i) in courses" 
         :key="i"
         v-bind="course"
+        :name="name"
         :type="type"
         :type-id="id"
       />
@@ -26,6 +27,10 @@ export default {
   props: {
     id: {
       type: [String, Number],
+      required: true
+    },
+    name: {
+      type: String,
       required: true
     },
     type: {
@@ -58,6 +63,12 @@ export default {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.75rem;
+  }
+
+  @media only screen and (max-width: 1024px) {
+    .course-section-cards {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   @media only screen and (max-width: 600px) {

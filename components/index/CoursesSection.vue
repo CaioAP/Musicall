@@ -14,7 +14,7 @@
 
     <template #content>
       <div class="content">
-        <nuxt-img v-for="course in courses" :key="course" :src="course" />
+        <NuxtImg v-for="course in courses" :key="course" :src="course" />
       </div>
     </template>
     

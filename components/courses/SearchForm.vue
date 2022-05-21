@@ -5,6 +5,7 @@
         <div class="input-field">
           <BaseSelect
             v-model="form.course" 
+            class="form-input"
             placeholder="Todos os cursos" 
             :options="courseOptions"
             :reduce="course => course.value"
@@ -14,6 +15,7 @@
         <div class="input-field">
           <BaseSelect 
             v-model="form.difficulty"
+            class="form-input"
             placeholder="Todos os níveis"
             :options="difficultyOptions"
             :reduce="difficulty => difficulty.value"
@@ -21,7 +23,10 @@
           />
         </div>
         <BaseButton class="btn-circle" @click="searchStudios">
-          <nuxt-img src="/svg/search.svg" />
+          <NuxtImg src="/svg/search.svg" />
+        </BaseButton>
+        <BaseButton class="btn-gradient" @click="searchStudios">
+          Pesquisar
         </BaseButton>
       </div>
     </form>
@@ -37,6 +42,10 @@
 <script>
 export default {
   props: {
+    name: {
+      type: String,
+      required: true,
+    },
     formData: {
       type: Object,
       default: () => ({
@@ -87,7 +96,7 @@ export default {
 
     searchStudios() {
       this.$router.push({
-        path: '/courses/search',
+        path: `/${this.name}/search`,
         query: {
           curso: this.form.course,
           dificuldade: this.form.difficulty
@@ -121,6 +130,10 @@ export default {
         border-left: 1px solid $primary-dark-clr;
       }
     }
+
+    .btn-gradient {
+      display: none;
+    }
   }
 
   .search-prices {
@@ -142,7 +155,42 @@ export default {
 
   @media only screen and (max-width: 600px) {
     form {
-      max-width: 100%;
+      max-width: 90%;
+      min-width: 90%;
+    }
+
+    .search-field {
+      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: center;
+      row-gap: 1rem;
+      width: 100%;
+      border: none;
+
+      .input-field {
+        &:not(:first-of-type) {
+          border-left: unset;
+        }
+
+        .form-input {
+          width: 100%;
+          min-height: 2.5rem;
+          padding-inline: 1rem;
+          padding-block: 0.5rem;
+          border: 1px solid $primary-clr;
+          border-radius: 4rem;
+        }
+      }
+
+      .btn-circle {
+        display: none;
+      }
+
+      .btn-gradient {
+        display: flex;
+        align-self: center;
+        height: fit-content;
+      }
     }
   }
 }

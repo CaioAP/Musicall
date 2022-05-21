@@ -1,8 +1,8 @@
 <template>
   <CoursesLayout 
-    name="courses"
-    title="Cursos"
-    aria-label="Lista de cursos filtrados"
+    name="masterclass"
+    title="Masterclass"
+    aria-label="Lista de Masterclasses filtradas"
     :courses="courses"
   />
 </template>
