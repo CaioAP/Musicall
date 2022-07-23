@@ -1,20 +1,21 @@
 @font-face {
-  font-family: "ForalPro";
-  src: url("~/static/fonts/ForalPro/ForalPro.otf") format("opentype");
-  font-weight: 700;
+  font-family: 'ForalPro';
+  src: url('~/static/fonts/ForalPro/ForalPro.otf') format('opentype');
+  font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "OpenSans";
-  src: url("~/static/fonts/OpenSans/OpenSans-Regular.ttf") format("truetype");
+  font-family: 'OpenSans';
+  src: url('~/static/fonts/OpenSans/OpenSans-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "RampageMonoline";
-  src: url("~/static/fonts/RampageMonoline/RampageMonoline-Rounded.ttf") format("truetype");
+  font-family: 'RampageMonoline';
+  src: url('~/static/fonts/RampageMonoline/RampageMonoline-Rounded.ttf')
+    format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -29,21 +30,31 @@ $screen-lg: 1024px;
 $screen-xl: 1280px;
 $screen-2xl: 1536px;
 
-$primary-clr: #F9A11B;
-$primary-light-clr: #FFD56A;
-$primary-dark-clr: #F5691A;
-$text-light-clr-1: #FFFFFF;
-$text-light-clr-2: #ECECEC;
-$text-light-clr-3: #CCCCCC;
+$primary-clr: #f9a11b;
+$primary-light-clr: #ffd56a;
+$primary-dark-clr: #f5691a;
+$text-light-clr-1: #ffffff;
+$text-light-clr-2: #ececec;
+$text-light-clr-3: #cccccc;
 $text-dark-clr-1: #363843;
 $text-dark-clr-2: #717277;
 $btn-txt-clr: #010101;
 $bg-clr: #000000;
-$bg-light-clr: #16151B;
+$bg-light-clr: #16151b;
+$aside-bg-clr: #303030;
+$content-bg-clr: #f2f2f2;
 
-$gradient-bg: linear-gradient(266.39deg, #F5691A 19.34%, #FFD643 94.95%);
-$gradient-inverted-bg: linear-gradient(86.39deg, #F5691A 19.34%, #FFD643 94.95%);
-$gradient-course-card: linear-gradient(294.37deg, rgba(249, 161, 27, 0.15) 0.06%, rgba(0, 0, 0, 0) 100.12%);
+$gradient-bg: linear-gradient(266.39deg, #f5691a 19.34%, #ffd643 94.95%);
+$gradient-inverted-bg: linear-gradient(
+  86.39deg,
+  #f5691a 19.34%,
+  #ffd643 94.95%
+);
+$gradient-course-card: linear-gradient(
+  294.37deg,
+  rgba(249, 161, 27, 0.15) 0.06%,
+  rgba(0, 0, 0, 0) 100.12%
+);
 
 $border-divider: 1px solid rgba(204, 204, 204, 0.2);
 

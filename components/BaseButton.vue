@@ -9,7 +9,7 @@ export default {
   props: {
     type: {
       type: String,
-      default: 'button'
+      default: 'button',
     },
   },
 }
@@ -36,8 +36,12 @@ button {
     padding: 0;
     background: transparent;
     color: $text-light-clr-1;
+
+    &.light {
+      color: $text-dark-clr-1;
+    }
   }
-  
+
   &.btn-circle {
     width: fit-content;
     height: fit-content;
@@ -49,9 +53,21 @@ button {
   }
 
   &.btn-outline {
-    background: $bg-clr;
+    background: transparent;
     border: 1px solid $primary-clr;
     color: $text-light-clr-1;
+
+    &.light {
+      color: $text-dark-clr-1;
+    }
+
+    &:hover {
+      background: $gradient-bg;
+    }
+  }
+
+  &.small {
+    padding: 0.75rem 2rem;
   }
 }
 </style>

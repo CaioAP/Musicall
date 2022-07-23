@@ -1,12 +1,12 @@
 <template>
-  <div class="field-input" :class="{ light }">
+  <div class="field-textarea" :class="{ light }">
     <label>{{ label }}</label>
-    <input
+    <textarea
       v-model="innerValue"
       :type="type"
       :required="required"
       :placeholder="placeholder"
-      :min="min"
+      :rows="rows"
     />
   </div>
 </template>
@@ -34,9 +34,9 @@ export default {
       type: String,
       default: '',
     },
-    min: {
+    rows: {
       type: Number,
-      default: 0,
+      default: 4,
     },
     light: {
       type: Boolean,
@@ -63,7 +63,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.field-input {
+.field-textarea {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -74,10 +74,12 @@ export default {
     margin-bottom: 0.5rem;
   }
 
-  input {
+  textarea {
+    width: 100%;
     padding: 0.5rem 1rem;
     border: 1px solid $primary-clr;
-    border-radius: 4rem;
+    border-radius: 10px;
+    resize: none;
 
     &::placeholder {
       color: $text-dark-clr-2;
@@ -86,10 +88,14 @@ export default {
     &:focus {
       outline: none;
     }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
   }
 
   &.light {
-    input {
+    textarea {
       border: 1px solid $text-light-clr-3;
 
       &:focus {
