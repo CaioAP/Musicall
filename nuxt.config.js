@@ -13,27 +13,31 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
-      { name: 'google-signin-client_id', content: '350901632232-6h2mgsub8eorabc21mn2tftol84e8jeb.apps.googleusercontent.com' }
+      {
+        name: 'google-signin-client_id',
+        content:
+          '350901632232-6h2mgsub8eorabc21mn2tftol84e8jeb.apps.googleusercontent.com',
+      },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     script: [
-      { 
-        src: 'https://apis.google.com/js/platform.js', 
-        async: true, 
-        defer: true 
+      {
+        src: 'https://apis.google.com/js/platform.js',
+        async: true,
+        defer: true,
       },
-      { 
-        src: 'https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v13.0&appId=537855767871509&autoLogAppEvents=1', 
+      {
+        src: 'https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v13.0&appId=537855767871509&autoLogAppEvents=1',
         crossorigin: 'anonymous',
         nonce: 'H8MfMxzw',
-        async: true, 
-        defer: true 
+        async: true,
+        defer: true,
       },
-    ]
+    ],
   },
 
   env: {
-    baseUrl: process.env.BASE_URL
+    baseUrl: process.env.BASE_URL,
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -59,10 +63,13 @@ export default {
     '@nuxtjs/tailwindcss',
     '@nuxt/image',
     '@nuxtjs/style-resources',
-    ['nuxt-gmaps', {
-      key: process.env.MAPS_KEY,
-      //you can use libraries: ['places']
-    }]
+    [
+      'nuxt-gmaps',
+      {
+        key: process.env.MAPS_KEY,
+        // you can use libraries: ['places']
+      },
+    ],
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -82,10 +89,9 @@ export default {
   },
 
   styleResources: {
-    scss: ['./assets/scss/*.scss']
+    scss: ['./assets/scss/*.scss'],
   },
 
-  
   tailwindcss: {
     cssPath: '@/assets/css/tailwind.css',
   },

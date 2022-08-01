@@ -1,18 +1,19 @@
 <template>
   <client-only>
-    <VDatePicker
-      v-model="innerValue"
-      class="field-date-picker"
-      v-bind="$attrs"
-      :formatter="format"
-      :lang="lang"
-      :style="{ maxWidth: maxWidth }"
-      v-on="$listeners"
-    >
-      <template #icon-calendar >
-
-      </template>
-    </VDatePicker>
+    <div class="field-input" :class="{ light, rounded }">
+      <label>{{ label }}</label>
+      <VDatePicker
+        v-model="innerValue"
+        class="field-date-picker"
+        v-bind="$attrs"
+        :formatter="format"
+        :lang="lang"
+        :style="{ maxWidth: maxWidth }"
+        v-on="$listeners"
+      >
+        <template #icon-calendar> </template>
+      </VDatePicker>
+    </div>
   </client-only>
 </template>
 
@@ -21,14 +22,26 @@ import moment from 'moment'
 
 export default {
   props: {
+    label: {
+      type: String,
+      default: '',
+    },
     value: {
       type: Date,
-      default: null
+      default: null,
     },
     maxWidth: {
       type: String,
-      default: null
-    }
+      default: null,
+    },
+    light: {
+      type: Boolean,
+      default: false,
+    },
+    rounded: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -39,15 +52,49 @@ export default {
     lang() {
       return {
         formatLocale: {
-          months: ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"],
-          monthsShort: ["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"],
-          weekdays: ["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"],
-          weekdaysShort: ["Dom","Seg","Ter","Qua","Qui","Sex","Sab"],
-          weekdaysMin: ["Do", "Se","Te","Qa","Qi","Se","Sa"],
+          months: [
+            'Janeiro',
+            'Fevereiro',
+            'Março',
+            'Abril',
+            'Maio',
+            'Junho',
+            'Julho',
+            'Agosto',
+            'Setembro',
+            'Outubro',
+            'Novembro',
+            'Dezembro',
+          ],
+          monthsShort: [
+            'Jan',
+            'Fev',
+            'Mar',
+            'Abr',
+            'Mai',
+            'Jun',
+            'Jul',
+            'Ago',
+            'Set',
+            'Out',
+            'Nov',
+            'Dez',
+          ],
+          weekdays: [
+            'Domingo',
+            'Segunda',
+            'Terça',
+            'Quarta',
+            'Quinta',
+            'Sexta',
+            'Sábado',
+          ],
+          weekdaysShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
+          weekdaysMin: ['Do', 'Se', 'Te', 'Qa', 'Qi', 'Se', 'Sa'],
           firstDayOfWeek: 0,
-          firstWeekContainsDate: 1
+          firstWeekContainsDate: 1,
         },
-        days: ["Dom","Seg","Ter","Qua","Qui","Sex","Sab"],
+        days: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
         monthFormat: 'MMMM',
         monthBeforeYear: false,
       }
@@ -61,7 +108,7 @@ export default {
           return value ? moment(value, 'DD/MM/YYYY').toDate() : null
         },
       }
-    }
+    },
   },
   watch: {
     value(newValue) {
@@ -69,31 +116,64 @@ export default {
     },
     innerValue(newValue) {
       this.$emit('input', newValue)
-    }
+    },
   },
-  mounted () {
+  mounted() {
     this.innerValue = this.value
   },
 }
 </script>
 
 <style lang="scss">
-.field-date-picker {
-  .mx-input-wrapper {
-    .mx-input {
-      font-size: 1rem;
-      color: $text-light-clr-1;
-      background-color: transparent;
-      border: none;
+.field-input {
+  display: flex;
+  flex-direction: column;
+  // width: 100%;
+  background-color: transparent;
 
-      &:hover {
-        cursor: pointer;
+  label {
+    text-align: left;
+    margin-bottom: 0.5rem;
+  }
+
+  .field-date-picker {
+    .mx-input-wrapper {
+      .mx-input {
+        font-size: 1rem;
+        color: $text-light-clr-1;
+        background-color: transparent;
+        border: none;
+
+        &:hover {
+          cursor: pointer;
+        }
+
+        &::placeholder {
+          font-size: 1rem;
+          color: $text-light-clr-1;
+        }
+      }
+    }
+  }
+
+  &.light {
+    .mx-input {
+      border: 1px solid $text-light-clr-3 !important;
+      box-shadow: none !important;
+
+      &:focus {
+        border: 1px solid $primary-clr !important;
       }
 
       &::placeholder {
-        font-size: 1rem;
-        color: $text-light-clr-1;
+        color: $text-dark-clr-2 !important;
       }
+    }
+  }
+
+  &.rounded {
+    .mx-input {
+      border-radius: 4rem;
     }
   }
 }
@@ -117,7 +197,7 @@ export default {
           background-color: $primary-clr;
           border-radius: 4rem;
         }
-        
+
         &:hover {
           color: $text-light-clr-1;
           background-color: $primary-clr;

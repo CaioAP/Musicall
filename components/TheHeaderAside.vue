@@ -28,7 +28,7 @@ export default {
       return [
         { name: 'Home', path: '/contents', icon: 'home' },
         { name: 'Estúdios', path: '/contents/studios', icon: 'microphone' },
-        { name: 'Cursos', path: '/contents/courses', icon: 'videos' },
+        // { name: 'Cursos', path: '/contents/courses', icon: 'videos' },
         {
           name: 'Reservas',
           path: '/contents/reservations',

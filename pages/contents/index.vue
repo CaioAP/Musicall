@@ -1,12 +1,13 @@
 <template>
   <ContentSection title="Home">
     <div class="content-grid">
-      <ContentCard
-        v-for="(card, i) in cards"
-        :key="i"
-        :title="card.title"
-        :icon="card.icon"
-      />
+      <NuxtLink
+        v-for="card in cards"
+        :key="card.title"
+        :to="`${$route.path}/${card.path}`"
+      >
+        <ContentCard :title="card.title" :icon="card.icon" />
+      </NuxtLink>
     </div>
   </ContentSection>
 </template>
@@ -25,8 +26,8 @@ export default {
   computed: {
     cards() {
       return [
-        { title: 'Adicionar conteúdo', icon: 'add-content' },
-        { title: 'Cadastrar professores', icon: 'add-teachers' },
+        { title: 'Adicionar conteúdo', icon: 'add-content', path: '' },
+        { title: 'Cadastrar professores', icon: 'add-teachers', path: '' },
       ]
     },
   },
@@ -37,7 +38,12 @@ export default {
 .content-grid {
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: 240px;
+  grid-auto-columns: minmax(200px, 200px);
   column-gap: 2rem;
+
+  .content-card {
+    width: 100%;
+    height: 100%;
+  }
 }
 </style>

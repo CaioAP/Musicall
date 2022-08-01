@@ -1,13 +1,13 @@
 <template>
-  <div class="field-radio" :class="{ checked }">
-    <input 
-      :id="name" 
+  <div class="field-radio" :class="{ checked, light }">
+    <input
+      :id="name"
       :name="name"
       :value="radioValue"
       :checked="checked"
       type="radio"
       @change="$emit('input', radioValue)"
-    >
+    />
     <label :for="name">
       <slot></slot>
     </label>
@@ -19,6 +19,12 @@ import InputRadioMixin from '~/mixins/input-radio.js'
 
 export default {
   mixins: [InputRadioMixin],
+  props: {
+    light: {
+      type: Boolean,
+      default: false,
+    },
+  },
 }
 </script>
 
@@ -42,6 +48,14 @@ export default {
     cursor: pointer;
   }
 
+  &.light {
+    border: 1px solid $primary-clr;
+
+    label {
+      color: $text-dark-clr-2;
+    }
+  }
+
   &.checked {
     background: $gradient-bg;
     border: none;
@@ -49,6 +63,14 @@ export default {
     label {
       font-weight: 700;
       color: $btn-txt-clr;
+    }
+
+    &.light {
+      background: $primary-clr;
+
+      label {
+        color: $text-dark-clr-1;
+      }
     }
   }
 }

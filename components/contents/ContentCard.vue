@@ -37,6 +37,8 @@ export default {
     font-family: $font-foral-pro;
     font-size: 1.5rem;
     font-weight: 700;
+    text-align: center;
+    line-height: 1;
   }
 }
 </style>

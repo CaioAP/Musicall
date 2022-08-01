@@ -27,6 +27,10 @@ button {
   font-weight: 700;
   white-space: nowrap;
 
+  &[disabled] {
+    cursor: auto;
+  }
+
   &:focus,
   &:active {
     outline: none;
