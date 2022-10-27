@@ -36,6 +36,12 @@ button {
     outline: none;
   }
 
+  &.no-gradient {
+    &.light {
+      background: $primary-clr;
+    }
+  }
+
   &.btn-plain {
     padding: 0;
     background: transparent;

@@ -84,22 +84,49 @@
               </div>
             </template>
             <template #config="{ rowData }">
-              {{ rowData.config }}
+              <div class="flex w-full justify-center gap-1">
+                <BaseButton
+                  v-if="showCancelButton(rowData.status)"
+                  class="btn-plain"
+                  @click="openCancelDialog(rowData)"
+                >
+                  <NuxtImg src="/svg/x-circle.svg" />
+                </BaseButton>
+                <BaseButton
+                  v-if="showNextButton(rowData.status)"
+                  class="btn-plain"
+                >
+                  <NuxtImg src="/svg/arrow-right-circle.svg" />
+                </BaseButton>
+                <BaseButton
+                  v-if="showLogButton(rowData.status)"
+                  class="btn-plain"
+                >
+                  <NuxtImg src="/svg/file-text.svg" />
+                </BaseButton>
+              </div>
             </template>
           </BaseTable>
         </div>
       </div>
     </ContentSection>
+
+    <DialogCancelReservation
+      :open="dialogCancelReservationOpened"
+      :data="dialogCancelReservationData"
+    />
   </div>
 </template>
 
 <script>
 import ContentSection from '@/components/contents/ContentSection.vue'
+import DialogCancelReservation from '@/components/contents/reservations/DialogCancel.vue'
 
 export default {
   name: 'ReservationsContent',
   components: {
     ContentSection,
+    DialogCancelReservation,
   },
   layout: 'content',
   data() {
@@ -156,6 +183,7 @@ export default {
           {
             name: 'config',
             title: 'Configurações',
+            width: '125px',
           },
         ],
         data: [
@@ -197,6 +225,8 @@ export default {
           },
         ],
       },
+      dialogCancelReservationOpened: false,
+      dialogCancelReservationData: {},
     }
   },
   computed: {
@@ -208,6 +238,9 @@ export default {
       }
     },
   },
+  mounted() {
+    this.$store.commit('user/SET_USER', { id: 1, name: 'Thiago' })
+  },
   methods: {
     isActive(f) {
       return f <= this.currentForm
@@ -215,6 +248,23 @@ export default {
 
     sendAvaliation(reservationId, avaliation) {
       console.log(reservationId, avaliation)
+    },
+
+    showCancelButton(status) {
+      return status === this.status.confirmed || status === this.status.pending
+    },
+
+    showNextButton(status) {
+      return status === this.status.confirmed
+    },
+
+    showLogButton(status) {
+      return status === this.status.declined
+    },
+
+    openCancelDialog(data) {
+      this.dialogCancelReservationOpened = true
+      this.dialogCancelReservationData = { ...data }
     },
   },
 }
