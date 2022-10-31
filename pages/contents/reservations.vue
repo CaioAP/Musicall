@@ -119,11 +119,15 @@
 </template>
 
 <script>
+import Role from '~/assets/data/role.js'
 import ContentSection from '@/components/contents/ContentSection.vue'
 import DialogCancelReservation from '@/components/contents/reservations/DialogCancel.vue'
 
 export default {
   name: 'ReservationsContent',
+  meta: {
+    role: [Role.USER],
+  },
   components: {
     ContentSection,
     DialogCancelReservation,

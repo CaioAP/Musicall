@@ -22,13 +22,28 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   computed: {
+    ...mapGetters({
+      userId: 'auth/id',
+    }),
+
     navigation() {
+      if (this.userId)
+        return [
+          { name: 'Estúdios', path: '/contents/studios', icon: 'microphone' },
+          {
+            name: 'Reservas',
+            path: '/contents/reservations',
+            icon: 'listing-book',
+          },
+        ]
+
       return [
         { name: 'Home', path: '/contents', icon: 'home' },
         { name: 'Estúdios', path: '/contents/studios', icon: 'microphone' },
-        // { name: 'Cursos', path: '/contents/courses', icon: 'videos' },
         {
           name: 'Reservas',
           path: '/contents/reservations',

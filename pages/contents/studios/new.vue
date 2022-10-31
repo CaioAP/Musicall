@@ -60,6 +60,7 @@
 </template>
 
 <script>
+import Role from '~/assets/data/role.js'
 import ContentSection from '@/components/contents/ContentSection.vue'
 import StudioFormBasicInformation from '@/components/contents/studios/StudioFormBasicInformation.vue'
 import StudioFormComplements from '@/components/contents/studios/StudioFormComplements.vue'
@@ -69,6 +70,9 @@ import StudioFormRoomsNew from '@/components/contents/studios/StudioFormRoomsNew
 
 export default {
   name: 'NewStudioContent',
+  meta: {
+    role: [Role.USER],
+  },
   components: {
     ContentSection,
     StudioFormBasicInformation,

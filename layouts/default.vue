@@ -3,12 +3,21 @@
     <TheHeader />
     <Nuxt />
     <TheFooter />
+
+    <BaseAlert :type="alert.type" :message="alert.message" :open="alert.open" />
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
-  name: 'DefaultLayout'
+  name: 'DefaultLayout',
+  computed: {
+    ...mapGetters({
+      alert: 'alert/alert',
+    }),
+  },
 }
 </script>
 
@@ -120,19 +129,22 @@ body {
 }
 
 @media only screen and (max-width: 1280px) {
-  body, html {
+  body,
+  html {
     font-size: 14px;
   }
 }
 
 @media only screen and (max-width: 920px) {
-  body, html {
+  body,
+  html {
     font-size: 12px;
   }
 }
 
 @media only screen and (max-width: 600px) {
-  body, html {
+  body,
+  html {
     font-size: 10px;
   }
 }

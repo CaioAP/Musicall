@@ -9,45 +9,69 @@
         <ul>
           <li v-for="nav in navigation" :key="nav.name">
             <NuxtLink v-if="!nav.btn" :to="nav.path">{{ nav.name }}</NuxtLink>
-            <NuxtImg 
-              v-if="!nav.btn && isNavActive(nav.path)" 
-              class="nav-active" 
-              src="/svg/neon-trace.svg" 
+            <NuxtImg
+              v-if="!nav.btn && isNavActive(nav.path)"
+              class="nav-active"
+              src="/svg/neon-trace.svg"
               width="500"
             />
-            
-            <BaseButton v-if="nav.btn" class="btn-plain" @click="openDialogLogIn">
+
+            <BaseButton
+              v-if="nav.btn"
+              class="btn-plain"
+              @click="openDialogLogIn"
+            >
               {{ nav.name }}
             </BaseButton>
           </li>
         </ul>
       </nav>
 
-      <BaseButton @click="openDialogSignUp">
+      <BaseButton v-if="!userId" @click="openDialogSignUp">
         Inscreva-se
+      </BaseButton>
+      <BaseButton v-else @click="goToContents">
+        <NuxtImg
+          src="/svg/user-light.svg"
+          width="24"
+          height="24"
+          style="margin-right: 0.5rem"
+        />
+        {{ userName ? userName.split(' ')[0] : '' }}
       </BaseButton>
     </header>
 
-    <BaseDialogLogin ref="dialogLogin"/>
-    <BaseDialogSignup ref="dialogSignup"/>
+    <BaseDialogLogin ref="dialogLogin" />
+    <BaseDialogSignup ref="dialogSignup" />
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import Role from '~/assets/data/role.js'
 
 export default {
   computed: {
+    ...mapGetters({
+      userId: 'auth/id',
+      userName: 'auth/name',
+      userRole: 'auth/role',
+    }),
+
     navigation() {
-      return [
+      const navigation = [
         { name: 'Cursos', path: '/courses' },
         { name: 'Estúdios', path: '/studios' },
         { name: 'Login', path: '/login', btn: true },
-      ] 
+      ]
+
+      if (this.userId) return navigation.filter((nav) => nav.name !== 'Login')
+      return navigation
     },
 
     activeNavigation() {
       return this.$route.path
-    }
+    },
   },
   methods: {
     isNavActive(path) {
@@ -60,7 +84,13 @@ export default {
 
     openDialogSignUp() {
       this.$refs.dialogSignup.openDialog()
-    }
+    },
+
+    goToContents() {
+      this.$router.push({
+        path: this.userRole === Role.ADMIN ? '/contents' : '/contents/studios',
+      })
+    },
   },
 }
 </script>
@@ -86,18 +116,12 @@ export default {
       li {
         position: relative;
         letter-spacing: 0.07em;
-        color: #FFD56A;
+        color: #ffd56a;
         -webkit-text-stroke-width: 0.3px;
         -webkit-text-stroke-color: #fff;
-        text-shadow: 
-          0 0 7px #FFAB2D,
-          0 0 10px #FFAB2D,
-          0 0 21px #FFAB2D,
-          0 0 42px #FFAB2D,
-          0 0 82px #FFAB2D,
-          0 0 92px #FFAB2D,
-          0 0 102px #FFAB2D,
-          0 0 151px #FFAB2D;
+        text-shadow: 0 0 7px #ffab2d, 0 0 10px #ffab2d, 0 0 21px #ffab2d,
+          0 0 42px #ffab2d, 0 0 82px #ffab2d, 0 0 92px #ffab2d,
+          0 0 102px #ffab2d, 0 0 151px #ffab2d;
 
         .nav-active {
           position: absolute;
@@ -107,18 +131,12 @@ export default {
         }
 
         .btn-plain {
-          color: #FFD56A;
+          color: #ffd56a;
           -webkit-text-stroke-width: 0.3px;
           -webkit-text-stroke-color: #fff;
-          text-shadow: 
-            0 0 7px #FFAB2D,
-            0 0 10px #FFAB2D,
-            0 0 21px #FFAB2D,
-            0 0 42px #FFAB2D,
-            0 0 82px #FFAB2D,
-            0 0 92px #FFAB2D,
-            0 0 102px #FFAB2D,
-            0 0 151px #FFAB2D;
+          text-shadow: 0 0 7px #ffab2d, 0 0 10px #ffab2d, 0 0 21px #ffab2d,
+            0 0 42px #ffab2d, 0 0 82px #ffab2d, 0 0 92px #ffab2d,
+            0 0 102px #ffab2d, 0 0 151px #ffab2d;
         }
       }
     }

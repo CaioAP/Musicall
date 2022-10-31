@@ -13,11 +13,15 @@
 </template>
 
 <script>
+import Role from '~/assets/data/role.js'
 import ContentSection from '@/components/contents/ContentSection.vue'
 import ContentCard from '@/components/contents/ContentCard.vue'
 
 export default {
   name: 'ContentPage',
+  meta: {
+    role: [Role.ADMIN],
+  },
   components: {
     ContentSection,
     ContentCard,

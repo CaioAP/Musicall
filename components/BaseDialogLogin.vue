@@ -1,8 +1,6 @@
 <template>
   <dialog v-show="open" ref="dialog">
-    <BaseButton class="btn-outline" @click="closeDialog">
-      x
-    </BaseButton>
+    <BaseButton class="btn-outline" @click="closeDialog"> x </BaseButton>
 
     <p class="login-title">Entrar na minha conta</p>
     <p class="login-subtitle">Acesse sua conta na Musicalll</p>
@@ -28,34 +26,30 @@
           required
         />
       </div>
-      
-      <BaseButton type="submit" class="dialog-submit">
-        Entrar
-      </BaseButton>
+
+      <BaseButton type="submit" class="dialog-submit"> Entrar </BaseButton>
     </form>
 
-    <NuxtLink class="login-forgot" to="">
-      Esqueceu sua senha?
-    </NuxtLink>
+    <NuxtLink class="login-forgot" to=""> Esqueceu sua senha? </NuxtLink>
 
     <p>Ou acesse com as redes sociais</p>
 
     <div class="login-social">
-      <div 
-        id="google-btn" 
-        class="g-signin2" 
-        data-onsuccess="onSignIn" 
-        data-width="270" 
+      <div
+        id="google-btn"
+        class="g-signin2"
+        data-onsuccess="onSignIn"
+        data-width="270"
         data-height="50"
         data-longtitle="true"
       ></div>
-      <div 
-        class="fb-login-button" 
-        data-width="270" 
+      <div
+        class="fb-login-button"
+        data-width="270"
         data-size="large"
-        data-button-type="continue_with" 
-        data-layout="default" 
-        data-auto-logout-link="false" 
+        data-button-type="continue_with"
+        data-layout="default"
+        data-auto-logout-link="false"
         data-use-continue-as="false"
       ></div>
     </div>
@@ -63,15 +57,6 @@
 </template>
 
 <script>
-// eslint-disable-next-line no-unused-vars
-// function onSignIn(googleUser) {
-//   const profile = googleUser.getBasicProfile();
-//   console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-//   console.log('Name: ' + profile.getName());
-//   console.log('Image URL: ' + profile.getImageUrl());
-//   console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-// }
-
 export default {
   data() {
     return {
@@ -92,8 +77,25 @@ export default {
     },
 
     login() {
-      
-    }
+      try {
+        this.$store.dispatch('auth/login', {
+          email: this.email,
+          senha: this.password,
+        })
+
+        this.$store.commit('alert/SET_ALERT', {
+          type: 'success',
+          message: 'Logado com sucesso',
+        })
+
+        this.closeDialog()
+      } catch (error) {
+        this.$store.commit('alert/SET_ALERT', {
+          type: 'error',
+          message: error.message,
+        })
+      }
+    },
   },
 }
 </script>

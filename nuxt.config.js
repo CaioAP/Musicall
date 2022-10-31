@@ -1,6 +1,6 @@
 export default {
   // Target: https://go.nuxtjs.dev/config-target
-  target: 'static',
+  target: 'server',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -48,7 +48,13 @@ export default {
     '@/plugins/utils.js',
     '@/plugins/vue-select.js',
     { src: '@/plugins/vue-datepicker.js', ssr: false },
+    '@/plugins/axios.js',
+    '@/plugins/api/auth.js',
   ],
+
+  router: {
+    middleware: ['auth', 'session'],
+  },
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -76,12 +82,14 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    ['cookie-universal-nuxt', { alias: 'cookiz' }],
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    baseURL: process.env.API_BASE_URL || 'http://localhost:5000',
+    retry: true,
   },
 
   image: {

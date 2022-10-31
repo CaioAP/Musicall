@@ -1,13 +1,11 @@
 <template>
   <dialog v-show="open" ref="dialog">
-    <BaseButton class="btn-outline" @click="closeDialog">
-      x
-    </BaseButton>
+    <BaseButton class="btn-outline" @click="closeDialog"> x </BaseButton>
 
-    <p class="login-subtitle">CADASTRE-SE</p>
-    <p class="login-title">Crie sua conta gratuita</p>
+    <p class="signup-subtitle">CADASTRE-SE</p>
+    <p class="signup-title">Crie sua conta gratuita</p>
 
-    <form method="dialog" @submit.prevent="login">
+    <form method="dialog" @submit.prevent="signup">
       <div class="field-input">
         <label for="input-name">Nome completo</label>
         <input
@@ -48,7 +46,7 @@
           required
         />
       </div>
-      
+
       <BaseButton type="submit" class="dialog-submit">
         Cadastrar-se
       </BaseButton>
@@ -56,22 +54,22 @@
 
     <p>ou</p>
 
-    <div class="login-social">
-      <div 
-        id="google-btn" 
-        class="g-signin2" 
-        data-onsuccess="onSignIn" 
-        data-width="270" 
+    <div class="signup-social">
+      <div
+        id="google-btn"
+        class="g-signin2"
+        data-onsuccess="onSignIn"
+        data-width="270"
         data-height="50"
         data-longtitle="true"
       ></div>
-      <div 
-        class="fb-login-button" 
-        data-width="270" 
+      <div
+        class="fb-signup-button"
+        data-width="270"
         data-size="large"
-        data-button-type="continue_with" 
-        data-layout="default" 
-        data-auto-logout-link="false" 
+        data-button-type="continue_with"
+        data-layout="default"
+        data-auto-logout-link="false"
         data-use-continue-as="false"
       ></div>
     </div>
@@ -100,9 +98,48 @@ export default {
       this.$refs.dialog.close()
     },
 
-    login() {
-      
-    }
+    signup() {
+      try {
+        this.validate()
+
+        this.$store.dispatch('auth/signupUser', {
+          nome: this.name,
+          email: this.email,
+          senha: this.password,
+        })
+
+        this.$store.commit('alert/SET_ALERT', {
+          type: 'success',
+          message: 'Usuário criado com sucesso',
+        })
+
+        this.closeDialog()
+      } catch (error) {
+        this.$store.commit('alert/SET_ALERT', {
+          type: 'error',
+          message: error.message,
+        })
+      }
+    },
+
+    validate() {
+      const emailValid = this.$utils.validateEmail(this.email)
+      const pwdSecure = this.password.match(
+        this.$utils.getPassworValidationRegex(),
+      )
+      const pwdMatch = this.password === this.confirmPassword
+
+      if (!pwdSecure)
+        throw new Error(
+          'A senha é fraca. Use pelo menos 8 caracteres, letras maiúsculas, minúsculas e números',
+        )
+
+      if (!pwdMatch) throw new Error('As senhas não conferem')
+
+      if (!emailValid) throw new Error('E-mail inválido')
+
+      return true
+    },
   },
 }
 </script>
@@ -123,7 +160,7 @@ dialog {
     background: rgb(0 0 0 / 0.5);
   }
 
-  .login-title {
+  .signup-title {
     font-family: $font-foral-pro;
     font-size: 2.5rem;
     font-weight: 700;
@@ -137,7 +174,7 @@ dialog {
     line-height: 0.5;
   }
 
-  .login-forgot {
+  .signup-forgot {
     margin-top: 0.5rem;
 
     &:hover {
@@ -182,7 +219,7 @@ dialog {
     }
   }
 
-  .login-social {
+  .signup-social {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
