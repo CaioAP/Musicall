@@ -17,7 +17,7 @@ export default {
   props: {
     minWidth: {
       type: String,
-      default: '200px',
+      default: "200px",
     },
     maxWidth: {
       type: String,

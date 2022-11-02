@@ -22,6 +22,7 @@
         :light="true"
         min-width="100px"
         max-width="100px"
+        @input="emitData"
       />
     </div>
 
@@ -47,6 +48,7 @@
         :light="true"
         min-width="100px"
         max-width="100px"
+        @input="emitData"
       />
     </div>
   </div>
@@ -54,22 +56,31 @@
 
 <script>
 export default {
+  props: {
+    value: {
+      type: Object,
+      default: () => ({
+        reservations: {
+          0: 0,
+          24: 0,
+          48: 0,
+          72: 0,
+          96: 0,
+        },
+        reschedules: {
+          0: 0,
+          24: 0,
+          48: 0,
+          72: 0,
+          96: 0,
+        },
+      }),
+    },
+  },
   data() {
     return {
-      reservations: {
-        96: 0,
-        72: 0,
-        48: 0,
-        24: 0,
-        0: 0,
-      },
-      reschedules: {
-        96: 0,
-        72: 0,
-        48: 0,
-        24: 0,
-        0: 0,
-      },
+      reservations: { ...this.value.reservations },
+      reschedules: { ...this.value.reschedules },
     }
   },
   computed: {
@@ -79,12 +90,26 @@ export default {
 
     priceOptions() {
       return [
-        { value: 0, label: '0%' },
-        { value: 25, label: '25%' },
-        { value: 50, label: '50%' },
-        { value: 75, label: '75%' },
-        { value: 100, label: '100%' },
+        { value: 0, label: "0%" },
+        { value: 25, label: "25%" },
+        { value: 50, label: "50%" },
+        { value: 75, label: "75%" },
+        { value: 100, label: "100%" },
       ]
+    },
+  },
+  watch: {
+    value(newValue) {
+      this.reservations = { ...newValue.reservations }
+      this.reschedules = { ...newValue.reschedules }
+    },
+  },
+  methods: {
+    emitData() {
+      this.$emit("change", {
+        reservations: this.reservations,
+        reschedules: this.reschedules,
+      })
     },
   },
 }

@@ -7,6 +7,7 @@
       :required="required"
       :placeholder="placeholder"
       :rows="rows"
+      @change="$emit('change')"
     />
   </div>
 </template>
@@ -16,15 +17,15 @@ export default {
   props: {
     label: {
       type: String,
-      default: '',
+      default: "",
     },
     value: {
       type: String,
-      default: '',
+      default: "",
     },
     type: {
       type: String,
-      default: 'text',
+      default: "text",
     },
     required: {
       type: Boolean,
@@ -32,7 +33,7 @@ export default {
     },
     placeholder: {
       type: String,
-      default: '',
+      default: "",
     },
     rows: {
       type: Number,
@@ -45,7 +46,7 @@ export default {
   },
   data() {
     return {
-      innerValue: '',
+      innerValue: "",
     }
   },
   watch: {
@@ -53,7 +54,7 @@ export default {
       this.innerValue = newValue
     },
     innerValue(newValue) {
-      this.$emit('input', newValue)
+      this.$emit("input", newValue)
     },
   },
   mounted() {

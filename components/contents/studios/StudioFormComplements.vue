@@ -8,6 +8,7 @@
       label="Link da playlist no Soundcloud"
       placeholder="http://soundcloud.com/playlist/id_playlist"
       :light="true"
+      @change="emitData"
     />
     <BaseInput
       id="input-spotify"
@@ -15,17 +16,41 @@
       label="Link da playlist no Spotify"
       placeholder="http://open.spotify.com/playlist/id_playlist"
       :light="true"
+      @change="emitData"
     />
   </div>
 </template>
 
 <script>
 export default {
+  props: {
+    value: {
+      type: Object,
+      default: () => ({
+        soundcloud: null,
+        spotify: null,
+      }),
+    },
+  },
   data() {
     return {
-      soundcloud: '',
-      spotify: '',
+      soundcloud: this.value.soundcloud,
+      spotify: this.value.spotify,
     }
+  },
+  watch: {
+    value(newValue) {
+      this.soundcloud = newValue.soundcloud
+      this.spotify = newValue.spotify
+    },
+  },
+  methods: {
+    emitData() {
+      this.$emit("change", {
+        soundcloud: this.soundcloud || null,
+        spotify: this.spotify || null,
+      })
+    },
   },
 }
 </script>

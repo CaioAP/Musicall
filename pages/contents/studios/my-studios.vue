@@ -29,13 +29,13 @@
 </template>
 
 <script>
-import Role from '~/assets/data/role.js'
-import ContentSection from '@/components/contents/ContentSection.vue'
-import ContentCard from '@/components/contents/ContentCard.vue'
-import ContentStudioCard from '@/components/contents/studios/ContentStudioCard.vue'
+import Role from "~/assets/data/role.js"
+import ContentSection from "@/components/contents/ContentSection.vue"
+import ContentCard from "@/components/contents/ContentCard.vue"
+import ContentStudioCard from "@/components/contents/studios/ContentStudioCard.vue"
 
 export default {
-  name: 'StudiosContent',
+  name: "StudiosContent",
   meta: {
     role: [Role.USER],
   },
@@ -44,32 +44,49 @@ export default {
     ContentCard,
     ContentStudioCard,
   },
-  layout: 'content',
-  asyncData() {
-    const studios = [
-      {
-        id: 1,
-        name: 'Estúdio 1',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque dictumst turpis ultrices senectus. Imperdiet habitant adipiscing sollicitudin id non. ',
-        img: '/temp/studio.png',
-        address: 'Asa Sul - Brasília',
-        price: 49.9,
-        rooms: 5,
-      },
-      {
-        id: 2,
-        name: 'Estúdio 2',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque dictumst turpis ultrices senectus. Imperdiet habitant adipiscing sollicitudin id non. ',
-        img: '/temp/studio.png',
-        address: 'Asa Sul - Brasília',
-        price: 49.9,
-        rooms: 5,
-      },
-    ]
+  layout: "content",
+  data() {
+    return {
+      studios: [],
+    }
+  },
+  async fetch() {
+    await this.getStudios()
+  },
+  methods: {
+    async getStudios() {
+      try {
+        const studios = await this.$apiStudio.getAll()
+        this.studios = this.formatData(studios)
+      } catch (error) {
+        this.$store.commit("alert/SET_ALERT", {
+          type: "error",
+          message: error.message,
+        })
+      }
+    },
 
-    return { studios }
+    formatData(studios) {
+      return studios.map((studio) => ({
+        id: studio.id,
+        name: studio.nome,
+        description: studio.descricao,
+        img: studio.foto || "/images/img-placeholder.png",
+        address: this.$utils.formatAddress(studio.Endereco),
+        price: this.getAveragePrice(studio.Sala),
+        rooms: studio.Sala?.length || 0,
+      }))
+    },
+
+    getAveragePrice(rooms = []) {
+      let total = 0
+
+      rooms.forEach((room) => {
+        total += room.preco
+      })
+
+      return Math.floor(total / rooms.length)
+    },
   },
 }
 </script>

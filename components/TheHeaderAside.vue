@@ -41,15 +41,7 @@ export default {
           },
         ]
 
-      return [
-        { name: 'Home', path: '/contents', icon: 'home' },
-        { name: 'Estúdios', path: '/contents/studios', icon: 'microphone' },
-        {
-          name: 'Reservas',
-          path: '/contents/reservations',
-          icon: 'listing-book',
-        },
-      ]
+      return [{ name: 'Home', path: '/contents', icon: 'home' }]
     },
   },
   methods: {

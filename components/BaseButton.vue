@@ -1,5 +1,12 @@
 <template>
   <button :type="type" v-bind="$attrs" v-on="$listeners">
+    <NuxtImg
+      v-show="loading"
+      src="/svg/loading.svg"
+      width="24"
+      height="24"
+      style="margin-right: 0.5rem"
+    />
     <slot></slot>
   </button>
 </template>
@@ -9,7 +16,11 @@ export default {
   props: {
     type: {
       type: String,
-      default: 'button',
+      default: "button",
+    },
+    loading: {
+      type: Boolean,
+      default: false,
     },
   },
 }

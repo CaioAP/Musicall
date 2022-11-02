@@ -28,7 +28,11 @@
     </div>
 
     <div class="card-actions">
-      <BaseButton class="btn-outline light" style="padding: 0.5rem">
+      <BaseButton
+        class="btn-outline light"
+        style="padding: 0.5rem"
+        @click="goToStudio"
+      >
         Gerenciar
       </BaseButton>
     </div>
@@ -38,13 +42,17 @@
 <script>
 export default {
   props: {
+    id: {
+      type: String,
+      required: true,
+    },
     img: {
       type: String,
-      default: '',
+      default: "",
     },
     name: {
       type: String,
-      default: '',
+      default: "",
     },
     price: {
       type: Number,
@@ -52,7 +60,7 @@ export default {
     },
     address: {
       type: String,
-      default: '',
+      default: "",
     },
     rooms: {
       type: Number,
@@ -60,7 +68,17 @@ export default {
     },
     description: {
       type: String,
-      default: '',
+      default: "",
+    },
+  },
+  computed: {
+    studioLink() {
+      return `/contents/studios/${this.id}`
+    },
+  },
+  methods: {
+    goToStudio() {
+      this.$router.push(this.studioLink)
     },
   },
 }

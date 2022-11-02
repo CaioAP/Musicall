@@ -1,6 +1,9 @@
 <template>
   <div class="room-card">
-    <img :src="imageString" />
+    <img
+      :src="imageString || '/images/img-placeholder.png'"
+      style="width: 100%; height: 100%; border-radius: 1rem"
+    />
 
     <div class="room-card-info">
       <div>
@@ -12,7 +15,7 @@
           <NuxtImg width="16px" src="/svg/dollar-sign.svg" />
           {{ $utils.formatMoney(price) }} / hora
         </div>
-        <div>
+        <div v-if="capacity">
           <NuxtImg width="16px" src="/svg/user.svg" />
           {{ capacity }} pessoas
         </div>
@@ -21,6 +24,7 @@
       <BaseButton
         class="btn-outline light"
         style="padding: 0.5rem 1.5rem; max-width: fit-content"
+        @click="goToRoom"
       >
         Editar
       </BaseButton>
@@ -31,9 +35,13 @@
 <script>
 export default {
   props: {
+    id: {
+      type: String,
+      required: true,
+    },
     name: {
       type: String,
-      default: '',
+      default: "",
     },
     price: {
       type: [Number, String],
@@ -45,7 +53,20 @@ export default {
     },
     imageString: {
       type: String,
-      default: '',
+      default: "",
+    },
+    goTo: {
+      type: Number,
+      default: 6,
+    },
+  },
+  methods: {
+    goToRoom() {
+      this.$store.dispatch("studio/setRoom", this.id)
+      this.$router.push({
+        path: this.$route.path,
+        query: { f: this.goTo },
+      })
     },
   },
 }

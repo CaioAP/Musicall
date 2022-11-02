@@ -1,18 +1,22 @@
 export default (context, inject) => {
   const utils = {
     formatDate(date) {
-      if (!date) return ''
+      if (!date) return ""
 
-      return new Intl.DateTimeFormat('pt-BR', { timeZone: 'UTC' }).format(date)
+      return new Intl.DateTimeFormat("pt-BR", { timeZone: "UTC" }).format(date)
     },
 
     formatMoney(money) {
-      if (!money) return 'R$ 0,00'
+      if (!money) return "R$ 0,00"
 
-      return new Intl.NumberFormat('pt-BR', {
-        style: 'currency',
-        currency: 'BRL',
+      return new Intl.NumberFormat("pt-BR", {
+        style: "currency",
+        currency: "BRL",
       }).format(money)
+    },
+
+    formatAddress(address) {
+      return `${address.logradouro}, ${address.cidade} - ${address.estado}`
     },
 
     getPassworValidationRegex() {
@@ -26,5 +30,5 @@ export default (context, inject) => {
     },
   }
 
-  inject('utils', { ...utils })
+  inject("utils", { ...utils })
 }

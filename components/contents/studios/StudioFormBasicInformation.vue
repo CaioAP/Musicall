@@ -7,14 +7,15 @@
         label="Nome do estúdio"
         placeholder="Nome do estúdio"
         :light="true"
+        @change="emitData"
       />
-      <BaseInput
+      <!-- <BaseInput
         id="input-location"
         v-model="location"
         label="Localização"
         placeholder="Onde fica seu estúdio?"
         :light="true"
-      />
+      /> -->
       <BaseTextarea
         id="input-about"
         v-model="about"
@@ -22,6 +23,7 @@
         placeholder="Fale um pouco sobre seu estúdio"
         :light="true"
         :rows="10"
+        @change="emitData"
       />
       <BaseTextarea
         id="input-rules"
@@ -30,6 +32,7 @@
         placeholder="Quais são as regras do estúdio?"
         :light="true"
         :rows="10"
+        @change="emitData"
       />
     </div>
     <div class="form-images">
@@ -62,15 +65,33 @@
 
 <script>
 export default {
+  props: {
+    value: {
+      type: Object,
+      default: () => ({
+        name: null,
+        about: null,
+        rules: null,
+        images: [],
+      }),
+    },
+  },
   data() {
     return {
-      name: '',
-      location: '',
-      about: '',
-      rules: '',
+      name: this.value.name,
+      about: this.value.about,
+      rules: this.value.rules,
       images: [],
       draggedover: false,
     }
+  },
+  watch: {
+    value(newValue) {
+      this.name = newValue.name
+      this.about = newValue.about
+      this.rules = newValue.rules
+      this.images = newValue.images
+    },
   },
   methods: {
     dragover() {
@@ -81,9 +102,18 @@ export default {
     },
     dropped(e) {
       this.images = e.target.files
+      this.emitData()
     },
     getImageString(file) {
       return URL.createObjectURL(file)
+    },
+    emitData() {
+      this.$emit("change", {
+        name: this.name || null,
+        about: this.about || null,
+        rules: this.rules || null,
+        images: this.images || null,
+      })
     },
   },
 }

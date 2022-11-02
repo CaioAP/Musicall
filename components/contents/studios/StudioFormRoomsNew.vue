@@ -15,7 +15,7 @@
             id="input-type"
             v-model="type"
             placeholder="Selecione o tipo"
-            :options="typesOptions"
+            :options="roomTypes"
             :reduce="(type) => type.value"
             :light="true"
             :rounded="true"
@@ -27,7 +27,7 @@
             v-model="capacity"
             type="number"
             label="Qtd. Max. Pessoas"
-            placeholder="6"
+            placeholder="0"
             :min="0"
             :light="true"
           />
@@ -36,7 +36,7 @@
             v-model="size"
             type="number"
             label="Metros Quadrados"
-            placeholder="32"
+            placeholder="0"
             :min="0"
             :light="true"
           />
@@ -55,7 +55,7 @@
             v-model="price"
             type="number"
             label="Preço por hora"
-            placeholder="R$ 50,00"
+            placeholder="R$ 0,00"
             :min="0"
             :light="true"
           />
@@ -64,7 +64,7 @@
             v-model="maxHours"
             type="number"
             label="Máximo de Horas"
-            placeholder="10"
+            placeholder="0"
             :min="0"
             :light="true"
           />
@@ -120,11 +120,11 @@
               v-model="reservationType"
               type="radio"
               name="reservationType"
-              value="auto"
+              value="Automatica"
             />
             <div
               class="input-radio-marker"
-              :class="{ checked: reservationType === 'auto' }"
+              :class="{ checked: reservationType === 'Automatica' }"
             ></div>
             <label for="input-reservation-auto">Automática</label>
           </div>
@@ -135,11 +135,11 @@
               v-model="reservationType"
               type="radio"
               name="reservationType"
-              value="manual"
+              value="Manual"
             />
             <div
               class="input-radio-marker"
-              :class="{ checked: reservationType === 'manual' }"
+              :class="{ checked: reservationType === 'Manual' }"
             ></div>
             <label for="input-reservation-manual">Manual</label>
           </div>
@@ -148,50 +148,60 @@
     </div>
 
     <div class="form-actions">
-      <BaseButton class="btn-outline light small" @click="goBack">
+      <BaseButton class="btn-outline light small" @click="clearData">
         Cancelar
       </BaseButton>
-      <BaseButton class="small" @click="save"> Concluir </BaseButton>
+      <BaseButton class="small" :loading="loading" @click="save">
+        Salvar sala
+      </BaseButton>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex"
+
 export default {
   props: {
-    rooms: {
-      type: Array,
-      default: () => [],
+    studioId: {
+      type: String,
+      default: "",
     },
   },
   data() {
     return {
-      name: '',
-      type: '',
-      capacity: '',
-      size: '',
-      equipments: '',
-      price: '',
-      maxHours: '',
-      additionalInformation: '',
-      videos: '',
-      reservationType: 'auto',
+      name: "",
+      type: "",
+      capacity: "",
+      size: "",
+      equipments: "",
+      price: "",
+      maxHours: "",
+      additionalInformation: "",
+      videos: "",
       images: [],
       draggedover: false,
+      roomTypes: [],
+      reservationType: "Automatica",
+      reservationTypes: [],
+      loading: false,
     }
   },
+  async fetch() {
+    await this.getRoomTypes()
+    await this.getReservationTypes()
+  },
   computed: {
-    typesOptions() {
-      return [
-        { value: 1, label: 'Estudio' },
-        { value: 2, label: 'Youtube' },
-        { value: 3, label: 'Casa' },
-      ]
-    },
+    ...mapGetters({
+      roomId: "studio/room",
+    }),
   },
   watch: {
     $data(newValue) {
-      this.$emit('input', newValue)
+      this.$emit("input", newValue)
+    },
+    roomId(newValue) {
+      if (newValue) this.getRoom(newValue)
     },
   },
   methods: {
@@ -215,29 +225,109 @@ export default {
       this.$router.back()
     },
 
-    save() {
-      let imageString = ''
-      if (this.images.length) imageString = URL.createObjectURL(this.images[0])
+    async getRoomTypes() {
+      this.roomTypes = await this.$apiRoom.getTypes()
+    },
 
-      const rooms = this.rooms.concat({ ...this.$data, imageString })
-      this.$emit('input', rooms)
-      this.clearData()
-      this.goBack()
+    async getReservationTypes() {
+      this.reservationTypes = await this.$apiReservation.getTypes()
+    },
+
+    async getRoom(id) {
+      try {
+        const room = await this.$apiRoom.get(id)
+        this.destructData(room)
+      } catch (error) {
+        this.$store.commit("alert/SET_ALERT", {
+          type: "error",
+          message: error.message,
+        })
+      }
+    },
+
+    destructData(room) {
+      this.name = room.nome
+      this.type = room.tipo
+      this.capacity = room.capacidade
+      this.size = room.tamanho
+      this.equipments = room.equipamentos
+      this.price = room.preco
+      this.maxHours = room.horas
+      this.additionalInformation = room.informacoes
+      this.videos = room.video
+      this.reservationType = room.reserva
+    },
+
+    async save() {
+      // let imageString = ""
+      // if (this.images.length) imageString = URL.createObjectURL(this.images[0])
+
+      const data = { ...this.$data }
+
+      try {
+        this.loading = true
+        const formattedData = this.formatData(data)
+
+        if (this.roomId) await this.update(formattedData)
+        else await this.create(formattedData)
+
+        this.$store.commit("alert/SET_ALERT", {
+          type: "success",
+          message: "Sala salvada com sucesso",
+        })
+
+        this.clearData()
+      } catch (error) {
+        this.$store.commit("alert/SET_ALERT", {
+          type: "error",
+          message: error.message,
+        })
+      } finally {
+        this.loading = false
+      }
+    },
+
+    async create(data) {
+      await this.$apiRoom.create(data)
+    },
+
+    async update(data) {
+      await this.$apiRoom.update(this.roomId, data)
+    },
+
+    formatData(data) {
+      return {
+        estudioId: this.studioId,
+        nome: data.name,
+        tipo: data.type,
+        equipamentos: data.equipments,
+        preco: Number(data.price) || null,
+        horas: Number(data.maxHours) || null,
+        informacoes: data.additionalInformation,
+        video: data.videos,
+        capacidade: Number(data.capacity) || null,
+        tamanho: Number(data.size) || null,
+        reserva: data.reservationType,
+      }
     },
 
     clearData() {
-      this.name = ''
-      this.type = ''
-      this.capacity = ''
-      this.size = ''
-      this.equipments = ''
-      this.price = ''
-      this.maxHours = ''
-      this.additionalInformation = ''
-      this.videos = ''
-      this.reservationType = 'auto'
+      this.name = null
+      this.type = null
+      this.capacity = null
+      this.size = null
+      this.equipments = null
+      this.price = null
+      this.maxHours = null
+      this.additionalInformation = null
+      this.videos = null
+      this.reservationType = "Automatica"
       this.images = []
       this.draggedover = false
+
+      this.$store.dispatch("studio/setRoom", null)
+
+      this.goBack()
     },
   },
 }

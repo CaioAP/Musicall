@@ -5,12 +5,21 @@
     <div class="content">
       <Nuxt />
     </div>
+
+    <BaseAlert :type="alert.type" :message="alert.message" :open="alert.open" />
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex"
+
 export default {
-  name: 'ContentLayout',
+  name: "ContentLayout",
+  computed: {
+    ...mapGetters({
+      alert: "alert/alert",
+    }),
+  },
 }
 </script>
 

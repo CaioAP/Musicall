@@ -3,10 +3,12 @@
     <label>{{ label }}</label>
     <input
       v-model="innerValue"
+      v-mask="mask"
       :type="type"
       :required="required"
       :placeholder="placeholder"
       :min="min"
+      @change="$emit('change')"
     />
   </div>
 </template>
@@ -16,15 +18,15 @@ export default {
   props: {
     label: {
       type: String,
-      default: '',
+      default: "",
     },
     value: {
-      type: String,
-      default: '',
+      type: [String, Number, null],
+      default: "",
     },
     type: {
       type: String,
-      default: 'text',
+      default: "text",
     },
     required: {
       type: Boolean,
@@ -32,7 +34,7 @@ export default {
     },
     placeholder: {
       type: String,
-      default: '',
+      default: "",
     },
     min: {
       type: Number,
@@ -42,10 +44,14 @@ export default {
       type: Boolean,
       default: false,
     },
+    mask: {
+      type: String,
+      default: "",
+    },
   },
   data() {
     return {
-      innerValue: '',
+      innerValue: "",
     }
   },
   watch: {
@@ -53,7 +59,7 @@ export default {
       this.innerValue = newValue
     },
     innerValue(newValue) {
-      this.$emit('input', newValue)
+      this.$emit("input", newValue)
     },
   },
   mounted() {
