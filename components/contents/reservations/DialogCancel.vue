@@ -5,8 +5,7 @@
   >
     <div class="dialog-content">
       <p class="content-description">
-        {{ user.name }}, esses são os dados gerados pelo cancelamento da
-        reserva:
+        {{ userName }}, esses são os dados gerados pelo cancelamento da reserva:
       </p>
 
       <div class="content-grid">
@@ -85,6 +84,8 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex"
+
 export default {
   props: {
     open: {
@@ -98,15 +99,16 @@ export default {
   },
   data() {
     return {
-      motivation: '',
+      motivation: "",
       hoursFromToday: 96,
       amountToCharge: 10,
     }
   },
   computed: {
-    user() {
-      return this.$store.getters['user/getUser']
-    },
+    ...mapGetters({
+      userId: "auth/id",
+      userName: "auth/name",
+    }),
   },
   watch: {
     open(isOpen) {

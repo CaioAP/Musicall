@@ -119,12 +119,12 @@
 </template>
 
 <script>
-import Role from '~/assets/data/role.js'
-import ContentSection from '@/components/contents/ContentSection.vue'
-import DialogCancelReservation from '@/components/contents/reservations/DialogCancel.vue'
+import Role from "~/assets/data/role.js"
+import ContentSection from "@/components/contents/ContentSection.vue"
+import DialogCancelReservation from "@/components/contents/reservations/DialogCancel.vue"
 
 export default {
-  name: 'ReservationsContent',
+  name: "ReservationsContent",
   meta: {
     role: [Role.USER],
   },
@@ -132,7 +132,7 @@ export default {
     ContentSection,
     DialogCancelReservation,
   },
-  layout: 'content',
+  layout: "content",
   data() {
     return {
       totalReservations: 0,
@@ -142,90 +142,90 @@ export default {
         filterSelected: 2,
       },
       filterOptions: [
-        { name: 'today', text: 'Hoje', radioValue: 1 },
-        { name: 'week', text: 'Esta semana', radioValue: 2 },
-        { name: 'month', text: 'Mês atual', radioValue: 3 },
+        { name: "today", text: "Hoje", radioValue: 1 },
+        { name: "week", text: "Esta semana", radioValue: 2 },
+        { name: "month", text: "Mês atual", radioValue: 3 },
       ],
       table: {
         fields: [
           {
-            name: 'contractor',
-            title: 'Contrante',
+            name: "contractor",
+            title: "Contrante",
           },
           {
-            name: 'type',
-            title: 'Tipo',
+            name: "type",
+            title: "Tipo",
           },
           {
-            name: 'room',
-            title: 'Sala',
+            name: "room",
+            title: "Sala",
           },
           {
-            name: 'price',
-            title: 'Valor',
+            name: "price",
+            title: "Valor",
           },
           {
-            name: 'date',
-            title: 'Data',
+            name: "date",
+            title: "Data",
           },
           {
-            name: 'hours',
-            title: 'Horário',
+            name: "hours",
+            title: "Horário",
           },
           {
-            name: 'payment',
-            title: 'Pagamento',
+            name: "payment",
+            title: "Pagamento",
           },
           {
-            name: 'avaliation',
-            title: 'Avaliação',
+            name: "avaliation",
+            title: "Avaliação",
           },
           {
-            name: 'status',
-            title: 'Status',
+            name: "status",
+            title: "Status",
           },
           {
-            name: 'config',
-            title: 'Configurações',
-            width: '125px',
+            name: "config",
+            title: "Configurações",
+            width: "125px",
           },
         ],
         data: [
           {
-            contractor: 'Contratante 1',
-            type: 'Tipo 1',
-            room: 'Sala 1',
-            price: 'R$ 100,00',
-            date: '01/01/2020',
-            hours: '10:00 às 12:00',
-            payment: 'Crédito',
+            contractor: "Contratante 1",
+            type: "Tipo 1",
+            room: "Sala 1",
+            price: "R$ 100,00",
+            date: "01/01/2020",
+            hours: "10:00 às 12:00",
+            payment: "Crédito",
             avaliation: 0,
-            status: 'Confirmado',
-            config: 'teste',
+            status: "Confirmado",
+            config: "teste",
           },
           {
-            contractor: 'Contratante 2',
-            type: 'Tipo 2',
-            room: 'Sala 2',
-            price: 'R$ 200,00',
-            date: '02/01/2020',
-            hours: '13:00 às 15:00',
-            payment: 'Crédito',
+            contractor: "Contratante 2",
+            type: "Tipo 2",
+            room: "Sala 2",
+            price: "R$ 200,00",
+            date: "02/01/2020",
+            hours: "13:00 às 15:00",
+            payment: "Crédito",
             avaliation: 3,
-            status: 'Recusado',
-            config: 'teste',
+            status: "Recusado",
+            config: "teste",
           },
           {
-            contractor: 'Contratante 3',
-            type: 'Tipo 3',
-            room: 'Sala 3',
-            price: 'R$ 300,00',
-            date: '03/01/2020',
-            hours: '16:00 às 18:00',
-            payment: 'Crédito',
+            contractor: "Contratante 3",
+            type: "Tipo 3",
+            room: "Sala 3",
+            price: "R$ 300,00",
+            date: "03/01/2020",
+            hours: "16:00 às 18:00",
+            payment: "Crédito",
             avaliation: 5,
-            status: 'Pendente',
-            config: 'teste',
+            status: "Pendente",
+            config: "teste",
           },
         ],
       },
@@ -236,14 +236,11 @@ export default {
   computed: {
     status() {
       return {
-        confirmed: 'Confirmado',
-        pending: 'Pendente',
-        declined: 'Recusado',
+        confirmed: "Confirmado",
+        pending: "Pendente",
+        declined: "Recusado",
       }
     },
-  },
-  mounted() {
-    this.$store.commit('user/SET_USER', { id: 1, name: 'Thiago' })
   },
   methods: {
     isActive(f) {
