@@ -1,6 +1,6 @@
 export default {
   // Target: https://go.nuxtjs.dev/config-target
-  target: "static",
+  target: "server",
 
   env: {
     baseUrl: process.env.API_BASE_URL || "http://localhost:4000",
@@ -58,9 +58,9 @@ export default {
     "@/plugins/api/reservation.js",
   ],
 
-  // router: {
-  //   middleware: ["auth", "session"],
-  // },
+  router: {
+    middleware: ["auth", "session"],
+  },
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
