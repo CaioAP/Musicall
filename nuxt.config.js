@@ -73,7 +73,6 @@ export default {
     "@nuxtjs/stylelint-module",
     // https://go.nuxtjs.dev/tailwindcss
     "@nuxtjs/tailwindcss",
-    "@nuxt/image",
     "@nuxtjs/style-resources",
     [
       "nuxt-gmaps",
