@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <BaseHero image="/images/studios-hero-background.png"/>
+    <BaseHero image="/images/studios-hero-background.png" />
 
     <SearchSection />
 
@@ -19,15 +19,15 @@
 
       <div class="question-links">
         <div class="question-link">
-          <NuxtLink to="/" >
+          <NuxtLink to="/">
             Acesse nosso <span class="musicalll">&nbsp;FAQ</span>
           </NuxtLink>
         </div>
 
         <div class="question-link">
-          <NuxtLink class="link-wpp" to="/" >
+          <NuxtLink class="link-wpp" to="/">
             Mande uma mensagem para a gente
-            <NuxtImg src="/svg/whatsapp.svg" />
+            <img src="/svg/whatsapp.svg" />
           </NuxtLink>
         </div>
       </div>
@@ -36,19 +36,19 @@
 </template>
 
 <script>
-import SearchSection from '~/components/studios/SearchSection.vue'
-import AdvantagesSection from '~/components/studios/AdvantagesSection.vue'
-import FaqSection from '~/components/studios/FaqSection.vue'
-import ServicesSection from '~/components/studios/ServicesSection.vue'
+import SearchSection from "~/components/studios/SearchSection.vue"
+import AdvantagesSection from "~/components/studios/AdvantagesSection.vue"
+import FaqSection from "~/components/studios/FaqSection.vue"
+import ServicesSection from "~/components/studios/ServicesSection.vue"
 
 export default {
-  name: 'StudiosPage',
-  components: { 
+  name: "StudiosPage",
+  components: {
     SearchSection,
     AdvantagesSection,
     FaqSection,
     ServicesSection,
-  }
+  },
 }
 </script>
 

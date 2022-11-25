@@ -3,75 +3,65 @@
     <form @submit.prevent="searchStudios">
       <div class="search-field">
         <div class="input-field">
-          <label for="input-date">
-            Data
-          </label>
-          <BaseCalendar 
+          <label for="input-date"> Data </label>
+          <BaseCalendar
             id="input-date"
-            v-model="form.date" 
+            v-model="form.date"
             class="form-input"
             placeholder="Data"
             @change="emitForm"
           />
         </div>
         <div class="input-field">
-          <label for="input-time-init">
-            Horário inicial
-          </label>
+          <label for="input-time-init"> Horário inicial </label>
           <BaseSelect
             id="input-time-init"
-            v-model="form.timeInit" 
+            v-model="form.timeInit"
             class="form-input"
-            placeholder="Horário inicial" 
+            placeholder="Horário inicial"
             :options="timeInitOptions"
-            :reduce="time => time.value"
+            :reduce="(time) => time.value"
             @option:selected="emitForm"
           />
         </div>
         <div class="input-field">
-          <label for="input-time-final">
-            Horário final
-          </label>
+          <label for="input-time-final"> Horário final </label>
           <BaseSelect
             id="input-time-final"
-            v-model="form.timeFinal" 
+            v-model="form.timeFinal"
             class="form-input"
-            placeholder="Horário inicial" 
+            placeholder="Horário inicial"
             :options="timeFinalOptions"
-            :reduce="time => time.value"
+            :reduce="(time) => time.value"
             @option:selected="emitForm"
           />
         </div>
         <div class="input-field">
-          <label for="input-city">
-            Localidade
-          </label>
-          <BaseSelect 
+          <label for="input-city"> Localidade </label>
+          <BaseSelect
             id="input-city"
             v-model="form.city"
             class="form-input"
             placeholder="Cidade"
             :options="cityOptions"
-            :reduce="city => city.value"
+            :reduce="(city) => city.value"
             @option:selected="emitForm"
           />
         </div>
         <div class="input-field">
-          <label for="input-event">
-            Evento
-          </label>
-          <BaseSelect 
+          <label for="input-event"> Evento </label>
+          <BaseSelect
             id="input-event"
             v-model="form.event"
             class="form-input"
             placeholder="Tipo de evento"
             :options="eventOptions"
-            :reduce="event => event.value"
+            :reduce="(event) => event.value"
             @option:selected="emitForm"
           />
         </div>
         <BaseButton class="btn-circle" @click="searchStudios">
-          <NuxtImg src="/svg/search.svg" />
+          <img src="/svg/search.svg" />
         </BaseButton>
         <BaseButton class="btn-gradient" @click="searchStudios">
           Pesquisar
@@ -80,7 +70,7 @@
     </form>
 
     <template v-if="!isSearched">
-      <NuxtImg src="/svg/tablature-note.svg" />
+      <img src="/svg/tablature-note.svg" />
 
       <NuxtLink class="link" to="">Quero cadastrar meu estúdio</NuxtLink>
     </template>
@@ -93,13 +83,13 @@
 </template>
 
 <script>
-import moment from 'moment'
+import moment from "moment"
 
 export default {
   props: {
     isSearched: {
       type: Boolean,
-      default: false
+      default: false,
     },
     formData: {
       type: Object,
@@ -109,8 +99,8 @@ export default {
         timeFinal: null,
         city: null,
         event: null,
-      })
-    }
+      }),
+    },
   },
   data() {
     return {
@@ -119,78 +109,80 @@ export default {
       timeFinalOptions: [],
       cityOptions: [],
       eventOptions: [],
-      startPrice: 49.90,
+      startPrice: 49.9,
       endPrice: 250,
     }
   },
-  fetch () {
+  fetch() {
     this.timeInitOptions = [
-      { value: 1, label: '06 horas' },
-      { value: 2, label: '07 horas' },
-      { value: 3, label: '08 horas' },
-      { value: 4, label: '09 horas' },
-      { value: 5, label: '10 horas' },
-      { value: 6, label: '11 horas' },
-      { value: 7, label: '12 horas' },
-      { value: 8, label: '13 horas' },
-      { value: 9, label: '14 horas' },
-      { value: 10, label: '15 horas' },
-      { value: 11, label: '16 horas' },
-      { value: 12, label: '17 horas' },
+      { value: 1, label: "06 horas" },
+      { value: 2, label: "07 horas" },
+      { value: 3, label: "08 horas" },
+      { value: 4, label: "09 horas" },
+      { value: 5, label: "10 horas" },
+      { value: 6, label: "11 horas" },
+      { value: 7, label: "12 horas" },
+      { value: 8, label: "13 horas" },
+      { value: 9, label: "14 horas" },
+      { value: 10, label: "15 horas" },
+      { value: 11, label: "16 horas" },
+      { value: 12, label: "17 horas" },
     ]
     this.timeFinalOptions = [
-      { value: 2, label: '07 horas' },
-      { value: 3, label: '08 horas' },
-      { value: 4, label: '09 horas' },
-      { value: 5, label: '10 horas' },
-      { value: 6, label: '11 horas' },
-      { value: 7, label: '12 horas' },
-      { value: 8, label: '13 horas' },
-      { value: 9, label: '14 horas' },
-      { value: 10, label: '15 horas' },
-      { value: 11, label: '16 horas' },
-      { value: 12, label: '17 horas' },
-      { value: 13, label: '18 horas' },
+      { value: 2, label: "07 horas" },
+      { value: 3, label: "08 horas" },
+      { value: 4, label: "09 horas" },
+      { value: 5, label: "10 horas" },
+      { value: 6, label: "11 horas" },
+      { value: 7, label: "12 horas" },
+      { value: 8, label: "13 horas" },
+      { value: 9, label: "14 horas" },
+      { value: 10, label: "15 horas" },
+      { value: 11, label: "16 horas" },
+      { value: 12, label: "17 horas" },
+      { value: 13, label: "18 horas" },
     ]
 
     this.cityOptions = [
-      { value: 1, label: 'Goiânia' },
-      { value: 2, label: 'Brasília' },
-      { value: 3, label: 'São Paulo' },
-      { value: 4, label: 'Rio de Janeiro' },
+      { value: 1, label: "Goiânia" },
+      { value: 2, label: "Brasília" },
+      { value: 3, label: "São Paulo" },
+      { value: 4, label: "Rio de Janeiro" },
     ]
 
     this.eventOptions = [
-      { value: 1, label: 'Show' },
-      { value: 2, label: 'Teatro' },
-      { value: 3, label: 'Festival' },
+      { value: 1, label: "Show" },
+      { value: 2, label: "Teatro" },
+      { value: 3, label: "Festival" },
     ]
   },
   watch: {
     formData(newValue) {
       this.form = newValue
     },
-    '$route.query'() {
+    "$route.query"() {
       this.searchStudios()
-    }
+    },
   },
   methods: {
     emitForm() {
-      this.$emit('form', this.form)
+      this.$emit("form", this.form)
     },
 
     searchStudios() {
       this.$router.push({
-        path: '/studios/search',
+        path: "/studios/search",
         query: {
-          data: this.form.date ? moment(this.form.date).format('YYYY-MM-DD') : null,
+          data: this.form.date
+            ? moment(this.form.date).format("YYYY-MM-DD")
+            : null,
           horarioInicial: this.form.timeInit,
           horarioFinal: this.form.timeFinal,
           cidade: this.form.city,
-          evento: this.form.event
-        }
+          evento: this.form.event,
+        },
       })
-    }
+    },
   },
 }
 </script>

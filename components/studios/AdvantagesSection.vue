@@ -8,15 +8,13 @@
     </header>
 
     <div class="body">
-      <NuxtImg src="/images/studios-advantages.png" />
+      <img src="/images/studios-advantages.png" />
     </div>
   </section>
 </template>
 
 <script>
-export default {
-  
-}
+export default {}
 </script>
 
 <style lang="scss" scoped>

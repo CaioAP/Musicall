@@ -40,7 +40,7 @@
         <div class="content-labels">
           <div class="content-label">
             <div class="label-title">
-              <NuxtImg src="/svg/book-open.svg" />
+              <img src="/svg/book-open.svg" />
               <p>Total de reservas</p>
             </div>
             <p>{{ totalReservations }}</p>
@@ -62,11 +62,11 @@
                   :disabled="!!rowData.avaliation"
                   @click="sendAvaliation(rowData.id, star)"
                 >
-                  <NuxtImg
+                  <img
                     v-if="rowData.avaliation < star"
                     src="/svg/star-empty.svg"
                   />
-                  <NuxtImg v-else src="/svg/star-gradient.svg" />
+                  <img v-else src="/svg/star-gradient.svg" />
                 </BaseButton>
               </div>
             </template>
@@ -90,19 +90,19 @@
                   class="btn-plain"
                   @click="openCancelDialog(rowData)"
                 >
-                  <NuxtImg src="/svg/x-circle.svg" />
+                  <img src="/svg/x-circle.svg" />
                 </BaseButton>
                 <BaseButton
                   v-if="showNextButton(rowData.status)"
                   class="btn-plain"
                 >
-                  <NuxtImg src="/svg/arrow-right-circle.svg" />
+                  <img src="/svg/arrow-right-circle.svg" />
                 </BaseButton>
                 <BaseButton
                   v-if="showLogButton(rowData.status)"
                   class="btn-plain"
                 >
-                  <NuxtImg src="/svg/file-text.svg" />
+                  <img src="/svg/file-text.svg" />
                 </BaseButton>
               </div>
             </template>

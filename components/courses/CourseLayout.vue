@@ -2,7 +2,7 @@
   <div class="container">
     <section class="course" aria-labelledby="course-title">
       <div class="course-bg">
-        <NuxtImg :src="content.img" />
+        <img :src="content.img" />
       </div>
 
       <div class="course-badges">
@@ -11,30 +11,30 @@
       </div>
 
       <h1 id="course-title" class="course-title">
-        Aula de <span class="text-lower">{{ course.type }}</span>
-        com <span class="musicalll">{{ course.name }}</span>
+        Aula de <span class="text-lower">{{ course.type }}</span> com
+        <span class="musicalll">{{ course.name }}</span>
       </h1>
 
       <div class="course-infos">
         <div class="course-info">
-          <NuxtImg src="/svg/layout-white.svg"/>
+          <img src="/svg/layout-white.svg" />
           {{ course.classes }} aulas
         </div>
 
         <div class="course-info">
-          <NuxtImg src="/svg/feather-white.svg"/>
+          <img src="/svg/feather-white.svg" />
           {{ course.activities }} atividades
         </div>
 
         <div class="course-info">
-          <NuxtImg src="/svg/clock-white.svg"/>
+          <img src="/svg/clock-white.svg" />
           {{ course.duration }}h de conteúdo
         </div>
       </div>
     </section>
 
     <section class="course-contents" aria-labelledby="course-content-title">
-      <BaseInputRadioGroup 
+      <BaseInputRadioGroup
         v-model="contentSelected"
         :options="[...contentOptions]"
       />
@@ -56,7 +56,7 @@
           {{ contentTitle }}
         </h2>
 
-        <template v-for="(paragraph, i) in content.aboutArtist.split('\n')" >
+        <template v-for="(paragraph, i) in content.aboutArtist.split('\n')">
           <p :key="i" class="course-content-body">
             {{ paragraph.trim() }}
           </p>
@@ -65,9 +65,7 @@
     </section>
 
     <section class="course-classes" aria-labelledby="course-classes-title">
-      <h2 id="course-classes-title" class="course-title">
-        Aulas desse curso
-      </h2>
+      <h2 id="course-classes-title" class="course-title">Aulas desse curso</h2>
 
       <div class="course-classes-content">
         <div class="course-classes-list">
@@ -77,7 +75,7 @@
             class="course-classes-class"
           >
             <a :href="courseClass.link">
-              <NuxtImg src="/svg/video-white.svg" />
+              <img src="/svg/video-white.svg" />
               <div class="course-class-text">
                 <p>{{ courseClass.name }}</p>
                 <p>{{ courseClass.duration }} minutos</p>
@@ -87,7 +85,7 @@
         </div>
 
         <div class="course-classes-img">
-          <NuxtImg :src="course.img" />
+          <img :src="course.img" />
         </div>
       </div>
     </section>
@@ -104,9 +102,7 @@
 
         <p>a vista</p>
 
-        <BaseButton>
-          Comprar
-        </BaseButton>
+        <BaseButton> Comprar </BaseButton>
       </div>
     </section>
   </div>
@@ -117,51 +113,51 @@ export default {
   props: {
     id: {
       type: [String, Number],
-      required: true
+      required: true,
     },
     course: {
       type: Object,
-      required: true
+      required: true,
     },
     content: {
       type: Object,
-      required: true
+      required: true,
     },
   },
   data() {
     return {
-      contentSelected: 'menu',
-      difficultyName: '',
-      difficultyOptions: []
+      contentSelected: "menu",
+      difficultyName: "",
+      difficultyOptions: [],
     }
   },
   fetch() {
     this.difficultyOptions = [
-      { value: 1, label: 'Iniciante' },
-      { value: 2, label: 'Intermediário' },
-      { value: 3, label: 'Avançado' },
-      { value: 4, label: 'Profissional' },
+      { value: 1, label: "Iniciante" },
+      { value: 2, label: "Intermediário" },
+      { value: 3, label: "Avançado" },
+      { value: 4, label: "Profissional" },
     ]
     this.difficultyName = this.difficultyOptions.find(
-      diff => diff.value === this.course.difficulty
+      (diff) => diff.value === this.course.difficulty,
     ).label
   },
   computed: {
     contentOptions() {
       return [
-        { name: 'menu', text: 'Ementa', radioValue: 'menu' },
-        { name: 'about', text: 'Sobre o artista', radioValue: 'about' },
+        { name: "menu", text: "Ementa", radioValue: "menu" },
+        { name: "about", text: "Sobre o artista", radioValue: "about" },
       ]
     },
 
     contentTitle() {
       const titles = {
-        menu: 'O que você vai aprender nesse curso:',
-        about: 'Sobre o artista:'
+        menu: "O que você vai aprender nesse curso:",
+        about: "Sobre o artista:",
       }
 
       return titles[this.contentSelected]
-    }
+    },
   },
 }
 </script>
@@ -198,13 +194,17 @@ export default {
       width: 100%;
       height: 100%;
     }
-    
+
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       inset: 0;
       z-index: 1;
-      background: linear-gradient(60.29deg, #000000 42.67%, rgba(0, 0, 0, 0) 93.95%);
+      background: linear-gradient(
+        60.29deg,
+        #000000 42.67%,
+        rgba(0, 0, 0, 0) 93.95%
+      );
     }
   }
 
@@ -275,7 +275,6 @@ export default {
       column-count: 2;
 
       .course-classes-class {
-
         &:not(:first-of-type) {
           margin-top: 1.5rem;
         }

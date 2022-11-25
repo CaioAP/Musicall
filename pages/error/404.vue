@@ -4,7 +4,7 @@
       <h1>Página não encontrada</h1>
       <p>Algo deu errado, não conseguimos encontrar esta página!</p>
       <NuxtLink to="/" class="go-back">
-        <NuxtImg src="/svg/arrow-point-left-primary.svg" />
+        <img src="/svg/arrow-point-left-primary.svg" />
         Voltar
       </NuxtLink>
     </div>
@@ -13,9 +13,9 @@
 
 <script>
 export default {
-  name: 'NotFoundPage',
+  name: "NotFoundPage",
   head: {
-    title: '404 - Não encontrado',
+    title: "404 - Não encontrado",
   },
 }
 </script>

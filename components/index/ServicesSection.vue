@@ -2,7 +2,7 @@
   <BaseSection labelledby="services-title">
     <template #content>
       <div class="content">
-        <NuxtImg class="service-image" src="/images/index-services.png" />
+        <img class="service-image" src="/images/index-services.png" />
 
         <div class="services">
           <header>
@@ -11,14 +11,14 @@
             </h2>
           </header>
 
-          <NuxtLink 
-            v-for="service in services" 
-            :key="service.name" 
+          <NuxtLink
+            v-for="service in services"
+            :key="service.name"
             class="service"
             :to="service.path"
           >
             <div class="service-icon">
-              <NuxtImg :src="service.icon" />
+              <img :src="service.icon" />
             </div>
 
             <div class="service-content">
@@ -32,7 +32,7 @@
             </div>
 
             <div class="service-angle">
-              <NuxtImg src="/svg/angle-right.svg" />
+              <img src="/svg/angle-right.svg" />
             </div>
           </NuxtLink>
 
@@ -50,26 +50,29 @@ export default {
   computed: {
     services() {
       return [
-        { 
-          name: 'Masterclass', 
-          description: 'Aulas com profissionais de renome mundial para você entender e aprender com essas feras da música!',
-          icon: '/svg/clef-bass.svg',
-          path: '/masterclass',
+        {
+          name: "Masterclass",
+          description:
+            "Aulas com profissionais de renome mundial para você entender e aprender com essas feras da música!",
+          icon: "/svg/clef-bass.svg",
+          path: "/masterclass",
         },
-        { 
-          name: 'Nossos Cursos', 
-          description: 'Aprenda com os melhores professores. Estudo no seu ritmo, sem sair de casa!',
-          icon: '/svg/book-music.svg',
-          path: '/courses',
+        {
+          name: "Nossos Cursos",
+          description:
+            "Aprenda com os melhores professores. Estudo no seu ritmo, sem sair de casa!",
+          icon: "/svg/book-music.svg",
+          path: "/courses",
         },
-        { 
-          name: 'Musicalll Drops', 
-          description: 'Nós pensamos em tudo e oferecemos gravações de aulas específicas por assuntos do seu interesse a preço acessíveis.',
-          icon: '/svg/music-circle.svg',
-          path: '/drops',
+        {
+          name: "Musicalll Drops",
+          description:
+            "Nós pensamos em tudo e oferecemos gravações de aulas específicas por assuntos do seu interesse a preço acessíveis.",
+          icon: "/svg/music-circle.svg",
+          path: "/drops",
         },
-      ] 
-    }
+      ]
+    },
   },
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div class="hero-bg">
-    <NuxtImg :src="image" />
+    <img :src="image" />
   </div>
 </template>
 
@@ -9,7 +9,7 @@ export default {
   props: {
     image: {
       type: String,
-      default: ''
+      default: "",
     },
   },
 }
@@ -29,10 +29,11 @@ export default {
   }
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #000;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+      #000;
   }
 }
 </style>

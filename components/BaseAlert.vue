@@ -2,7 +2,7 @@
   <div v-show="open" :class="type" class="alert">
     <p>{{ message }}</p>
     <button @click="close">
-      <NuxtImg src="/svg/close.svg" width="12px" height="12px" />
+      <img src="/svg/close.svg" width="12px" height="12px" />
     </button>
   </div>
 </template>
@@ -12,11 +12,11 @@ export default {
   props: {
     type: {
       type: String,
-      default: 'success',
+      default: "success",
     },
     message: {
       type: String,
-      default: 'Esta eh uma mensagem de alerta de sucesso',
+      default: "Esta eh uma mensagem de alerta de sucesso",
     },
     open: {
       type: Boolean,
@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     close() {
-      this.$store.commit('alert/SET_CLOSE')
+      this.$store.commit("alert/SET_CLOSE")
     },
   },
 }

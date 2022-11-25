@@ -1,24 +1,24 @@
 <template>
   <div class="studio-item">
-    <NuxtImg :src="img" />
+    <img :src="img" />
 
     <div class="studio-data">
       <h2 class="studio-name musicalll">
         {{ name }}
       </h2>
       <div class="studio-address">
-        <NuxtImg src="/svg/map-pin.svg" />
+        <img src="/svg/map-pin.svg" />
         <span>{{ address }} - {{ city }}</span>
       </div>
       <div class="studio-rooms">
-        <NuxtImg src="/svg/door.svg" />
+        <img src="/svg/door.svg" />
         <span>{{ roomsCount }} salas</span>
       </div>
       <div class="studio-description">
         {{ description }}
       </div>
       <div class="studio-price">
-        <NuxtImg src="/svg/dollar-sign.svg" />
+        <img src="/svg/dollar-sign.svg" />
         <span>
           {{ $utils.formatMoney(price) }}
           <span class="studio-price-hour">&nbsp;/ Hora</span>
@@ -27,87 +27,95 @@
     </div>
 
     <div class="studio-actions">
-      <NuxtLink class="btn-link" :to="linkDetails">
-        Detalhes
-      </NuxtLink>
-      <BaseButton v-if="video" class="btn-outline" @click="$refs.dialogVideo.openDialog()">
+      <NuxtLink class="btn-link" :to="linkDetails"> Detalhes </NuxtLink>
+      <BaseButton
+        v-if="video"
+        class="btn-outline"
+        @click="$refs.dialogVideo.openDialog()"
+      >
         Vídeos
       </BaseButton>
-      <BaseButton v-if="location.lat && location.lng" class="btn-outline" @click="$refs.dialogMaps.openDialog()">
+      <BaseButton
+        v-if="location.lat && location.lng"
+        class="btn-outline"
+        @click="$refs.dialogMaps.openDialog()"
+      >
         Ver no Mapa
       </BaseButton>
     </div>
 
     <DialogVideo ref="dialogVideo" :video="video" />
-    <DialogMaps 
-      ref="dialogMaps" 
-      :locations="[{
-        id: id,
-        name: name,
-        ...location
-      }]" 
+    <DialogMaps
+      ref="dialogMaps"
+      :locations="[
+        {
+          id: id,
+          name: name,
+          ...location,
+        },
+      ]"
     />
   </div>
 </template>
 
 <script>
-import DialogVideo from '@/components/studios/DialogVideo.vue'
-import DialogMaps from '@/components/studios/DialogMaps.vue'
+import DialogVideo from "@/components/studios/DialogVideo.vue"
+import DialogMaps from "@/components/studios/DialogMaps.vue"
 
 export default {
   components: {
     DialogVideo,
-    DialogMaps
+    DialogMaps,
   },
   props: {
     id: {
       type: [String, Number],
-      required: true
+      required: true,
     },
     img: {
       type: String,
-      default: ''
+      default: "",
     },
     name: {
       type: String,
-      default: ''
+      default: "",
     },
     address: {
       type: String,
-      default: ''
+      default: "",
     },
     city: {
       type: String,
-      default: ''
+      default: "",
     },
     roomsCount: {
       type: Number,
-      default: 0
+      default: 0,
     },
     description: {
       type: String,
-      default: ''
+      default: "",
     },
     price: {
       type: Number,
-      default: 0
+      default: 0,
     },
     video: {
       type: String,
-      default: null
+      default: null,
     },
     location: {
       type: Object,
-      default: () => ({})
-    }
+      default: () => ({}),
+    },
   },
   computed: {
     linkDetails() {
       return {
         path: `/studios/${this.id}`,
-        query: this.$route.query
+        query: this.$route.query,
       }
-    }
+    },
   },
 }
 </script>

@@ -95,7 +95,7 @@
           @dragover.prevent="dragover"
           @dragleave.prevent="dragleave"
         >
-          <NuxtImg src="/svg/image-add.svg" />
+          <img src="/svg/image-add.svg" />
           <input
             id="input-images"
             type="file"

@@ -2,9 +2,11 @@
   <BaseSection labelledby="drops-title">
     <template #header>
       <header>
-        <h2 id="drops-title" class="title"><span class="musicalll">Musicalll</span> Drops</h2>
+        <h2 id="drops-title" class="title">
+          <span class="musicalll">Musicalll</span> Drops
+        </h2>
         <p class="description">Sinta o gostinho e aprenda com qualidade</p>
-        <BaseInputRadioGroup 
+        <BaseInputRadioGroup
           v-model="filterSelected"
           class="filter"
           :options="[...filter]"
@@ -14,8 +16,11 @@
 
     <template #content>
       <div class="content">
-        <BaseButton class="btn-circle gradient-inverted" @click="previousSlideCard">
-          <NuxtImg src="/svg/arrow-left.svg" />
+        <BaseButton
+          class="btn-circle gradient-inverted"
+          @click="previousSlideCard"
+        >
+          <img src="/svg/arrow-left.svg" />
         </BaseButton>
 
         <div ref="slide" class="drops-list">
@@ -25,7 +30,7 @@
             :to="`/drops/${drop.id}`"
           >
             <article class="drop-card">
-              <NuxtImg :src="drop.image" />
+              <img :src="drop.image" />
               <div class="drop-card-text">
                 <p>{{ drop.instructor }}</p>
                 <p>{{ drop.description }}</p>
@@ -35,16 +40,14 @@
         </div>
 
         <BaseButton class="btn-circle" @click="nextSlideCard">
-          <NuxtImg src="/svg/arrow-right.svg" />
+          <img src="/svg/arrow-right.svg" />
         </BaseButton>
       </div>
     </template>
-    
+
     <template #footer>
       <footer>
-        <NuxtLink class="btn-link" to="/drops">
-          Explorar Drops
-        </NuxtLink>
+        <NuxtLink class="btn-link" to="/drops"> Explorar Drops </NuxtLink>
       </footer>
     </template>
   </BaseSection>
@@ -55,16 +58,16 @@ export default {
   props: {
     filter: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     drops: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
   },
   data() {
     return {
-      filterSelected: 2
+      filterSelected: 2,
     }
   },
   methods: {
@@ -73,7 +76,7 @@ export default {
     },
     nextSlideCard() {
       this.$refs.slide.scrollBy(200, 0)
-    }
+    },
   },
 }
 </script>

@@ -10,7 +10,7 @@
       <ul>
         <NuxtLink v-for="nav in navigation" :key="nav.name" :to="nav.path">
           <li :class="{ active: isActive(nav) }">
-            <NuxtImg
+            <img
               :src="`/svg/${nav.icon}${isActive(nav) ? '-active' : ''}.svg`"
             />
             {{ nav.name }}
@@ -22,26 +22,26 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex"
 
 export default {
   computed: {
     ...mapGetters({
-      userId: 'auth/id',
+      userId: "auth/id",
     }),
 
     navigation() {
       if (this.userId)
         return [
-          { name: 'Estúdios', path: '/contents/studios', icon: 'microphone' },
+          { name: "Estúdios", path: "/contents/studios", icon: "microphone" },
           {
-            name: 'Reservas',
-            path: '/contents/reservations',
-            icon: 'listing-book',
+            name: "Reservas",
+            path: "/contents/reservations",
+            icon: "listing-book",
           },
         ]
 
-      return [{ name: 'Home', path: '/contents', icon: 'home' }]
+      return [{ name: "Home", path: "/contents", icon: "home" }]
     },
   },
   methods: {

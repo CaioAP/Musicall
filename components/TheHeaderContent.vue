@@ -1,20 +1,20 @@
 <template>
   <header>
     <BaseDropdown class="btn-user">
-      <NuxtImg src="/svg/user-light.svg" />
+      <img src="/svg/user-light.svg" />
       Olá, {{ userName }}
-      <NuxtImg src="/svg/angle-down-light.svg" />
+      <img src="/svg/angle-down-light.svg" />
     </BaseDropdown>
   </header>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex"
 
 export default {
   computed: {
     ...mapGetters({
-      userName: 'auth/name',
+      userName: "auth/name",
     }),
   },
 }

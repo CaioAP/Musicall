@@ -12,11 +12,11 @@
         </h3>
 
         <div>
-          <NuxtImg width="16px" src="/svg/dollar-sign.svg" />
+          <img width="16px" src="/svg/dollar-sign.svg" />
           {{ $utils.formatMoney(price) }} / hora
         </div>
         <div v-if="capacity">
-          <NuxtImg width="16px" src="/svg/user.svg" />
+          <img width="16px" src="/svg/user.svg" />
           {{ capacity }} pessoas
         </div>
       </div>

@@ -8,16 +8,16 @@
 
     <template #content>
       <div class="faqs">
-        <div 
-          v-for="(faq, idx) in faqs" 
-          :key="idx" 
-          class="faq" 
-          :expanded="faq.expanded" 
+        <div
+          v-for="(faq, idx) in faqs"
+          :key="idx"
+          class="faq"
+          :expanded="faq.expanded"
           @click="expand(idx)"
         >
           <div class="faq-header">
             <h3>{{ faq.title }}</h3>
-            <NuxtImg src="/svg/angle-down.svg" />
+            <img src="/svg/angle-down.svg" />
           </div>
 
           <div class="faq-content">
@@ -34,12 +34,33 @@ export default {
   data() {
     return {
       faqs: [
-        { title: 'Como funciona a Ferramenta?', expanded: false, content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, consequuntur? Incidunt voluptatum placeat, nemo velit culpa saepe cupiditate error minus molestias ratione eius nisi explicabo repudiandae et nihil veritatis tempora!' },
-        { title: 'Eu pago alguma coisa para acessar?', expanded: false, content: '' },
-        { title: 'Quanto custa a média de preço?', expanded: false, content: '' },
-        { title: 'Tenho um estúdio para alugar, como faço?', expanded: false, content: '' },
-        { title: 'A plataforma cuida do pagamento?', expanded: false, content: '' },
-      ]
+        {
+          title: "Como funciona a Ferramenta?",
+          expanded: false,
+          content:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, consequuntur? Incidunt voluptatum placeat, nemo velit culpa saepe cupiditate error minus molestias ratione eius nisi explicabo repudiandae et nihil veritatis tempora!",
+        },
+        {
+          title: "Eu pago alguma coisa para acessar?",
+          expanded: false,
+          content: "",
+        },
+        {
+          title: "Quanto custa a média de preço?",
+          expanded: false,
+          content: "",
+        },
+        {
+          title: "Tenho um estúdio para alugar, como faço?",
+          expanded: false,
+          content: "",
+        },
+        {
+          title: "A plataforma cuida do pagamento?",
+          expanded: false,
+          content: "",
+        },
+      ],
     }
   },
   methods: {
@@ -47,7 +68,7 @@ export default {
       const faq = this.faqs[faqIdx]
       faq.expanded = !faq.expanded
       this.faqs[faqIdx] = faq
-    }
+    },
   },
 }
 </script>
@@ -69,9 +90,7 @@ export default {
     margin-inline: auto;
     border: solid 1px transparent;
     border-radius: 0.75rem;
-    background-image: 
-      linear-gradient($bg-clr, $bg-clr), 
-      $gradient-bg;
+    background-image: linear-gradient($bg-clr, $bg-clr), $gradient-bg;
     background-origin: border-box;
     background-clip: content-box, border-box;
     cursor: pointer;
@@ -92,10 +111,9 @@ export default {
     }
 
     &[expanded="true"] {
-
       .faq-header {
         img {
-          transform: rotate(180deg)
+          transform: rotate(180deg);
         }
       }
       .faq-content {

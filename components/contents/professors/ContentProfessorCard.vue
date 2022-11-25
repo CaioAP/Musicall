@@ -1,7 +1,7 @@
 <template>
   <div class="professor-card">
     <div class="card-header">
-      <NuxtImg :src="img" />
+      <img :src="img" />
 
       <div class="card-info">
         <h3 class="card-title">

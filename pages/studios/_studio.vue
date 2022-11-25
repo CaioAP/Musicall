@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <BaseHero image="/images/studios-hero-background.png"/>
+    <BaseHero image="/images/studios-hero-background.png" />
 
     <div class="studio">
       <h2 class="studio-name">
@@ -9,18 +9,18 @@
 
       <div class="studio-subtitle">
         <div class="studio-address">
-          <NuxtImg src="/svg/map-pin.svg" />
+          <img src="/svg/map-pin.svg" />
           {{ address }} - {{ city }}
         </div>
 
         <BaseButton class="btn-plain">
-          <NuxtImg src="/svg/share.svg" />
+          <img src="/svg/share.svg" />
           Compartilhar
         </BaseButton>
       </div>
 
       <section class="studio-images" aria-label="Imagens do estúdio">
-        <NuxtImg
+        <img
           v-for="(image, i) in imgList"
           :key="i"
           :src="image"
@@ -32,36 +32,35 @@
         <header>
           <h2 class="studio-info-name">
             {{ name }}
-            {{ room 
-              ? ` - Sala ${roomSelected.label}`
-              : ` - Unidade ${address}` 
+            {{
+              room ? ` - Sala ${roomSelected.label}` : ` - Unidade ${address}`
             }}
           </h2>
 
           <div v-if="room" class="studio-info-legend">
             <div class="studio-info-legend-size">
-              <NuxtImg src="/svg/room-size.svg" />
+              <img src="/svg/room-size.svg" />
               {{ roomContent.size }} m²
             </div>
             <div class="studio-info-legend-capacity">
-              <NuxtImg src="/svg/user.svg" />
+              <img src="/svg/user.svg" />
               {{ roomContent.capacity }} pessoas
             </div>
           </div>
 
           <div class="studio-info-actions">
-            <BaseSelect 
+            <BaseSelect
               v-model="room"
               class="outline"
               :class="!room ? 'w-auto' : ''"
               placeholder="Selecione sua sala"
               :options="rooms"
-              :reduce="room => room.value"
+              :reduce="(room) => room.value"
             />
 
             <a :href="mapsLink" class="btn-outline">
               Localização
-              <NuxtImg src="/svg/target.svg" />
+              <img src="/svg/target.svg" />
             </a>
           </div>
         </header>
@@ -69,7 +68,7 @@
         <div class="studio-info-content">
           <div class="studio-content">
             <div class="studio-content-filter">
-              <BaseInputRadioGroup 
+              <BaseInputRadioGroup
                 v-model="contentSelected"
                 :options="[...contentOptions]"
               />
@@ -80,15 +79,20 @@
             </div>
 
             <div v-if="contentSelected === 'about'" class="studio-content-body">
-              <template v-for="(paragraph, i) in studioContent.about.split('\n')" >
+              <template
+                v-for="(paragraph, i) in studioContent.about.split('\n')"
+              >
                 <p :key="i" class="studio-content-boyd-about">
                   {{ paragraph.trim() }}
                 </p>
-                <br :key="`br-${i}`"/>
+                <br :key="`br-${i}`" />
               </template>
             </div>
 
-            <div v-else-if="contentSelected === 'rules'" class="studio-content-body">
+            <div
+              v-else-if="contentSelected === 'rules'"
+              class="studio-content-body"
+            >
               <ul class="studio-content-body-rules">
                 <li v-for="(rule, i) in studioContent.rules" :key="i">
                   {{ rule }}
@@ -96,9 +100,15 @@
               </ul>
             </div>
 
-            <div v-else-if="contentSelected === 'recording'" class="studio-content-body"></div>
+            <div
+              v-else-if="contentSelected === 'recording'"
+              class="studio-content-body"
+            ></div>
 
-            <div v-else-if="contentSelected === 'comments'" class="studio-content-body">
+            <div
+              v-else-if="contentSelected === 'comments'"
+              class="studio-content-body"
+            >
               <div class="studio-content-body-comments">
                 <div
                   v-for="(comment, i) in studioContent.comments"
@@ -111,7 +121,10 @@
               </div>
             </div>
 
-            <div v-else-if="contentSelected === 'equipments' && room" class="studio-content-body">
+            <div
+              v-else-if="contentSelected === 'equipments' && room"
+              class="studio-content-body"
+            >
               <ul class="studio-content-body-equipments">
                 <li v-for="(equip, i) in roomContent.equipments" :key="i">
                   {{ equip }}
@@ -119,41 +132,42 @@
               </ul>
             </div>
 
-            <div v-else-if="contentSelected === 'info' && room" class="studio-content-body">
-              <template v-for="(paragraph, i) in roomContent.info.split('\n')" >
+            <div
+              v-else-if="contentSelected === 'info' && room"
+              class="studio-content-body"
+            >
+              <template v-for="(paragraph, i) in roomContent.info.split('\n')">
                 <p :key="i" class="studio-content-boyd-info">
                   {{ paragraph.trim() }}
                 </p>
-                <br :key="`br-${i}`"/>
+                <br :key="`br-${i}`" />
               </template>
             </div>
           </div>
 
           <div class="studio-checkout">
             <div class="studio-checkout-info">
-              Hora de início: 
+              Hora de início:
               <span class="musicalll">
-                {{ String(timeInitSelected.time).padStart(2, '0') }} horas
+                {{ String(timeInitSelected.time).padStart(2, "0") }} horas
               </span>
             </div>
 
             <div class="studio-checkout-info">
-              Hora de término: 
+              Hora de término:
               <span class="musicalll">
-                {{ String(timeFinalSelected.time).padStart(2, '0') }} horas
+                {{ String(timeFinalSelected.time).padStart(2, "0") }} horas
               </span>
             </div>
 
             <div class="studio-checkout-info">
-              Data: 
+              Data:
               <span class="musicalll">
                 {{ $utils.formatDate(dateSelected) }}
               </span>
             </div>
 
-            <BaseButton>
-              Reservar
-            </BaseButton>
+            <BaseButton> Reservar </BaseButton>
 
             <BaseButton class="btn-outline" @click="changeStudioFilter">
               Alterar agenda
@@ -173,81 +187,81 @@
 </template>
 
 <script>
-import studiosData from '@/plugins/studios.js'
-import studiosContent from '@/plugins/studios-content.js'
+import studiosData from "@/plugins/studios.js"
+import studiosContent from "@/plugins/studios-content.js"
 
 export default {
   asyncData({ env, params, route }) {
     const baseUrl = env.baseUrl
     const studioId = params.studio
 
-    const studio = studiosData.studios.find(std => std.id === studioId)
+    const studio = studiosData.studios.find((std) => std.id === studioId)
     const studioContent = studiosContent[studioId]
 
     const timeOptions = [
-      { value: 1, label: '06 horas', time: 6 },
-      { value: 2, label: '07 horas', time: 7 },
-      { value: 3, label: '08 horas', time: 8 },
-      { value: 4, label: '09 horas', time: 9 },
-      { value: 5, label: '10 horas', time: 10 },
-      { value: 6, label: '11 horas', time: 11 },
-      { value: 7, label: '12 horas', time: 12 },
-      { value: 8, label: '13 horas', time: 13 },
-      { value: 9, label: '14 horas', time: 14 },
-      { value: 10, label: '15 horas', time: 15 },
-      { value: 11, label: '16 horas', time: 16 },
-      { value: 12, label: '17 horas', time: 17 },
-      { value: 13, label: '18 horas', time: 18 },
+      { value: 1, label: "06 horas", time: 6 },
+      { value: 2, label: "07 horas", time: 7 },
+      { value: 3, label: "08 horas", time: 8 },
+      { value: 4, label: "09 horas", time: 9 },
+      { value: 5, label: "10 horas", time: 10 },
+      { value: 6, label: "11 horas", time: 11 },
+      { value: 7, label: "12 horas", time: 12 },
+      { value: 8, label: "13 horas", time: 13 },
+      { value: 9, label: "14 horas", time: 14 },
+      { value: 10, label: "15 horas", time: 15 },
+      { value: 11, label: "16 horas", time: 16 },
+      { value: 12, label: "17 horas", time: 17 },
+      { value: 13, label: "18 horas", time: 18 },
     ]
 
     const timeInitSelected = timeOptions.find(
-      time => time.value === Number(route.query.horarioInicial)
+      (time) => time.value === Number(route.query.horarioInicial),
     )
 
     const timeFinalSelected = timeOptions.find(
-      time => time.value === Number(route.query.horarioFinal)
+      (time) => time.value === Number(route.query.horarioFinal),
     )
 
     const dateSelected = new Date(`${route.query.data}T00:00:00`)
 
-    return { 
+    return {
       baseUrl,
       studioId,
       studioContent,
       timeInitSelected,
       timeFinalSelected,
       dateSelected,
-      ...studio 
+      ...studio,
     }
   },
   data() {
     return {
       room: null,
-      contentSelected: 'about',
+      contentSelected: "about",
     }
   },
   computed: {
     linkShare() {
-      return `${this.baseUrl}${this.$route.path}` 
+      return `${this.baseUrl}${this.$route.path}`
     },
 
     contentOptions() {
       if (this.room) return this.roomContentOptions
 
       return [
-        { name: 'about', text: 'Sobre', radioValue: 'about' },
-        { name: 'rules', text: 'Regras', radioValue: 'rules' },
-        { name: 'recording', text: 'Gravações', radioValue: 'recording' },
-        { name: 'comments', text: 'Opiniões', radioValue: 'comments' },
+        { name: "about", text: "Sobre", radioValue: "about" },
+        { name: "rules", text: "Regras", radioValue: "rules" },
+        { name: "recording", text: "Gravações", radioValue: "recording" },
+        { name: "comments", text: "Opiniões", radioValue: "comments" },
       ]
     },
 
     contentTitle() {
       const titles = {
-        about: 'Sobre o estúdio',
-        rules: 'Regras do estúdio',
-        recording: 'Gravações',
-        comments: 'Opiniões',
+        about: "Sobre o estúdio",
+        rules: "Regras do estúdio",
+        recording: "Gravações",
+        comments: "Opiniões",
       }
 
       return titles[this.contentSelected]
@@ -255,8 +269,8 @@ export default {
 
     roomContentOptions() {
       return [
-        { name: 'equipments', text: 'Equipamentos', radioValue: 'equipments'  },
-        { name: 'info', text: 'Informações Adicionais', radioValue: 'info'  },
+        { name: "equipments", text: "Equipamentos", radioValue: "equipments" },
+        { name: "info", text: "Informações Adicionais", radioValue: "info" },
       ]
     },
 
@@ -268,25 +282,25 @@ export default {
     },
 
     roomSelected() {
-      const room = this.rooms.find(room => room.value === this.room)
+      const room = this.rooms.find((room) => room.value === this.room)
 
       if (room) return room
       return null
-    }
+    },
   },
   watch: {
     room(newValue) {
-      if (newValue) this.contentSelected = 'equipments'
-      else this.contentSelected = 'about'
-    }
+      if (newValue) this.contentSelected = "equipments"
+      else this.contentSelected = "about"
+    },
   },
   methods: {
     changeStudioFilter() {
       this.$router.push({
-        path: '/studios/search',
-        query: this.$route.query
+        path: "/studios/search",
+        query: this.$route.query,
       })
-    }
+    },
   },
 }
 </script>
@@ -320,7 +334,7 @@ export default {
     .studio-images {
       display: grid;
       gap: 2rem;
-      grid-template-areas: 
+      grid-template-areas:
         "primary primary second third"
         "primary primary fourth fifth";
       margin-top: 2rem;
@@ -422,7 +436,7 @@ export default {
               background: $bg-light-clr;
               // border: thin solid $primary-clr;
               border-radius: 0.5rem;
-  
+
               h3 {
                 margin-bottom: 0.5rem;
                 padding-bottom: 0.5rem;
@@ -471,7 +485,7 @@ export default {
       }
 
       .studio-images {
-        grid-template-areas: 
+        grid-template-areas:
           "primary primary"
           "second third"
           "fourth fifth";

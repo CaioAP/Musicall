@@ -1,24 +1,31 @@
 <template>
   <section class="masterclass" aria-labelledby="headline">
     <header>
-      <h1 id="headline" class="headline">Apresentamos a <span>Masterclass</span></h1>
-      <p class="description">As melhores aulas, feitas pelos melhores profissionais do ramo musical</p>
-      <NuxtImg class="icon" src="/svg/music-note.svg" />
+      <h1 id="headline" class="headline">
+        Apresentamos a <span>Masterclass</span>
+      </h1>
+      <p class="description">
+        As melhores aulas, feitas pelos melhores profissionais do ramo musical
+      </p>
+      <img class="icon" src="/svg/music-note.svg" />
     </header>
 
     <div class="masterclass-slide">
-      <BaseButton class="btn-circle gradient-inverted" @click="previousSlideCard">
-        <NuxtImg src="/svg/arrow-left.svg" />
+      <BaseButton
+        class="btn-circle gradient-inverted"
+        @click="previousSlideCard"
+      >
+        <img src="/svg/arrow-left.svg" />
       </BaseButton>
 
       <div ref="slide">
         <NuxtLink
-          v-for="masterclass in masterClasses" 
+          v-for="masterclass in masterClasses"
           :key="masterclass.id"
           :to="`/masterclass/${masterclass.id}`"
         >
-          <article class="masterclass-card" >
-            <NuxtImg :src="masterclass.image" />
+          <article class="masterclass-card">
+            <img :src="masterclass.image" />
             <div class="masterclass-card-text">
               <p>{{ masterclass.instructor }}</p>
 
@@ -31,7 +38,7 @@
       </div>
 
       <BaseButton class="btn-circle" @click="nextSlideCard">
-        <NuxtImg src="/svg/arrow-right.svg" />
+        <img src="/svg/arrow-right.svg" />
       </BaseButton>
     </div>
 
@@ -48,10 +55,30 @@ export default {
   data() {
     return {
       masterClasses: [
-        { id: 1, instructor: 'Ana Valéria', description: 'Primeira Contrabaixista OSESP', image: '/temp/masterclass-1.png' },
-        { id: 2, instructor: 'Darring C. Milling', description: 'Trombone Baixo Solista OSESP', image: '/temp/masterclass-2.png' },
-        { id: 3, instructor: 'Maria Joana', description: 'Segunda Contrabaixista OSMSP', image: '/temp/masterclass-1.png' },
-        { id: 4, instructor: 'José Smith', description: 'Trombone Alto Acorde OSMSP', image: '/temp/masterclass-2.png' },
+        {
+          id: 1,
+          instructor: "Ana Valéria",
+          description: "Primeira Contrabaixista OSESP",
+          image: "/temp/masterclass-1.png",
+        },
+        {
+          id: 2,
+          instructor: "Darring C. Milling",
+          description: "Trombone Baixo Solista OSESP",
+          image: "/temp/masterclass-2.png",
+        },
+        {
+          id: 3,
+          instructor: "Maria Joana",
+          description: "Segunda Contrabaixista OSMSP",
+          image: "/temp/masterclass-1.png",
+        },
+        {
+          id: 4,
+          instructor: "José Smith",
+          description: "Trombone Alto Acorde OSMSP",
+          image: "/temp/masterclass-2.png",
+        },
       ],
     }
   },
@@ -62,7 +89,7 @@ export default {
 
     nextSlideCard() {
       this.$refs.slide.scrollBy(200, 0)
-    }
+    },
   },
 }
 </script>

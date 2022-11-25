@@ -1,7 +1,7 @@
 <template>
   <div class="studio-card">
     <div class="card-header">
-      <NuxtImg :src="img" />
+      <img :src="img" />
 
       <div class="card-info">
         <h3 class="card-title">
@@ -9,15 +9,15 @@
         </h3>
 
         <div>
-          <NuxtImg src="/svg/dollar-sign.svg" />
+          <img src="/svg/dollar-sign.svg" />
           {{ $utils.formatMoney(price) }} / hora
         </div>
         <div>
-          <NuxtImg src="/svg/map-pin.svg" />
+          <img src="/svg/map-pin.svg" />
           {{ address }}
         </div>
         <div>
-          <NuxtImg src="/svg/door.svg" />
+          <img src="/svg/door.svg" />
           {{ rooms }} salas
         </div>
       </div>

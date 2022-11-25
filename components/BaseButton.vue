@@ -1,6 +1,6 @@
 <template>
   <button :type="type" v-bind="$attrs" v-on="$listeners">
-    <NuxtImg
+    <img
       v-show="loading"
       src="/svg/loading.svg"
       width="24"

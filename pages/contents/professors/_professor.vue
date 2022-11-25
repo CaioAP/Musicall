@@ -10,7 +10,7 @@
     <div class="content-forms">
       <div class="forms-header">
         <BaseButton class="btn-plain light" @click="goBack">
-          <NuxtImg src="/svg/arrow-point-left.svg" />
+          <img src="/svg/arrow-point-left.svg" />
         </BaseButton>
 
         <ul>

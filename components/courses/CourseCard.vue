@@ -1,7 +1,7 @@
 <template>
   <div class="course-card">
     <h3 class="course-title">
-      Aula de 
+      Aula de
       <span class="course-title-type">
         {{ type }}
       </span>
@@ -11,30 +11,30 @@
       </span>
     </h3>
 
-    <NuxtImg class="course-image" :src="img" />
+    <img class="course-image" :src="img" />
 
     <p class="course-description">
       {{ description }}
     </p>
 
     <div class="course-info duration">
-      <NuxtImg src="/svg/clock.svg" />
+      <img src="/svg/clock.svg" />
       {{ duration }}h de conteúdo
     </div>
 
     <div class="course-info classes">
-      <NuxtImg src="/svg/layout.svg" />
+      <img src="/svg/layout.svg" />
       {{ classes }} aulas
     </div>
 
     <div class="course-columns-2">
       <div class="course-info classes">
-        <NuxtImg src="/svg/feather.svg" />
+        <img src="/svg/feather.svg" />
         {{ activities }} atividades
       </div>
 
       <div class="course-info price">
-        <NuxtImg src="/svg/dollar-sign.svg" />
+        <img src="/svg/dollar-sign.svg" />
         {{ $utils.formatMoney(price) }}
       </div>
     </div>
@@ -54,49 +54,49 @@ export default {
     },
     type: {
       type: String,
-      required: true
+      required: true,
     },
     id: {
       type: [String, Number],
-      required: true
+      required: true,
     },
     name: {
       type: String,
-      required: true
+      required: true,
     },
     instructor: {
       type: String,
-      required: true
+      required: true,
     },
     description: {
       type: String,
-      default: ''
+      default: "",
     },
     duration: {
       type: Number,
-      default: 0
+      default: 0,
     },
     classes: {
       type: Number,
-      default: 0
+      default: 0,
     },
     activities: {
       type: Number,
-      default: 0
+      default: 0,
     },
     price: {
       type: Number,
-      required: true
+      required: true,
     },
     img: {
       type: String,
-      default: ''
+      default: "",
     },
   },
   computed: {
     linkCourseDetails() {
       return `/${this.name}/${this.id}`
-    }
+    },
   },
 }
 </script>

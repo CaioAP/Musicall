@@ -2,7 +2,7 @@
   <BaseSection labelledby="services-title">
     <template #content>
       <div class="content">
-        <NuxtImg src="/images/studios-services.png" />
+        <img src="/images/studios-services.png" />
 
         <div class="services">
           <header>
@@ -11,13 +11,9 @@
             </h2>
           </header>
 
-          <div 
-            v-for="service in services" 
-            :key="service.name" 
-            class="service"
-          >
+          <div v-for="service in services" :key="service.name" class="service">
             <div class="service-icon">
-              <NuxtImg :src="service.icon" />
+              <img :src="service.icon" />
             </div>
 
             <div class="service-content">
@@ -45,26 +41,29 @@ export default {
   computed: {
     services() {
       return [
-        { 
-          name: 'Alugue estúdios próximos a você', 
-          description: 'Deixa a gente te mostrar quais são os melhores estúdios mais próximos de onde você está!',
-          icon: '/svg/map-pin-white.svg',
-          path: '',
+        {
+          name: "Alugue estúdios próximos a você",
+          description:
+            "Deixa a gente te mostrar quais são os melhores estúdios mais próximos de onde você está!",
+          icon: "/svg/map-pin-white.svg",
+          path: "",
         },
-        { 
-          name: 'Configurações personalizadas', 
-          description: 'Você pode configurar reservas e pagamentos diretamente na nossa plataforma',
-          icon: '/svg/cogs.svg',
-          path: '',
+        {
+          name: "Configurações personalizadas",
+          description:
+            "Você pode configurar reservas e pagamentos diretamente na nossa plataforma",
+          icon: "/svg/cogs.svg",
+          path: "",
         },
-        { 
-          name: 'Não perca mais agendamentos', 
-          description: 'Sua política de cancelamento e remarcação de reservar de forma fácil e intuititva',
-          icon: '/svg/book.svg',
-          path: '',
+        {
+          name: "Não perca mais agendamentos",
+          description:
+            "Sua política de cancelamento e remarcação de reservar de forma fácil e intuititva",
+          icon: "/svg/book.svg",
+          path: "",
         },
-      ] 
-    }
+      ]
+    },
   },
 }
 </script>

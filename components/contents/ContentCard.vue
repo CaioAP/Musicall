@@ -1,6 +1,6 @@
 <template>
   <div class="content-card">
-    <NuxtImg :src="`/svg/${icon}.svg`" width="70" height="70" />
+    <img :src="`/svg/${icon}.svg`" width="70" height="70" />
     <h3>{{ title }}</h3>
   </div>
 </template>

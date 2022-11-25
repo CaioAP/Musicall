@@ -5,10 +5,12 @@
         <span class="musicalll">Musicalll</span> para <br />
         <span>Estudios</span>
       </h1>
-      <p class="description text-lg">Encontre um estúdio para seus ensaios e gravações!</p>
+      <p class="description text-lg">
+        Encontre um estúdio para seus ensaios e gravações!
+      </p>
     </header>
 
-    <SearchForm 
+    <SearchForm
       :is-searched="isSearched"
       :form-data="formData"
       @form="(formData) => $emit('form', formData)"
@@ -17,46 +19,34 @@
     <footer v-if="!isSearched">
       <div class="search-available">
         <div class="search-available-icon">
-          <NuxtImg src="/svg/music-box.svg" />
+          <img src="/svg/music-box.svg" />
         </div>
 
         <div class="search-available-text">
-          <p class="search-available-title">
-            Pirenópolis
-          </p>
-          <p class="search-available-quantity">
-            3 disponíveis
-          </p>
+          <p class="search-available-title">Pirenópolis</p>
+          <p class="search-available-quantity">3 disponíveis</p>
         </div>
       </div>
-      
+
       <div class="search-available">
         <div class="search-available-icon">
-          <NuxtImg src="/svg/music-box.svg" />
+          <img src="/svg/music-box.svg" />
         </div>
 
         <div class="search-available-text">
-          <p class="search-available-title">
-            Pirenópolis
-          </p>
-          <p class="search-available-quantity">
-            3 disponíveis
-          </p>
+          <p class="search-available-title">Pirenópolis</p>
+          <p class="search-available-quantity">3 disponíveis</p>
         </div>
       </div>
-      
+
       <div class="search-available">
         <div class="search-available-icon">
-          <NuxtImg src="/svg/music-box.svg" />
+          <img src="/svg/music-box.svg" />
         </div>
 
         <div class="search-available-text">
-          <p class="search-available-title">
-            Pirenópolis
-          </p>
-          <p class="search-available-quantity">
-            3 disponíveis
-          </p>
+          <p class="search-available-title">Pirenópolis</p>
+          <p class="search-available-quantity">3 disponíveis</p>
         </div>
       </div>
     </footer>
@@ -64,7 +54,7 @@
 </template>
 
 <script>
-import SearchForm from '@/components/studios/SearchForm.vue';
+import SearchForm from "@/components/studios/SearchForm.vue"
 
 export default {
   components: {
@@ -73,7 +63,7 @@ export default {
   props: {
     isSearched: {
       type: Boolean,
-      default: false
+      default: false,
     },
     formData: {
       type: Object,
@@ -82,8 +72,8 @@ export default {
         time: null,
         city: null,
         event: null,
-      })
-    }
+      }),
+    },
   },
 }
 </script>

@@ -4,26 +4,26 @@
       <div class="search-field">
         <div class="input-field">
           <BaseSelect
-            v-model="form.course" 
+            v-model="form.course"
             class="form-input"
-            placeholder="Todos os cursos" 
+            placeholder="Todos os cursos"
             :options="courseOptions"
-            :reduce="course => course.value"
+            :reduce="(course) => course.value"
             @option:selected="emitForm"
           />
         </div>
         <div class="input-field">
-          <BaseSelect 
+          <BaseSelect
             v-model="form.difficulty"
             class="form-input"
             placeholder="Todos os níveis"
             :options="difficultyOptions"
-            :reduce="difficulty => difficulty.value"
+            :reduce="(difficulty) => difficulty.value"
             @option:selected="emitForm"
           />
         </div>
         <BaseButton class="btn-circle" @click="searchStudios">
-          <NuxtImg src="/svg/search.svg" />
+          <img src="/svg/search.svg" />
         </BaseButton>
         <BaseButton class="btn-gradient" @click="searchStudios">
           Pesquisar
@@ -53,45 +53,45 @@ export default {
         time: null,
         city: null,
         event: null,
-      })
-    }
+      }),
+    },
   },
   data() {
     return {
       form: this.formData,
       courseOptions: [],
       difficultyOptions: [],
-      startPrice: 49.90,
+      startPrice: 49.9,
       endPrice: 250,
     }
   },
-  fetch () {
+  fetch() {
     this.courseOptions = [
-      { value: 1, label: 'Canto' },
-      { value: 2, label: 'Clarineta' },
-      { value: 3, label: 'Gaita' },
-      { value: 4, label: 'Baixo' },
-      { value: 5, label: 'Bateria' },
+      { value: 1, label: "Canto" },
+      { value: 2, label: "Clarineta" },
+      { value: 3, label: "Gaita" },
+      { value: 4, label: "Baixo" },
+      { value: 5, label: "Bateria" },
     ]
 
     this.difficultyOptions = [
-      { value: 1, label: 'Iniciante' },
-      { value: 2, label: 'Intermediário' },
-      { value: 3, label: 'Avançado' },
-      { value: 4, label: 'Profissional' },
+      { value: 1, label: "Iniciante" },
+      { value: 2, label: "Intermediário" },
+      { value: 3, label: "Avançado" },
+      { value: 4, label: "Profissional" },
     ]
   },
   watch: {
     formData(newValue) {
       this.form = newValue
     },
-    '$route.query'() {
-      this.$emit('fetch')
-    }
+    "$route.query"() {
+      this.$emit("fetch")
+    },
   },
   methods: {
     emitForm() {
-      this.$emit('form', this.form)
+      this.$emit("form", this.form)
     },
 
     searchStudios() {
@@ -99,10 +99,10 @@ export default {
         path: `/${this.name}/search`,
         query: {
           curso: this.form.course,
-          dificuldade: this.form.difficulty
-        }
+          dificuldade: this.form.difficulty,
+        },
       })
-    }
+    },
   },
 }
 </script>

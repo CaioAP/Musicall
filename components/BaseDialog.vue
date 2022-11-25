@@ -3,7 +3,7 @@
     <header>
       {{ title }}
       <BaseButton class="btn-plain btn-close" @click="closeDialog">
-        <NuxtImg src="/svg/x-circle-dark.svg" />
+        <img src="/svg/x-circle-dark.svg" />
       </BaseButton>
     </header>
     <slot></slot>
@@ -15,7 +15,7 @@ export default {
   props: {
     title: {
       type: String,
-      default: '',
+      default: "",
     },
   },
   data() {

@@ -2,14 +2,14 @@
   <div class="container">
     <header id="header">
       <NuxtLink class="logo-link" to="/">
-        <NuxtImg src="/images/logo.png" />
+        <img src="/images/logo.png" />
       </NuxtLink>
 
       <nav aria-label="primary navigation">
         <ul>
           <li v-for="nav in navigation" :key="nav.name">
             <NuxtLink v-if="!nav.btn" :to="nav.path">{{ nav.name }}</NuxtLink>
-            <NuxtImg
+            <img
               v-if="!nav.btn && isNavActive(nav.path)"
               class="nav-active"
               src="/svg/neon-trace.svg"
@@ -31,13 +31,13 @@
         Inscreva-se
       </BaseButton>
       <BaseButton v-else @click="goToContents">
-        <NuxtImg
+        <img
           src="/svg/user-light.svg"
           width="24"
           height="24"
           style="margin-right: 0.5rem"
         />
-        {{ userName ? userName.split(' ')[0] : '' }}
+        {{ userName ? userName.split(" ")[0] : "" }}
       </BaseButton>
     </header>
 
@@ -47,25 +47,25 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import Role from '~/assets/data/role.js'
+import { mapGetters } from "vuex"
+import Role from "~/assets/data/role.js"
 
 export default {
   computed: {
     ...mapGetters({
-      userId: 'auth/id',
-      userName: 'auth/name',
-      userRole: 'auth/role',
+      userId: "auth/id",
+      userName: "auth/name",
+      userRole: "auth/role",
     }),
 
     navigation() {
       const navigation = [
-        { name: 'Cursos', path: '/courses' },
-        { name: 'Estúdios', path: '/studios' },
-        { name: 'Login', path: '/login', btn: true },
+        { name: "Cursos", path: "/courses" },
+        { name: "Estúdios", path: "/studios" },
+        { name: "Login", path: "/login", btn: true },
       ]
 
-      if (this.userId) return navigation.filter((nav) => nav.name !== 'Login')
+      if (this.userId) return navigation.filter((nav) => nav.name !== "Login")
       return navigation
     },
 
@@ -88,7 +88,7 @@ export default {
 
     goToContents() {
       this.$router.push({
-        path: this.userRole === Role.ADMIN ? '/contents' : '/contents/studios',
+        path: this.userRole === Role.ADMIN ? "/contents" : "/contents/studios",
       })
     },
   },

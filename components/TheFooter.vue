@@ -6,19 +6,19 @@
 
         <div>
           <NuxtLink to="">
-            <NuxtImg src="/svg/youtube.svg"/>
+            <img src="/svg/youtube.svg" />
           </NuxtLink>
           <NuxtLink to="">
-            <NuxtImg src="/svg/linkedin.svg"/>
+            <img src="/svg/linkedin.svg" />
           </NuxtLink>
           <NuxtLink to="">
-            <NuxtImg src="/svg/facebook.svg"/>
+            <img src="/svg/facebook.svg" />
           </NuxtLink>
           <NuxtLink to="">
-            <NuxtImg src="/svg/instagram.svg"/>
+            <img src="/svg/instagram.svg" />
           </NuxtLink>
           <NuxtLink to="">
-            <NuxtImg src="/svg/twitter.svg"/>
+            <img src="/svg/twitter.svg" />
           </NuxtLink>
         </div>
       </div>
@@ -28,17 +28,13 @@
           <ul>
             <li>
               <NuxtLink class="logo-vertical" to="">
-                <NuxtImg src="/images/logo-vertical.png" />
+                <img src="/images/logo-vertical.png" />
               </NuxtLink>
             </li>
           </ul>
         </div>
 
-        <div 
-          v-for="(nav, idx) in navs" 
-          :key="idx" 
-          class="footer-section"
-        >
+        <div v-for="(nav, idx) in navs" :key="idx" class="footer-section">
           <h2 class="title">{{ nav.title }}</h2>
           <ul>
             <li v-for="(link, i) in nav.links" :key="i">
@@ -56,38 +52,38 @@ export default {
   computed: {
     navs() {
       return [
-        { 
-          title: 'A Musicalll', 
+        {
+          title: "A Musicalll",
           links: [
-            { name: 'Quem somos', path: '' },
-            { name: 'Políticas de uso', path: '' },
-            { name: 'Fale conosco', path: '' },
-          ]
+            { name: "Quem somos", path: "" },
+            { name: "Políticas de uso", path: "" },
+            { name: "Fale conosco", path: "" },
+          ],
         },
-        { 
-          title: 'Cursos', 
+        {
+          title: "Cursos",
           links: [
-            { name: 'Masterclass', path: '/masterclass' },
-            { name: 'Cursos na Musicalll', path: '/courses' },
-            { name: 'Musicalll Drops', path: '/drops' },
-          ]
+            { name: "Masterclass", path: "/masterclass" },
+            { name: "Cursos na Musicalll", path: "/courses" },
+            { name: "Musicalll Drops", path: "/drops" },
+          ],
         },
-        { 
-          title: 'Estúdios', 
+        {
+          title: "Estúdios",
           links: [
-            { name: 'Alugar estúdios', path: '/studios' },
-            { name: 'Cadastrar meu estúdio', path: '' },
-          ]
+            { name: "Alugar estúdios", path: "/studios" },
+            { name: "Cadastrar meu estúdio", path: "" },
+          ],
         },
-        { 
-          title: 'Conheça mais', 
+        {
+          title: "Conheça mais",
           links: [
-            { name: 'Fazer meu cadastro', path: '' },
-            { name: 'Login', path: '' },
-          ]
+            { name: "Fazer meu cadastro", path: "" },
+            { name: "Login", path: "" },
+          ],
         },
-      ] 
-    }
+      ]
+    },
   },
 }
 </script>
@@ -142,7 +138,7 @@ footer {
       ul {
         li {
           padding-block: 0.25rem;
-          font-size: 1.25rem
+          font-size: 1.25rem;
         }
       }
 

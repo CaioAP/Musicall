@@ -2,9 +2,11 @@
   <BaseSection labelledby="courses-title">
     <template #header>
       <header>
-        <h2 id="courses-title" class="title">Cursos na <span class="musicalll">Musicalll</span></h2>
+        <h2 id="courses-title" class="title">
+          Cursos na <span class="musicalll">Musicalll</span>
+        </h2>
         <p class="description">Chega de tentar e nunca conseguir</p>
-        <BaseInputRadioGroup 
+        <BaseInputRadioGroup
           v-model="filterSelected"
           class="filter"
           :options="[...filter]"
@@ -14,15 +16,13 @@
 
     <template #content>
       <div class="content">
-        <NuxtImg v-for="course in courses" :key="course" :src="course" />
+        <img v-for="course in courses" :key="course" :src="course" />
       </div>
     </template>
-    
+
     <template #footer>
       <footer>
-        <BaseButton>
-          Explorar Cursos
-        </BaseButton>
+        <BaseButton> Explorar Cursos </BaseButton>
       </footer>
     </template>
   </BaseSection>
@@ -33,11 +33,11 @@ export default {
   props: {
     filter: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     courses: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
   },
   data() {

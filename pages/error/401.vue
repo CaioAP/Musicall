@@ -4,7 +4,7 @@
       <h1>Acesso não autorizado</h1>
       <p>Você não possui autorização para acessar esta página!</p>
       <NuxtLink to="/" class="go-back">
-        <NuxtImg src="/svg/arrow-point-left-primary.svg" />
+        <img src="/svg/arrow-point-left-primary.svg" />
         Voltar
       </NuxtLink>
     </div>
@@ -13,9 +13,9 @@
 
 <script>
 export default {
-  name: 'UnauthorizedPage',
+  name: "UnauthorizedPage",
   head: {
-    title: '401 - Não autorizado',
+    title: "401 - Não autorizado",
   },
 }
 </script>
