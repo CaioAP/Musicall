@@ -35,7 +35,6 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.16.3",
-    "@nuxt/image": "^0.6.2",
     "@nuxtjs/dotenv": "^1.4.1",
     "@nuxtjs/eslint-config": "^8.0.0",
     "@nuxtjs/eslint-module": "^3.0.2",
@@ -57,7 +56,6 @@
     "stylelint": "^14.1.0",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-recommended-vue": "^1.1.0",
-    "stylelint-config-standard": "^24.0.0",
-    "vue-jest": "^3.0.4"
+    "stylelint-config-standard": "^24.0.0"
   }
 }
